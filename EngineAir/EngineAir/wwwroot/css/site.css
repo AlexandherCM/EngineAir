@@ -1,25 +1,32 @@
-html {
-  font-size: 14px;
+:root {
+    /* \\\\\\\\\\\\\ BACKGROUNDS COLORS \\\\\\\\\\\\\\\\\ */
+    --bg-eas: #365f91;
+    --bg-sereno: #3a6a9e;
+    --bg-claro: #4182b5;
+    --bg-celestial: #4b8fbf;
+    --bg-intenso: #559fcf;
+    --bg-brillante: #5faedf;
+    /* \\\\\\\\\\\\\ TEXT COLORS \\\\\\\\\\\\\\\\\ */
+    --color-eas: #365f91;
+    --color-sereno: #3a6a9e;
+    --color-claro: #4182b5;
+    --color-celestial: #4b8fbf;
+    --color-intenso: #559fcf;
+    --color-brillante: #5faedf;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+*{box-sizing:border-box; margin:0;}
+/* \\\\\\\\\\\\\ CLASS \\\\\\\\\\\\\\\\\ */
+.bg-eas{background-color:var(--bg-eas)}
+.bg-sereno{background-color:var(--bg-sereno)}
+.bg-claro{background-color:var(--bg-claro)}
+.bg-celestial{background-color:var(--bg-celestial)}
+.bg-intenso{background-color:var(--bg-intenso)}
+.bg-brillante{background-color:var(--bg-brillante)}
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-/* - - - - - - - - - */
-
-.container-gral{
-    width:90%;
-    margin:auto;
-}
+.color-eas{color:var(--bg-eas)}
+.color-sereno{color:var(--bg-sereno)}
+.color-claro{color:var(--bg-claro)}
+.color-celestial{color:var(--bg-celestial)}
+.color-intenso{color:var(--bg-intenso)}
+.color-brillante{color:var(--bg-brillante)}
