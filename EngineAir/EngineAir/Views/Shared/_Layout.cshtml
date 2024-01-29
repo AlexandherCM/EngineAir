@@ -6,44 +6,89 @@
     <title>@ViewData["Title"] - EngineAir</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/componente.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EngineAir.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EngineAir</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="MarcasModelos" asp-action="MarcasModelosView">Marcas y Modelos</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container-gral">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    
+    <main role="main" class="container-fluid">
+        
+        <section class="row d-flex justify-content-center ">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - EngineAir - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
+            <aside class="slide-menu bg-eas" id="slide">
+                
+                <div class="cont-icon py-3">
+                    <img src="~/images/svg/bars-solid.svg" class="menu" id="menu">
+                </div>
+            </aside>
+         
+            <aside id="overlay" class="overlay"></aside>
+
+            <aside class="content" id="content">
+               
+                <header class="row">
+
+                    <nav class="navbar navbar-expand-lg navbar-light">
+
+                        <div class="container-fluid ">
+
+                            <div class="col-lg-2 col-6">
+                                <a class="navbar-brand" href="#">
+                                    <img src="~/images/svg/Aircraft.svg" alt="Logo" class="logo" id="logo">
+                                </a>
+                            </div>
+
+                            <div class="col settings  text-end">
+
+                                <img src="~/images/svg/gear-solid.svg" alt="Settings" id="settingsIcon">
+                                
+                                <div id="optionsMenu" class="optionsMenu">
+                                    
+                                    <label class="p-2" for="darkModeSwitch"><b>Configuración</b></label><br />
+                                    <label class="switch-label" for="darkModeSwitch"><b>Modo oscuro:</b></label><br />
+                                    <label class="switch mb-2 mt-2">
+                                        <input type="checkbox" id="darkModeSwitch">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-6  text-end nav-movil">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsivo" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </nav>
+
+                    <div class="collapse  text-light rounded-3">
+
+                        <div class="p-4">
+                            @*Inicio*@
+
+
+                        </div>
+                    </div>
+                </header>
+
+                <article class=" render justify-content-center text-center">
+                    @RenderBody()
+                </article>
+
+            </aside>
+        
+        </section>
+        
+    </main>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/FrontJS/layout/layout.js" asp-append-version="true"></script>
+    <script src="~/js/FrontJS/layout/darkmode.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
