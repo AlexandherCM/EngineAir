@@ -11,43 +11,53 @@
     <link rel="stylesheet" href="~/EngineAir.styles.css" asp-append-version="true" />
 </head>
 <body>
-    
-    <main role="main" class="container-fluid">
-        
+
+    <main role="main" class="container-fluid bg-graylight">
+
         <section class="row d-flex justify-content-center ">
+            @*Slide Menu*@
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+            <aside class="slide-menu bg-celestial" id="slide">
 
-
-            <aside class="slide-menu bg-eas" id="slide">
-                
+                @*Logo*@
+                <div class="row border-2 bg-light  p-2 " id="logoSlide">
+                    <img src="~/images/svg/ENGINIE.svg" alt="EnginieLogo" class="logo">
+                </div>
+                @*Icono*@
                 <div class="cont-icon py-3">
                     <img src="~/images/svg/bars-solid.svg" class="menu" id="menu">
                 </div>
+
             </aside>
-         
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+            @*Overlay*@
             <aside id="overlay" class="overlay"></aside>
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
-            <aside class="content" id="content">
-               
-                <header class="row">
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+            @*Content*@
+            <aside class="content " id="content">
 
-                    <nav class="navbar navbar-expand-lg navbar-light">
+                @*header*@
+                <header>
+
+                    <nav class="navbar navbar-expand-lg navbar-light py-3">
 
                         <div class="container-fluid ">
 
                             <div class="col-lg-2 col-6">
                                 <a class="navbar-brand" href="#">
-                                    <img src="~/images/svg/Aircraft.svg" alt="Logo" class="logo" id="logo">
+                                    <img src="~/images/svg/ENGINIE.svg" class="logo" id="logo">
                                 </a>
                             </div>
-
                             <div class="col settings  text-end">
 
                                 <img src="~/images/svg/gear-solid.svg" alt="Settings" id="settingsIcon">
-                                
-                                <div id="optionsMenu" class="optionsMenu">
-                                    
+                                <div id="optionsMenu" class="bg-bright">
                                     <label class="p-2" for="darkModeSwitch"><b>Configuración</b></label><br />
-                                    <label class="switch-label" for="darkModeSwitch"><b>Modo oscuro:</b></label><br />
+                                    <label class="switch-label" for="darkModeSwitch"><b>Dark Mode:</b></label><br />
                                     <label class="switch mb-2 mt-2">
                                         <input type="checkbox" id="darkModeSwitch">
                                         <span class="slider round"></span>
@@ -55,7 +65,6 @@
                                 </div>
 
                             </div>
-
                             <div class="col-6  text-end nav-movil">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsivo" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -65,24 +74,38 @@
                         </div>
                     </nav>
 
-                    <div class="collapse  text-light rounded-3">
+                    <div class="collapse  text-light rounded-3" id="navbarResponsivo">
 
                         <div class="p-4">
                             @*Inicio*@
 
+                            <div class="row">
+                                <label><b>DarkMode</b></label>
+                                <label class="switch mb-2 mt-2">
+                                    <input type="checkbox" id="darkModeSwitchMovil">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="mt-3 t-none justify-content-start d-flex">
+                                <a class="t-none d-flex align-items-center link">
+                                    @*<img class="icons" src="~/images/house-solid.svg" />*@
+                                    <b> Inicio</b>
+                                </a>
+                            </div>
 
                         </div>
                     </div>
                 </header>
 
-                <article class=" render justify-content-center text-center">
+                <article class="row mt-2 border-grayblue render justify-content-center text-center">
                     @RenderBody()
                 </article>
 
             </aside>
-        
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
         </section>
-        
+
     </main>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
