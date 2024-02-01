@@ -59,7 +59,7 @@ settingsIcon.onclick = () => {
 
 
 document.onclick = event => {
-    if (!optionsMenu.contains(event.target) && event.target !== imagenClickable) {
+    if (!optionsMenu.contains(event.target) && event.target !== settingsIcon) {
         optionsMenu.style.display = 'none';
     }
 };

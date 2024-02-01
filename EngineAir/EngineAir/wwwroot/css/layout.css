@@ -9,10 +9,8 @@
     --bluelight: #7CCDFF;
     --grayblue: #B0BBC1;
     --graylight: #ECEDEF;
+    --grayDark: #242526;
 }
-
-/* °°°°°°°°°°°°°°°° DOM °°°°°°°°°°°°°°°°°°°°°°°°°° */
-*{box-sizing:border-box; margin:0;}
 
 /* \\\\\\\\\\\\\ CLASSES \\\\\\\\\\\\\\\\\ */
 .bg-eas{background-color:var(--eas)}
@@ -24,6 +22,7 @@
 .bg-bluelight{background-color:var(--bluelight)}
 .bg-grayblue {background-color:var(--grayblue)}
 .bg-graylight{background-color:var(--graylight)}
+.bg-grayDark{background-color:var(--grayDark)}
 
 .color-eas{color:var(--eas)}
 .color-serene{color:var(--serene)}
@@ -46,30 +45,21 @@
 .border-grayblue{border:solid 2px var(--grayblue)}
 .border-graylight{border:solid 2px var(--graylight)}
 
+/* °°°°°°°°°°°°°°°° DOM °°°°°°°°°°°°°°°°°°°°°°°°°° */
+* {box-sizing: border-box; margin: 0; }
 
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+/*Menu Slide*/
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 
 .menu { height: 2.5rem; cursor: pointer; }
 .cont-icon{display:flex; justify-content:center; }
-.nav-movil{display:none;}
-
 
 .slide-menu {
     width: 5%;
     height: 100vh;
     transition: width 0.4s ease-in-out;
 }
-
-
-#content {
-    height: 100vh;
-    transition: width 0.4s ease-in-out;
-    width: 95%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-
 .overlay {
     display: none;
     position: fixed;
@@ -80,15 +70,21 @@
     z-index: 99;
     animation: showOverlay 1s forwards;
 }
+#logoSlide {visibility: hidden;}
+.logoSlide {height:2.1rem;}
 
+.logo{ height:2.3rem; }
 
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+/*Nav*/
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+.nav-movil {display: none;}
 
 #settingsIcon {
     cursor: pointer;
     height: 2.5rem;
     margin-right: 3rem;
 }
-
 
 #optionsMenu {
     display: none;
@@ -99,13 +95,14 @@
     right: 1%;
     min-width: 10rem;
     z-index: 3;
-    border: dashed 3px var(--bg-celestial);
+    border: dashed 3px var(--eas);
 }
 
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+/*Switch*/
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 
-
-
-.switch-label { margin-right: 5px;}
+.switch-label { margin-right: 5px; }
 
 .switch {
     position: relative;
@@ -144,32 +141,32 @@
         border-radius: 50%;
     }
 
-input:checked + .slider {
-    background-color: var(--bg-bright);
+input:checked + .slider { background-color: var(--eas); }
+
+    input:checked + .slider:before { transform: translateX(16px); }
+
+.slider.round { border-radius: 20px; }
+
+    .slider.round:before { border-radius: 50%; }
+
+
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+/*Content*/
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+#content {
+    height: 100vh;
+    transition: width 0.4s ease-in-out;
+    width: 95%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
-
-    input:checked + .slider:before {
-        transform: translateX(16px);
-    }
-
-.slider.round {
-    border-radius: 20px;
-}
-
-    .slider.round:before {
-        border-radius: 50%;
-    }
+.render{ height:100%; overflow:auto; }
 
 
-.render{
-    height:100%;
-    overflow:auto;
-}
-
-#logoSlide{
-    visibility:hidden;
-}
-
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
+/*Media*/
+/*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 
 
 @keyframes showOverlay {
