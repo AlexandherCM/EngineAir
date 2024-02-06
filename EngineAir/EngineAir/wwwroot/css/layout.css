@@ -1,6 +1,6 @@
 ﻿:root {
-    /* \\\\\\\\\\\\\ BACKGROUNDS COLORS \\\\\\\\\\\\\\\\\ */
-    --eas: #365f91;
+    /* \\\\\\\\\\\\\ VARS COLORS \\\\\\\\\\\\\\\\\ */
+    --eas: #365f92;
     --serene: #3a6a9e;
     --pale: #4182b5;
     --celestial: #4b8fbf;
@@ -9,7 +9,8 @@
     --bluelight: #7CCDFF;
     --grayblue: #B0BBC1;
     --graylight: #ECEDEF;
-    --grayDark: #242526;
+    --gray: #A3A6AB;
+    --grayDark: #1d1d1d;
 }
 
 /* \\\\\\\\\\\\\ CLASSES \\\\\\\\\\\\\\\\\ */
@@ -22,6 +23,7 @@
 .bg-bluelight{background-color:var(--bluelight)}
 .bg-grayblue {background-color:var(--grayblue)}
 .bg-graylight{background-color:var(--graylight)}
+.bg-gray{background-color:var(--gray)}
 .bg-grayDark{background-color:var(--grayDark)}
 
 .color-eas{color:var(--eas)}
@@ -32,10 +34,12 @@
 .color-bright{color:var(--bright)}
 .color-bluelight{color:var(--bluelight)}
 .color-grayblue {color:var(--grayblue)}
-.bg-graylight{color:var(--graylight)}
+.color-graylight{color:var(--graylight)}
+.color-gray{color:var(--gray)}
+.color-grayDark{color:var(--grayDark)}
 
 
-.border-aeas{border:solid 2px var(--eas)}
+.border-eas{border:solid 2px var(--eas)}
 .border-serene{border:solid 2px var(--serene)}
 .border-pale{border:solid 2px var(--pale)}
 .border-celestial{border:solid 2px var(--celestial)}
@@ -127,7 +131,7 @@
     background-color: #212529;
     transition: 0.4s;
     border-radius: 20px;
-}
+} 
 
     .slider:before {
         position: absolute;
@@ -179,4 +183,10 @@ input:checked + .slider { background-color: var(--eas); }
 @media(max-width:1000px) {
     .slide-menu,.settings { display:none; }
     .nav-movil{display:block;}
+    .logo{ height:auto; }
+    .render {
+        height: 100%;
+        overflow:visible;
+    }
+
 }

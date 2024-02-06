@@ -1,8 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     const darkModeSwitch = document.getElementById('darkModeSwitch');
-    const body = document.getElementById('main');
+    const body = document.getElementById('body');
     const localInitial = localStorage.getItem('darkModeState');
     const render = document.getElementById('render');
+    const navMovil = document.getElementById('navbar')
 
     if (darkModeSwitch !== null) {
        
@@ -21,6 +22,8 @@
         render.classList.add('text-light');
         render.classList.remove('text-dark');
         localStorage.setItem("darkModeState", "true");
+        navMovil.classList.remove('navbar-light');
+        navMovil.classList.add('navbar-dark');
         darkModeSwitch.checked = true;
     }
 
@@ -30,7 +33,8 @@
         body.classList.add('bg-graylight');
         render.classList.remove('text-light');
         render.classList.add('text-dark');
-
+        navMovil.classList.add('navbar-light');
+        navMovil.classList.remove('navbar-dark');
 
         localStorage.setItem("darkModeState", "false");
         darkModeSwitch.checked = false;

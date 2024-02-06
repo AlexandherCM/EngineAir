@@ -1,0 +1,76 @@
+﻿:root {
+    /* \\\\\\\\\\\\\ VARS COLORS \\\\\\\\\\\\\\\\\ */
+    --eas: #365f92;
+    --serene: #3a6a9e;
+    --pale: #4182b5;
+    --celestial: #4b8fbf;
+    --intense: #559fcf;
+    --bright: #5faedf;
+    --bluelight: #7CCDFF;
+    --grayblue: #B0BBC1;
+    --graylight: #ECEDEF;
+    --gray: #A3A6AB;
+    --grayDark: #1d1d1d;
+}
+
+.thead{background:var(--pale); position:sticky; top:-1%; z-index:1;}
+.thead th{border:solid 1px;}
+.thead .th{border:none;}
+
+
+.tbody td{border:solid 1px; background:var(--intense); }
+    .tbody td{padding:1%;}
+
+    .tbody tr:hover td { background-color: var(--serene); cursor:pointer;}
+
+.content-table{height:24vh; overflow:auto;}
+
+
+/* \\\\\\\\\\\\\ SWITCH \\\\\\\\\\\\\\\\\ */
+
+.toggle-switch { position: relative; display: inline-block; width: 30px; height: 17px; }
+
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.toggle-switch-background {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1AD800;
+    border-radius: 17px;
+    transition: background-color 0.4s;
+}
+
+.toggle-switch-handle {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px; 
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s;
+}
+
+.toggle-switch input:checked + .toggle-switch-background { background-color: red; }
+
+    .toggle-switch input:checked + .toggle-switch-background .toggle-switch-handle { transform: translateX(13px);}
+
+
+
+/* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
+
+/* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
+@media(max-width:1500px) {
+    .content-table{height:22vh; overflow:auto;}
+
+}
+
+@media(max-width:1000px) {
+    .content-table{height:30vh; overflow:auto;}
+
+}
