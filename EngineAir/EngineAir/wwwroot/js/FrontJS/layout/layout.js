@@ -17,21 +17,24 @@ const nav = getElement('navbarResponsivo');
 
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
-const toggleMenu = () => {
+if (slideMenu) {
+    const toggleMenu = () => {
 
-    slideMenu.style.width = isOpen ? '5%' : '15%';
-    content.style.width = isOpen ? '95%' : '85%';
-    menu.src = isOpen ? "/images/svg/bars-solid.svg" : "/images/svg/circle-xmark-regular.svg";
-    overlay.style.display = isOpen ? 'none' : 'block';
-    logo.style.visibility = isOpen ? 'hidden' : 'visible';
-    const justifyContentValue = isOpen ? 'center' : 'flex-end';
-    Array.from(contIcon).forEach(item => item.style.justifyContent = justifyContentValue);
-    isOpen = !isOpen
+        slideMenu.style.width = isOpen ? '5%' : '15%';
+        content.classList = isOpen ? 'content' : 'contentW';
+        menu.src = isOpen ? "/images/svg/bars-solid.svg" : "/images/svg/circle-xmark-regular.svg";
+        overlay.style.display = isOpen ? 'none' : 'block';
+        logo.style.visibility = isOpen ? 'hidden' : 'visible';
+        const justifyContentValue = isOpen ? 'center' : 'flex-end';
+        Array.from(contIcon).forEach(item => item.style.justifyContent = justifyContentValue);
+        isOpen = !isOpen
+    }
+
+
+    menu.onclick = toggleMenu;
+    overlay.onclick = toggleMenu;
 }
 
-
-menu.onclick = toggleMenu;
-overlay.onclick = toggleMenu;
 
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/

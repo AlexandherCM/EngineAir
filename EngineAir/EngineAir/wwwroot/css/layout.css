@@ -8,9 +8,10 @@
     --bright: #5faedf;
     --bluelight: #7CCDFF;
     --grayblue: #B0BBC1;
-    --graylight: #ECEDEF;
+    --graylight: #E7ECF3;
+    --grayserene: #EEF2FB;
     --gray: #A3A6AB;
-    --grayDark: #1d1d1d;
+    --grayDark: #3c3c3c;
 }
 
 /* \\\\\\\\\\\\\ CLASSES \\\\\\\\\\\\\\\\\ */
@@ -24,6 +25,7 @@
 .bg-grayblue {background-color:var(--grayblue)}
 .bg-graylight{background-color:var(--graylight)}
 .bg-gray{background-color:var(--gray)}
+.bg-grayserene{background-color:var(--grayserene)}
 .bg-grayDark{background-color:var(--grayDark)}
 
 .color-eas{color:var(--eas)}
@@ -37,6 +39,8 @@
 .color-graylight{color:var(--graylight)}
 .color-gray{color:var(--gray)}
 .color-grayDark{color:var(--grayDark)}
+.color-grayserene{background-color:var(--grayserene)}
+
 
 
 .border-eas{border:solid 2px var(--eas)}
@@ -47,10 +51,12 @@
 .border-bright{border:solid 2px var(--bright)}
 .border-bluelight{border:solid 2px var(--graylight)}
 .border-grayblue{border:solid 2px var(--grayblue)}
+.border-gray{border:solid 2px var(--gray)}
 .border-graylight{border:solid 2px var(--graylight)}
+,border-grayserene{border:solid 2px var(--grayserene)}
 
 /* °°°°°°°°°°°°°°°° DOM °°°°°°°°°°°°°°°°°°°°°°°°°° */
-* {box-sizing: border-box; margin: 0; }
+* {box-sizing: border-box; margin: 0; padding:0; }
 
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*Menu Slide*/
@@ -157,15 +163,25 @@ input:checked + .slider { background-color: var(--eas); }
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*Content*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
-#content {
+.content {
     height: 100vh;
     transition: width 0.4s ease-in-out;
     width: 95%;
     position: relative;
     display: flex;
     flex-direction: column;
+    padding:0;
 }
-.render{ height:100%; overflow:auto; }
+.contentW {
+    width: 85%;
+    height: 100vh;
+    transition: width 0.4s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.render{ height:100%; overflow:auto; width:100%; align-self:center; justify-content:center; }
 
 
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
@@ -187,6 +203,10 @@ input:checked + .slider { background-color: var(--eas); }
     .render {
         height: 100%;
         overflow:visible;
+    }
+
+    .content {
+        width: 100%;
     }
 
 }

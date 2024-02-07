@@ -1,306 +1,113 @@
-﻿<section class="row">
-
-    @* \\\\\\\\\\\\\ BRAND \\\\\\\\\\\\\\\\\ *@
-
-    <article class="col-12 col-lg-4 d-flex my-2">
-
-        <div class="form-Brand bg-gray rounded-2 text-light container-fluid  d-flex flex-column justify-content-center">
-
-            <h3 class="py-2">Marca</h3>
-
-            @* \\\\\\\\\\\\\ FORM \\\\\\\\\\\\\\\\\ *@
-            <form>
-
-                <div class="row ">
-                    <h5><b>Nombre</b></h5>
-                    <input class="input-Form" type="text" />
-                </div>
-
-                <div class="row py-3">
-                    <input type="submit" class="submit " value="Agregar" />
-                </div>
-
-            </form>
-
-            @* \\\\\\\\\\\\\ TABLE \\\\\\\\\\\\\\\\\ *@
-            <div class="row content-table mb-3">
-
-                <table>
-
-                    <thead class="thead">
-
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Estado</th>
-                            <th>Editar</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody class="tbody">
-                        <tr>
-                            <td>Lore</td>
-                            <td>
-                                <label class="toggle-switch">
-                                    <input class="chbTable" type="checkbox">
-                                    <div class="toggle-switch-background">
-                                        <div class="toggle-switch-handle"></div>
-                                    </div>
-                                </label>
-                            </td>
-                            <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+﻿<section class="row p border-eas">
 
 
+    @*///////////////////////////// -BRAND- ///////////////////////////////////*@
+    <aside class="col-12 col-lg-3 mt-2 p ">
+
+        <div class="form-brand border-graylight rounded-3 text-light bg-bright container ">
+            
+            <h2><b>Marca</b></h2>
+            
+            <div class="row ">
+                <h4><b>Nombre</b></h4>
+                <input class="input-Form border-gray" type="text" />
             </div>
 
+            <div class="row py-3">
+                <input type="submit" class="submit " value="Agregar" />
+            </div>
+
+            <div class="brand-table border mb-2"></div>
 
         </div>
 
-    </article>
+    </aside>
 
-    @* \\\\\\\\\\\\\ MODEL COMPONENT \\\\\\\\\\\\\\\\\ *@
-    <article class="col-12 col-lg-8 d-flex align-items-center my-2">
+    @*///////////////////////////// -MODEL- ///////////////////////////////////*@
+    <aside class="col-12 col-lg-9 mt-2 p">
 
-        <div class="form-Model bg-pale container-fluid rounded-2 text-light">
+        <div class="form-model border-graylight bg-celestial text-light  container rounded-3 ">
+            <h2><b>Modelo</b></h2>
+           
+            <div class="row py-2">
+                
+                <div class="col  ">
+                    <h4><b>Marca</b></h4>
 
-            <h2 class="py-1">Modelo</h2>
-
-            @* \\\\\\\\\\\\\ FORM \\\\\\\\\\\\\\\\\ *@
-            <form>
-
-                <div class="row">
-
-                    <div class="col-6 ">
-                        <h6><b>Marca</b></h6>
-
-                        <select class="input-Form ">
-                            <option value="Maraca" selected></option>
-                            <option value="Maraca1">Marca</option>
-                        </select>
-
-
-                    </div>
-
-                    <div class="col-6 ">
-                        <h6><b>Nombre</b></h6>
-                        <input class="input-Form" type="text" />
-                    </div>
+                    <select class="input-Form ">
+                        <option value="Maraca" selected></option>
+                        <option value="Maraca1">Marca</option>
+                    </select>
 
                 </div>
+                
+                <div class="col  ">
+                    <h4><b>Nombre</b></h4>
+                    <input class="input-Form border-gray" type="text" />
+                </div>
 
-                <div class="row pt-2">
+            </div>
+           
+            <div class="row py-2">
 
-                    <div class="col-6 ">
-                        <h6><b>Horas de mantenimineto</b></h6>
+                <div class="col   d-flex flex-column justify-content-center">
+                    <h4><b>Horas de remplazo</b></h4>
 
-                        <div class="row justify-content-center">
+                    <div class="row ">
 
-                            <div class="col ">
-                                <input class="inpuTiwns-Form my-2" type="text" />
-                            </div>
-                            :
-                            <div class="col ">
-                                <input class="inpuTiwns-Form my-2" type="text" />
-                            </div>
+                        <div class="col">
+                            <input class="input-FormTwin border-gray" type="number" />
+                            Horas
+                        </div>:
 
+                        <div class="col">
+                            <input class="input-FormTwin border-gray" type="number" />
+                            Minutos
                         </div>
 
                     </div>
+                
+                </div>
 
-                    <div class="col-6 ">
-                        <h6><b>Tiempo de remplazo</b></h6>
+                <div class="col   d-flex flex-column justify-content-center">
+                    
+                    <h4><b>Tiempo de remplazo</b></h4>
 
-                        <div class="row justify-content-center">
+                    <div class="row">
 
-                            <div class="col-12 col-lg-6 ">
-                                <select class="inpuTiwns-Form my-2">
-                                    <option value="Tiempo" selected></option>
-                                    <option value="Tiempo1">Lapso</option>
-                                </select>
-                            </div>
+                        <div class="col">
+                            <select class="input-FormTwin ">
+                                <option value="Maraca" selected></option>
+                                <option value="Maraca1">Años</option>
+                                <option value="Maraca1">Meses</option>
+                            </select>
+                            Unidad de tiempo
+                        </div>
 
-                            <div class="col-12 col-lg-6">
-                                <input class="inpuTiwns-Form my-2" type="date" />
-                            </div>
-
+                        <div class="col">
+                            <input class="input-FormTwin border-gray" type="number" />
+                            cantidad
                         </div>
 
                     </div>
 
                 </div>
 
-                <div class="row py-3">
-                    <input type="submit" class="submit-Model " value="Agregar" />
-                </div>
-
-            </form>
-
-
-            @* \\\\\\\\\\\\\ TABLE \\\\\\\\\\\\\\\\\ *@
-            <div class="row content-table mb-3">
-
-                <table>
-
-                    <thead class="thead">
-
-                        <tr class="bg-gray border">
-                            <th class="th"></th>
-                            <th class="th"></th>
-                            <th colspan="2">Tiempo de remplazo</th>
-                            <th class="th"></th>
-                            <th class="th"></th>
-                        </tr>
-                        
-                        <tr>
-                            <th>Marca</th>
-                            <th>Nombre</th>
-                            <th>Horas</th>
-                            <th>Años</th>
-                            <th>Estado</th>
-                            <th>Editar</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody class="tbody">
-                        <tr>
-                            <td>Lore</td>
-                            <td>Lore</td>
-                            <td>Lore</td>
-                            <td>Lore</td>
-                            <td>
-
-                                <label class="toggle-switch">
-                                    <input class="chbTable" type="checkbox">
-                                    <div class="toggle-switch-background">
-                                        <div class="toggle-switch-handle"></div>
-                                    </div>
-                                </label>
-
-                            </td>
-                            <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
             </div>
+           
+            <div class="row py-2">
+                <input type="submit" class="submit-Model " value="Agregar" />
+            </div>
+
+            <div class="model-table border mb-2"></div>
 
         </div>
 
-    </article>
-
-
-</section>
-
-<section class="row text-light d-flex align-items-center justify-content-center nav-container my-2 ">
-
-    <article class="col-5 col-lg-3 bg-pale border-L navegation">
-
-        <div class="row align-items-center">
-
-            <div class="col align-items-center d-flex">
-                <h5>N° de serie</h5>
-            </div>
-
-            <div class="col">
-                <input class="input-Form" type="text" />
-            </div>
-
-        </div>
-
-    </article>
-
-    <article class="col-5 col-lg-3  bg-pale  navegation">
-
-        <div class="row align-items-center">
-
-            <div class="col">
-                <h5>Planeador</h5>
-            </div>
-
-            <div class="col">
-                <input class="input-Form" type="text" />
-            </div>
-
-        </div>
-
-    </article>
-
-    <article class="col-1 bg-pale justify-content-center navegation border-R">
-
-        <img src="~/images/svg/magnifying-glass-solid.svg" class="search-icon" />
-
-    </article>
-
+    </aside>
 
 </section>
 
-
-<section class="row">
-
-    <table>
-
-        <thead class="bg-gray">
-
-            <tr>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th colspan="2" class="border">Tiempo de remplazo</th>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th class="th"></th>
-            </tr>
-            <tr>
-                <th>N°serie</th>
-                <th>Hélice</th>
-                <th>Planeador</th>
-                <th class="border">Horas</th>
-                <th class="border">Años</th>
-                <th>Detalles</th>
-                <th>Estado</th>
-                <th>Editar</th>
-            </tr>
-
-        </thead>
-
-        <tbody class="bg-bright">
-            <tr>
-                <td>Lore</td>
-                <td>Lore</td>
-                <td>Lore</td>
-                <td>Lore</td>
-                <td>Lore</td>
-                <td>Lore</td>
-                <td>
-
-                    <label class="toggle-switch">
-                        <input class="chbTable" type="checkbox">
-                        <div class="toggle-switch-background">
-                            <div class="toggle-switch-handle"></div>
-                        </div>
-                    </label>
-
-                </td>
-                <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
-            </tr>
-
-        </tbody>
-
-    </table>
-
-
-</section>
-
-
-
+<section class="row p border-eas"></section>
 
 
 @section Scripts {

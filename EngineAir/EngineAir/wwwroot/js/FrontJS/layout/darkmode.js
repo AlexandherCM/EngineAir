@@ -18,23 +18,21 @@
    
     function enableDarkMode() {
         body.classList.remove('bg-graylight');
-        body.classList.add('bg-grayDark');
+        body.classList.add('bg-dark');
         render.classList.add('text-light');
         render.classList.remove('text-dark');
         localStorage.setItem("darkModeState", "true");
-        navMovil.classList.remove('navbar-light');
-        navMovil.classList.add('navbar-dark');
+        
         darkModeSwitch.checked = true;
     }
 
     
     function disableDarkMode() {
-        body.classList.remove('bg-grayDark');
+        body.classList.remove('bg-dark');
         body.classList.add('bg-graylight');
         render.classList.remove('text-light');
         render.classList.add('text-dark');
-        navMovil.classList.add('navbar-light');
-        navMovil.classList.remove('navbar-dark');
+       
 
         localStorage.setItem("darkModeState", "false");
         darkModeSwitch.checked = false;

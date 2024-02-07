@@ -8,12 +8,15 @@
     --bright: #5faedf;
     --bluelight: #7CCDFF;
     --grayblue: #B0BBC1;
-    --graylight: #ECEDEF;
+    --graylight: #E7ECF3;
+    --grayserene: #EEF2FB;
     --gray: #A3A6AB;
-    --grayDark: #1d1d1d;
+    --grayDark: #3c3c3c;
 }
 
-.thead{background:var(--pale); position:sticky; top:-1%; z-index:1;}
+.brand-table{height:24vh; overflow:auto;}
+
+/*.thead{background:var(--pale); position:sticky; top:-1%; z-index:1;}
 .thead th{border:solid 1px;}
 .thead .th{border:none;}
 
@@ -21,9 +24,8 @@
 .tbody td{border:solid 1px; background:var(--intense); }
     .tbody td{padding:1%;}
 
-    .tbody tr:hover td { background-color: var(--serene); cursor:pointer;}
+    .tbody tr:hover td { background-color: var(--serene); cursor:pointer;}*/
 
-.content-table{height:24vh; overflow:auto;}
 
 
 /* \\\\\\\\\\\\\ SWITCH \\\\\\\\\\\\\\\\\ */
@@ -65,12 +67,8 @@
 /* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
 
 /* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
-@media(max-width:1500px) {
-    .content-table{height:22vh; overflow:auto;}
-
-}
 
 @media(max-width:1000px) {
-    .content-table{height:30vh; overflow:auto;}
+    .brand-table{height:30vh; overflow:auto;}
 
 }
