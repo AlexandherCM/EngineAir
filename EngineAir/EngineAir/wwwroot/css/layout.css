@@ -164,11 +164,10 @@ input:checked + .slider { background-color: var(--eas); }
 /*Content*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 .content {
-    height: 100vh;
     transition: width 0.4s ease-in-out;
     width: 95%;
-    position: relative;
     display: flex;
+    height:100vh;
     flex-direction: column;
     padding:0;
 }

@@ -14,7 +14,8 @@
     --grayDark: #3c3c3c;
 }
 
-.brand-table{height:24vh; overflow:auto;}
+.brand-table{height:38.5vh; overflow:auto;}
+.model-table{height:27vh; overflow:auto;}
 
 /*.thead{background:var(--pale); position:sticky; top:-1%; z-index:1;}
 .thead th{border:solid 1px;}
