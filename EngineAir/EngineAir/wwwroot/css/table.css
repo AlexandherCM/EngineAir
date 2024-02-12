@@ -14,26 +14,83 @@
     --grayDark: #3c3c3c;
 }
 
-.brand-table{height:38.5vh; overflow:auto;}
-.model-table{height:27vh; overflow:auto;}
+.cont-table-model{height:20vh; overflow:auto; width:97%; margin:auto;}
+.cont-table-model table tbody tr td{border:solid white; padding:1%}
 
-/*.thead{background:var(--pale); position:sticky; top:-1%; z-index:1;}
+.thead{position:sticky; top:-1%; z-index:1;}
 .thead th{border:solid 1px;}
 .thead .th{border:none;}
 
+table{width:100%;}
 
-.tbody td{border:solid 1px; background:var(--intense); }
-    .tbody td{padding:1%;}
+.cont-table-brand{ height:30vh; overflow:auto; width:97%; margin:auto;}
+.cont-table-brand thead th {border:solid 1px white;}
+.cont-table-brand table tbody tr td{border:solid white; padding:1%;}
 
-    .tbody tr:hover td { background-color: var(--serene); cursor:pointer;}*/
+/* °°°°°°°°°°°°°°°°° Estilos para la paginación °°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
+#rowsPerPage{width:auto; border:none; border-radius:5px;}
+
+#table{border-radius:5px;}
+#table th, #table td { padding: 1%; border:2px solid white;}
+#table .th{border:none;}
+
+#paginated { margin-top: 10px; }
+
+    #paginated a {
+        color: white;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        margin: 0 4px;
+        border: 1px solid #ddd;
+        background:var(--gray)
+    }
+
+        #paginated a.active { background-color: var(--bright); }
+
+        #paginated a:hover:not(.active) { background-color: #ddd; color: var(--eas); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /* \\\\\\\\\\\\\ SWITCH \\\\\\\\\\\\\\\\\ */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
 
-.toggle-switch { position: relative; display: inline-block; width: 30px; height: 17px; }
-
-    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
 .toggle-switch-background {
     position: absolute;
@@ -52,24 +109,25 @@
     content: "";
     height: 13px;
     width: 13px;
-    left: 2px; 
+    left: 2px;
     bottom: 2px;
     background-color: white;
     border-radius: 50%;
     transition: transform 0.4s;
 }
 
-.toggle-switch input:checked + .toggle-switch-background { background-color: red; }
+.toggle-switch input:checked + .toggle-switch-background {
+    background-color: red;
+}
 
-    .toggle-switch input:checked + .toggle-switch-background .toggle-switch-handle { transform: translateX(13px);}
+    .toggle-switch input:checked + .toggle-switch-background .toggle-switch-handle {
+        transform: translateX(13px);
+    }
 
 
 
-/* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
 
-/* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
-
-@media(max-width:1000px) {
-    .brand-table{height:30vh; overflow:auto;}
+@media(max-width:1000px){
+    .cont-table-model{height:27vh;}
 
 }

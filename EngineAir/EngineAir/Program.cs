@@ -53,6 +53,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Componente}/{action=Index}/{id?}");
+    pattern: "{controller=Variantes}/{action=Alternador}/{id?}");
 
 app.Run();

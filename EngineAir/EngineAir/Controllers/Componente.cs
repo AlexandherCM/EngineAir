@@ -8,5 +8,13 @@ namespace EngineAir.Controllers
         {
             return View();
         }
+        public IActionResult Motor()
+        {
+            return View();
+        }
+        public IActionResult Helice()
+        {
+            return View();
+        }
     }
 }

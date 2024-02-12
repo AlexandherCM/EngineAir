@@ -3,7 +3,6 @@
     const body = document.getElementById('body');
     const localInitial = localStorage.getItem('darkModeState');
     const render = document.getElementById('render');
-    const navMovil = document.getElementById('navbar')
 
     if (darkModeSwitch !== null) {
        
