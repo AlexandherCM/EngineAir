@@ -2,19 +2,21 @@
 
 namespace EngineAir.Controllers
 {
-    public class Componente : Controller
+    public class ComponentesController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult Motor()
         {
             return View();
         }
+
         public IActionResult Helice()
         {
             return View();
         }
+        public IActionResult Variante()
+        {
+            return View();
+        }
+
     }
 }
