@@ -6,9 +6,9 @@
 
 <section class="p my-2 row title border-eas bg-gray rounded-3">
 
-    <aside class="col-12 col-lg-3 p-2 d-flex flex-column justify-content-center ">
+    <aside class="col-12 col-lg-2 p-2 d-flex flex-column justify-content-center ">
 
-        <h3><b class="color-eas">M</b>ARCA PLANEADOR</h3>
+        <h3><b><span class="color-eas">M</span>ARCA PLANEADOR</b></h3>
 
         <form>
 
@@ -27,11 +27,11 @@
 
 
 
-    <aside class="col-12 col-lg-9 bg-celestial">
+    <aside class="col-12 col-lg-10 bg-celestial">
 
-        <div class="cont-table-brand mt-2 mb-2">
+        <div class="cont-table-brand-plane mt-2 mb-2">
 
-            <table>
+            <table >
 
                 <thead class="thead border border-3 bg-gray text-dark">
 
@@ -57,7 +57,6 @@
                         </td>
                         <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
                     </tr>
-
 
                 </tbody>
 
@@ -71,98 +70,69 @@
 </section>
 
 
-<section class="p row title border-eas bg-gray rounded-3 my-4">
+<section class="p row title border-eas bg-gray rounded-3 my-2">
 
-    <aside class="col-12 col-lg-5 p-2 d-flex flex-column justify-content-center ">
+    <aside class="col-12 col-lg-2 p-2 d-flex flex-column justify-content-center ">
 
-        <h3><b class="color-eas">M</b>ODELO</h3>
+        <h3><b><span class="color-eas">M</span>ODELO</b></h3>
 
         <form>
 
-            <div class="row">
+            <div class="row justify-content-center  d-flex align-items-center">
+                <h5><b>Marca</b></h5>
+                <input class="input-Form" type="text" />
+            </div>
+
+            <div class="row justify-content-center mb-2 ">
+                <h5><b>Nombre</b></h5>
+                <input class="input-Form" type="text" />
+            </div>
+
+            <h5><b>Tiempor de remplazo</b></h5>
+
+            <div class="row my-3">
 
                 <div class="col">
+                    <input class="input-Form" type="number" />
+                    Horas
+                </div>
+                :
+                <div class="col">
+                    <input class="input-FormTwin" type="number" />
+                    Minutos
+                </div>
 
-                    <h4><b>Marca</b></h4>
+            </div>
+            
+            <div class="row my-3">
 
-                    <select class="input-Form">
+                <div class="col">
+                    <select class="input-FormTwin ">
                         <option value="Maraca" selected></option>
-                        <option value="Maraca1">Marca</option>
+                        <option value="Maraca1">Años</option>
+                        <option value="Maraca1">Meses</option>
                     </select>
-
-
+                    Unidad de tiempo
                 </div>
 
                 <div class="col">
-
-                    <h4><b>Nombre</b></h4>
-                    <input class="input-Form border-gray" type="text" />
-
+                    <input class="input-FormTwin" type="number" />
+                    cantidad
                 </div>
 
             </div>
 
-            <div class="row py-2">
-
-                <div class="col">
-
-                    <h4><b>Horas de remplazo</b></h4>
-
-                    <div class="row">
-
-                        <div class="col d-flex flex-column">
-                            <input class="input-FormTwin text-center" type="number" />
-                            Hora
-                        </div>:
-
-                        <div class="col">
-                            <input class="input-FormTwin text-center" type="number" />
-                            Minutos
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col">
-
-                    <h4><b>Tiempo de remplazo</b></h4>
-
-                    <div class="row">
-
-                        <div class="col">
-                            <select class="input-FormTwin ">
-                                <option value="Maraca" selected></option>
-                                <option value="Maraca1">Años</option>
-                                <option value="Maraca1">Meses</option>
-                            </select>
-                            Unidad de tiempo
-                        </div>
-
-                        <div class="col">
-                            <input class="input-FormTwin" type="number" />
-                            cantidad
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <input type="submit" class="submit-Model " value="Agregar" />
-
+            <div class="row py-3">
+                <input type="submit" class="submit " value="Agregar" />
             </div>
 
         </form>
 
     </aside>
 
-    <aside class="col-12 col-lg-7 bg-celestial ">
+    <aside class="col-12 col-lg-10 bg-celestial ">
 
-        <div class="cont-table-brand mt-2 mb-2">
+        <div class="cont-table-model-plane mt-2 mb-2">
 
             <table>
 
@@ -190,8 +160,201 @@
                         </td>
                         <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
                     </tr>
-
-
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    </tr>
                 </tbody>
 
             </table>
