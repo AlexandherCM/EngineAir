@@ -26,9 +26,15 @@ table{width:100%;}
 .cont-table-brand{ height:30vh; overflow:auto; width:97%; margin:auto;}
 .cont-table-brand thead th {border:solid 1px white;}
 .cont-table-brand table tbody tr td{border:solid white; padding:1%;}
+.cont-table-brand-plane{height:33vh; overflow:auto;}
+.cont-table-model-plane{height:40vh; overflow:auto;}
 
 /* °°°°°°°°°°°°°°°°° Estilos para la paginación °°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
-#rowsPerPage{width:auto; border:none; border-radius:5px;}
+#rowsPerPage {
+    width: auto;
+    border: none;
+    border-radius: 5px;
+}
 
 #table{border-radius:5px;}
 #table th, #table td { padding: 1%; border:2px solid white;}
