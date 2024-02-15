@@ -35,7 +35,7 @@ input[type="text"]:focus, input[type="date"]:focus, select:focus, input[type="nu
 .edit{height:1.5rem;}
     .edit:hover{height:1.6rem;}
 
-.input-search{width:70%; margin:auto; border:var(--gray) 2px solid; border-radius:5px; }
+.input-search{width:75%; margin:auto; border:var(--gray) 2px solid; border-radius:5px; }
 
 @media(max-width:1000px) {
     .form-brand,.form-model{width:99%;}
