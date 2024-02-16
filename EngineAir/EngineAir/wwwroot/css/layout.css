@@ -67,7 +67,7 @@
 
 .slide-menu {
     width: 5%;
-    height: 100vh;
+    height: auto;
     transition: width 0.4s ease-in-out;
 }
 .overlay {
@@ -85,10 +85,13 @@
 
 .logo{ height:2.3rem; }
 
+.cont-options{height:80vh;}
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*Nav*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
-.nav-movil {display: none;}
+.nav-movil {
+    display: none;
+}
 
 #settingsIcon {
     cursor: pointer;

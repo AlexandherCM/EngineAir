@@ -1,8 +1,10 @@
 *{box-sizing:border-box; margin:0;}
 
 .border-L{border-radius:5px 0 0 5px;}
+.border-L-4{border-radius: 8px 0 0 8px;}
 .border-R{border-radius:0 5px 5px 0;}
 .border-B{border-radius:0  0 5px 5px;}
 .border-T{border-radius:5px 5px 0 0;}
 .p{padding:0;}
-.w{width:100%;}
+.w{width:100%; margin:auto;}
+.rounded-4{border-radius:10px;}

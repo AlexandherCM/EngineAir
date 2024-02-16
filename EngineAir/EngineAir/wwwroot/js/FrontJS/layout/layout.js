@@ -9,7 +9,7 @@ const content = getElement('content')
 const overlay = getElement('overlay');
 const logo = getElement('logoSlide');
 const contIcon = getElements('cont-icon');
-var isOpen = false
+var isOpen = false;
 const settingsIcon = getElement('settingsIcon');
 const optionsMenu = getElement('optionsMenu');
 const nav = getElement('navbarResponsivo');
@@ -17,9 +17,9 @@ const nav = getElement('navbarResponsivo');
 
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
-if (slideMenu) {
-    const toggleMenu = () => {
 
+
+    const toggleMenu = () => {
         slideMenu.style.width = isOpen ? '5%' : '15%';
         content.classList = isOpen ? 'content' : 'contentW';
         menu.src = isOpen ? "/images/svg/bars-solid.svg" : "/images/svg/circle-xmark-regular.svg";
@@ -33,7 +33,6 @@ if (slideMenu) {
 
     menu.onclick = toggleMenu;
     overlay.onclick = toggleMenu;
-}
 
 
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
@@ -44,14 +43,16 @@ window.onresize = function () {
     var widthScreen = window.innerWidth;
 
     if (widthScreen > 990) {
-        isOpen = false;
         nav.classList.remove("show");
         optionsMenu.style.display = 'none';
+        isOpen = true;
+
+
     } else if (widthScreen < 991) {
-        isOpen = false;
+        isOpen = true;
     }
-    //isOpen = !isOpen;
-    //toggleMenu(isOpen);
+    toggleMenu(isOpen);
+    isOpen = !isOpen;
 };
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/

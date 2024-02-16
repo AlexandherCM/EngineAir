@@ -15,20 +15,20 @@
 }
 
 .cont-table-model{height:20vh; overflow:auto; width:97%; margin:auto;}
-.cont-table-model table tbody tr td{border:solid white; padding:1%;}
 
 .thead{position:sticky; top:-1%; z-index:1;}
-.thead th{border:solid 1px;}
-.thead .th{border:none;}
+
+thead tr th {border:solid 2px white;}
 
 table{width:100%;}
 
 .cont-table-brand{ height:30vh; overflow:auto; width:97%; margin:auto;}
 .cont-table-brand thead th {border:solid 1px white;}
-.cont-table-brand table tbody tr td{border:solid white; padding:1%;}
+table tbody tr td{border:solid 2px; padding:.5%;}
 .cont-table-brand-plane{height:33vh; overflow:auto;}
 .table-model-plane{height:60vh; overflow:auto;}
 
+tbody tr:hover { background-color: var(--grayDark);}
 
 /* °°°°°°°°°°°°°°°°° Estilos para la paginación °°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
 #rowsPerPage {
