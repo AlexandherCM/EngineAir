@@ -1,0 +1,185 @@
+﻿<section class="row title border-celestial rounded-3 my-2">
+
+    <h3><b><span class="color-celestial">C</span>ONCEPTO PLANEADOR</b></h3>
+
+</section>
+
+<section class="p my-2 row title border-eas rounded-4">
+
+    <aside class="col-12 col-lg-2 p-2 d-flex flex-column bg-gray  justify-content-center border-L-4 ">
+
+        <h4><b><span class="color-eas">M</span>ARCA PLANEADOR</b></h4>
+
+        <form>
+
+            <div class="row justify-content-center ">
+                <h5><b>Nombre</b></h5>
+                <input class="input-Form" type="text" />
+            </div>
+
+            <div class="row py-3">
+                <input type="submit" class="submit " value="Agregar" />
+            </div>
+
+        </form>
+
+    </aside>
+
+
+
+    <aside class="col-12 col-lg-10">
+
+        <div class="cont-table-brand-plane mt-2 mb-2">
+
+            <table class="border-pale ">
+
+                <thead class="thead  bg-gray ">
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                    </tr>
+
+                </thead>
+
+                <tbody class="tbody bg-celestial text-light border">
+
+                    <tr>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </aside>
+
+
+</section>
+
+
+<section class="p row title border-eas  my-2 rounded-4" >
+
+    <aside class="col-12 col-lg-2 p-2 d-flex flex-column bg-gray  justify-content-center border-L-4">
+
+        <h4><b><span class="color-eas">M</span>ODELO</b></h4>
+
+        <form>
+
+            <div class="row justify-content-center  d-flex align-items-center w">
+                <h5><b>Marca</b></h5>
+                <input class="input-Form" type="text" />
+            </div>
+
+            <div class="row justify-content-center mb-2 w ">
+                <h5><b>Nombre</b></h5>
+                <input class="input-Form" type="text" />
+            </div>
+
+            <h5><b>Tiempor de remplazo</b></h5>
+
+            <div class="row my-3  w">
+
+                <div class="col d-flex flex-column align-items-center">
+                    <input class="input-FormTwin" type="number" />
+                    Horas
+                </div>
+                :
+                <div class="col d-flex flex-column align-items-center">
+                    <input class="input-FormTwin" type="number" />
+                    Minutos
+                </div>
+
+            </div>
+            
+            <div class="row my-3 w">
+
+                <div class="col d-flex flex-column align-items-center">
+                    <select class="input-FormTwin ">
+                        <option value="Maraca" selected></option>
+                        <option value="Maraca1">Años</option>
+                        <option value="Maraca1">Meses</option>
+                    </select>
+                    Unidad de tiempo
+                </div>
+
+                <div class="col d-flex flex-column align-items-center">
+                    <input class="input-FormTwin" type="number" />
+                    cantidad
+                </div>
+
+            </div>
+
+            <div class="row py-3 w">
+                <input type="submit" class="submit " value="Agregar" />
+            </div>
+
+        </form>
+
+    </aside>
+
+    <aside class="col-12 col-lg-10  ">
+
+        <div class="table-model-plane my-2 ">
+
+            <table>
+
+                <thead class="thead border bg-gray text-dark">
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Nombre</th>
+                        <th>Nombre</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                    </tr>
+
+                </thead>
+
+                <tbody class="tbody bg-eas text-light border">
+
+                    <tr>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>Lore</td>
+                        <td>
+                            <label class="toggle-switch">
+                                <input class="chbTable" type="checkbox">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+                    </tr>
+                    
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </aside>
+
+
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_TableScripts");
+    }
+}

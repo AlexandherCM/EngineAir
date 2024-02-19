@@ -14,6 +14,7 @@
     --gray: #A3A6AB;
 }
 
+<<<<<<< HEAD
 /* \\\\\\\\\\\\\ CLASSES \\\\\\\\\\\\\\\\\ */
 .bg-eas{background-color:var(--eas)}
 .bg-serene{background-color:var(--serene)}
@@ -71,3 +72,13 @@
 .h-70{height:70%;}
 .h-80{height:80%;}
 .h-90{height:90%;}
+=======
+.border-L{border-radius:5px 0 0 5px;}
+.border-L-4{border-radius: 8px 0 0 8px;}
+.border-R{border-radius:0 5px 5px 0;}
+.border-B{border-radius:0  0 5px 5px;}
+.border-T{border-radius:5px 5px 0 0;}
+.p{padding:0;}
+.w{width:100%; margin:auto;}
+.rounded-4{border-radius:10px;}
+>>>>>>> d2ad02ad2135cc1de048b394d9fef1b4bcfb1868
