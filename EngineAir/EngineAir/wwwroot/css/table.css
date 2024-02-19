@@ -7,29 +7,27 @@
     height: 90%;
     padding: 0;
     box-shadow: 0px 3px 7px var(--pale);
-    text-align:center;
+    text-align: center;
 }
 
-<<<<<<< HEAD
     .table thead {
         background: var(--gray);
         border: none;
     }
-        .table thead  th {
+
+        .table thead th {
             border-collapse: separate;
             border-radius: 0px;
             border: none;
         }
 
-    .table tbody tr td {border: none;}
-    .table tbody tr:hover { background: var(--bright); }
-=======
-.cont-table-model{height:20vh; overflow:auto; width:97%; margin:auto;}
+    .table tbody tr td {
+        border: none;
+    }
 
-.thead{position:sticky; top:-1%; z-index:1;}
-
-thead tr th {border:solid 2px white;}
->>>>>>> d2ad02ad2135cc1de048b394d9fef1b4bcfb1868
+    .table tbody tr:hover {
+        background: var(--bright);
+    }
 
 .rowsPerPage {
     width: 90%;
@@ -42,25 +40,10 @@ thead tr th {border:solid 2px white;}
     border-radius: 5px;
 }
 
-<<<<<<< HEAD
-.paginated {height: 15%;}
-
-=======
-.cont-table-brand{ height:30vh; overflow:auto; width:97%; margin:auto;}
-.cont-table-brand thead th {border:solid 1px white;}
-table tbody tr td{border:solid 2px; padding:.5%;}
-.cont-table-brand-plane{height:33vh; overflow:auto;}
-.table-model-plane{height:60vh; overflow:auto;}
-
-tbody tr:hover { background-color: var(--grayDark);}
-
-/* °°°°°°°°°°°°°°°°° Estilos para la paginación °°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
-#rowsPerPage {
-    width: auto;
-    border: none;
-    border-radius: 5px;
+.paginated {
+    height: 15%;
 }
->>>>>>> d2ad02ad2135cc1de048b394d9fef1b4bcfb1868
+
 
     .paginated a {
         color: white;
@@ -74,47 +57,10 @@ tbody tr:hover { background-color: var(--grayDark);}
         background: var(--gray)
     }
 
-<<<<<<< HEAD
         .paginated a.active {
             background-color: var(--bright);
             border-radius: 10px;
         }
-=======
-        #paginated a.active { background-color: var(--bright); }
-
-        #paginated a:hover:not(.active) { background-color: #ddd; color: var(--eas); }
-
-
-
-@media(max-width:1100px) {
-        .table-model-plane{height:83vh; overflow:auto;}
-
-}
-
-@media(max-width:1000px) {
-        .table-model-plane{height:50vh; overflow:auto;}
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> d2ad02ad2135cc1de048b394d9fef1b4bcfb1868
 
         .paginated a:hover:not(.active) {
             background-color: #ddd;

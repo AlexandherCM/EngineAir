@@ -53,10 +53,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-<<<<<<< HEAD
     pattern: "{controller=Componentes}/{action=Motor}/{id?}");
-=======
-   pattern: "{controller=ConceptoPLaneador}/{action=Concepto}/{id?}");
->>>>>>> d2ad02ad2135cc1de048b394d9fef1b4bcfb1868
 
 app.Run();
