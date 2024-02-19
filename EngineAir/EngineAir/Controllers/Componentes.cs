@@ -2,7 +2,7 @@
 
 namespace EngineAir.Controllers
 {
-    public class ComponentesController : Controller
+    public class Componentes : Controller
     {
         public IActionResult Motor()
         {
@@ -13,10 +13,10 @@ namespace EngineAir.Controllers
         {
             return View();
         }
+
         public IActionResult Variante()
         {
             return View();
         }
-
     }
 }

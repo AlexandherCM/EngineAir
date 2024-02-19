@@ -1,0 +1,20 @@
+﻿.form {
+    width: 40%;
+    background-color: var(--eas);
+    border-radius:10px;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.close{height:2rem; width:auto; cursor:pointer;}
+
+.form.active { transform: translate(-50%, -50%) scale(1); }
+
+.input-Form{width:80%; margin:auto; border:none; border-radius:5px;}
+.input-Twin{width:65%; margin:auto; border:none; border-radius:5px;}
+

@@ -1,63 +1,40 @@
-﻿<section class="row title rounded-3 border-celestial mt-2">
-    <h1><b><span class="color-intense">M</span>OTOR</b></h1>
+﻿@{
+    ViewData["Title"] = "Componente Motor";
+}
+
+@* *********************************************************************************************** *@
+                                              @* BRAND *@
+@* *********************************************************************************************** *@
+<section class="title border-eas text-center rounded-4 mt-3">
+
+    <h2><b><span class="color-pale">M</span>arcas de motores</b></h2>
+
 </section>
 
-<section class="p my-2 row forms">
+<section class="row title justify-content-between p my-2 ">
 
-    <aside class="col-12 col-lg-4 p my-2">
+    <aside class="col-5 col-lg-2 d-flex align-items-center justify-content-around bg-eas my-2 add p-2"  id="openBrand">
+        <img src="~/images/svg/Motor.svg" class="icon-btn align-self-center" alt="Motor Icon" />
+        <p class="d-flex align-items-center m-0">Registrar</p>
+    </aside>
 
-        <div class="form-brand border border-3 bg-pale container-fluid">
+    <aside class="col-5 col-lg-4 d-flex align-items-center  rounded-4 my-2 border-eas p">
+        
+        <div class="row justify-content-between w">
 
-            <h2 class="py-2"><b>Tipo</b></h2>
+            <div class="col-12 col-lg-5 d-flex justify-content-center my-1">
+                <img src="~/images/svg/Filter.svg" class="icon-btn align-self-center mx-3" alt="Filter" />
+                <h4 class="d-flex align-items-center m-0">Filtro</h4>
+            </div>
 
-            <form>
+            <div class="col-12 col-lg-6 d-flex justify-content-center p my-1">
 
-                <div class="row justify-content-center ">
-                    <h5><b>Nombre</b></h5>
-                    <input class="input-Form" type="text" />
-                </div>
-
-                <div class="row py-3">
-                    <input type="submit" class="submit " value="Agregar" />
-                </div>
-
-            </form>
-
-
-            @* ******************************  -TABLE-  ******************************* *@
-
-            <div class="cont-table-brand mt-2 mb-2">
-
-                <table>
-
-                    <thead class="thead bg-gray text-dark">
-
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Estado</th>
-                            <th>Editar</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody class="tbody bg-serene text-light border">
-
-                        <tr>
-                            <td>Lore</td>
-                            <td>
-                                <label class="toggle-switch">
-                                    <input class="chbTable" type="checkbox">
-                                    <div class="toggle-switch-background">
-                                        <div class="toggle-switch-handle"></div>
-                                    </div>
-                                </label>
-                            </td>
-                            <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                <select id="rowsPageBrand" class="rowsPerPage">
+                    <option value="5">5 resultados</option>
+                    <option value="1">1 resultados</option>
+                    <option value="2">2 resultados</option>
+                    <option value="50">50 resultados</option>
+                </select>
 
             </div>
 
@@ -65,261 +42,510 @@
 
     </aside>
 
-    <aside class="col-12 col-lg-8 p my-2">
+    <aside class="col-12 col-lg-5 my-2 border-celestial rounded-4 d-flex p">
 
-        <div class="form-model bg-celestial rounded-2 border border-3 container-fluid ">
+        <div class="col-3 d-flex justify-content-start">
+            <h4 class="d-flex align-items-center mx-2 m-0">Buscar</h4>
+        </div>
 
-            <h2 class="py-2"><b>Variante</b></h2>
-            <form>
+        <div class="col justify-content-center d-flex">
 
-                <div class="row">
-
-                    <div class="col">
-
-                        <h4><b>Marca</b></h4>
-
-                        <select class="input-Form">
-                            <option value="Maraca" selected></option>
-                            <option value="Maraca1">Marca</option>
-                        </select>
-
-
-                    </div>
-
-                    <div class="col">
-
-                        <h4><b>Nombre</b></h4>
-                        <input class="input-Form border-gray" type="text" />
-
-                    </div>
-
-                </div>
-
-                <div class="row py-2">
-
-                    <div class="col">
-
-                        <h4><b>Horas de remplazo</b></h4>
-
-                        <div class="row">
-
-                            <div class="col d-flex flex-column">
-                                <input class="input-FormTwin text-center" type="number" />
-                                Hora
-                            </div>:
-
-                            <div class="col">
-                                <input class="input-FormTwin text-center" type="number" />
-                                Minutos
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col">
-
-                        <h4><b>Tiempo de remplazo</b></h4>
-
-                        <div class="row">
-
-                            <div class="col">
-                                <select class="input-FormTwin ">
-                                    <option value="Maraca" selected></option>
-                                    <option value="Maraca1">Años</option>
-                                    <option value="Maraca1">Meses</option>
-                                </select>
-                                Unidad de tiempo
-                            </div>
-
-                            <div class="col">
-                                <input class="input-FormTwin" type="number" />
-                                cantidad
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <input type="submit" class="submit-Model " value="Agregar" />
-
-                </div>
-
-            </form>
-
-            @* ******************************  -TABLE-  ******************************* *@
-
-            <div class="cont-table-model  mt-2 mb-2">
-
-                <table class="border border-3">
-
-                    <thead class="thead bg-grayDark text-light">
-                        <tr>
-                            <th class="th"></th>
-                            <th class="th"></th>
-                            <th colspan="2">Tiempo de remplazo</th>
-                            <th class="th"></th>
-                            <th class="th"></th>
-                        </tr>
-                        <tr>
-                            <th>Marca</th>
-                            <th>Nombre</th>
-                            <th>Horas</th>
-                            <th>Años</th>
-                            <th>Estado</th>
-                            <th>Editar</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody class="tbody bg-eas border">
-
-                        <tr>
-                            <td>Lore</td>
-                            <td>Lore</td>
-                            <td>Lore</td>
-                            <td>Lore</td>
-                            <td>
-                                <label class="toggle-switch">
-                                    <input class="chbTable" type="checkbox">
-                                    <div class="toggle-switch-background">
-                                        <div class="toggle-switch-handle"></div>
-                                    </div>
-                                </label>
-                            </td>
-                            <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
+            <input class="input-search my-2 text-center" type="text" />
 
         </div>
 
-    </aside>
-
-</section>
-
-<section class="container-fluid title rounded-3 border-celestial mybg-opacity-25 bg-bluelight ">
-
-    <h3 class="py-2"><b>BUSCADOR</b></h3>
-
-    <aside class="row d-flex align-items-center text-center justify-content-center my-2">
-
-        <div class="col-10 col-lg-4 d-flex align-items-center p-2">
-
-            <h5 class="my-2"><b>Nombre</b></h5>
-            <input class="input-search my-2" type="text" />
-
-        </div>
-
-        <div class="col-10 col-lg-5 d-flex p-2 d-flex align-content-center">
-
-            <h5 class="my-2"><b>Planeador</b></h5>
-            <input class="input-search my-2" type="text" />
-
-        </div>
-
-        <div class="col-12 col-lg-3 d-flex p-2">
+        <div class="col-3 justify-content-center align-items-center d-flex">
 
             <input type="submit" class="submit " value="Buscar" />
 
         </div>
 
+    </aside>
+
+</section>
+
+<section class="row h-80 cont-Tables">
+
+    <table id="brand" class=" table">
+
+        <thead>
+
+            <tr>
+
+                <th> Hola</th>
+                <th> Hola</th>
+                <th> Hola</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>ghgggggggg</td>
+                <td>hjfghfgh</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>fffffff</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>fffcvcc</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>hjfgcccccccchfgh</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>hjfghfgh</td>
+                <td>hjfg         hfgh</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <aside class="justify-content-center d-flex align-items-center paginated m-0" id="paginatedBrand"></aside>
+
+</section>
+
+
+
+
+@* *********************************************************************************************** *@
+                                                @* MODEL *@
+@* *********************************************************************************************** *@
+
+<section class="title border-eas text-center rounded-4 mt-3">
+
+    <h2><b><span class="color-pale">M</span>odelos de motores</b></h2>
+
+</section>
+
+<section class="row title justify-content-between p my-2 ">
+
+    <aside class="col-5 col-lg-2 d-flex align-items-center justify-content-around bg-eas my-2 add p-2" id="openModel">
+        <img src="~/images/svg/Motor.svg" class="icon-btn align-self-center" alt="Motor Icon" />
+        <p class="d-flex align-items-center m-0">Registrar</p>
+    </aside>
+
+    <aside class="col-5 col-lg-4 d-flex align-items-center  rounded-4 my-2 border-eas p">
+
+        <div class="row justify-content-between w">
+
+            <div class="col-12 col-lg-5 d-flex justify-content-center my-1">
+                <img src="~/images/svg/Filter.svg" class="icon-btn align-self-center mx-3" alt="Filter" />
+                <h4 class="d-flex align-items-center m-0">Filtro</h4>
+            </div>
+
+            <div class="col-12 col-lg-6 d-flex justify-content-center p my-1">
+
+                <select id="rowsPageModel" class="rowsPerPage">
+                    <option value="5">5 resultados</option>
+                    <option value="1">1 resultados</option>
+                    <option value="2">2 resultados</option>
+                    <option value="50">50 resultados</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    <aside class="col-12 col-lg-5 my-2 border-celestial rounded-4 d-flex p">
+
+        <div class="col-3 d-flex justify-content-start">
+            <h4 class="d-flex align-items-center mx-2 m-0">Buscar</h4>
+        </div>
+
+        <div class="col justify-content-center d-flex">
+
+            <input class="input-search my-2 text-center" type="text" />
+
+        </div>
+
+        <div class="col-3 justify-content-center align-items-center d-flex">
+
+            <input type="submit" class="submit " value="Buscar" />
+
+        </div>
 
     </aside>
 
 </section>
 
-<section class="row title border-T justify-content-end mt-3 bg-celestial p-2">
+<section class="row h-80 cont-Tables">
 
-    <div class="col-6 col-lg-10 text-end">
+    <table id="model" class=" table">
 
-        <h3>Resultados por pagina: </h3>
+        <thead>
 
-    </div>
-
-    <div class="col-6 col-lg-2 d-flex  justify-content-end">
-
-        <select id="rowsPerPage">
-            <option value="5">5 resultados</option>
-            <option value="10">10 resultados</option>
-            <option value="25">25 resultados</option>
-            <option value="50">50 resultados</option>
-        </select>
-
-    </div>
-
-</section>
-
-<section class="row title border-B border-celestial mb-2">
-
-    <table id="table">
-
-        <thead class="bg-bluelight">
             <tr>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th colspan="2">Tiempo de remplazo</th>
-                <th class="th"></th>
-                <th class="th"></th>
-                <th class="th"></th>
+
+                <th> Hola</th>
+                <th> Hola</th>
+                <th> Hola</th>
+
             </tr>
-            <tr>
-                <th>N° serie</th>
-                <th>Hélice</th>
-                <th>Planeador</th>
-                <th>Planeador</th>
-                <th>Horas</th>
-                <th>Años</th>
-                <th>Estado</th>
-                <th>Detalles</th>
-                <th>Editar</th>
-            </tr>
+
         </thead>
 
-        <tbody class="bg-grayblue">
+        <tbody>
+
             <tr>
-                <td>Dato 1</td>
-                <td>Dato 2</td>
-                <td>Dato 3</td>
-                <td>Dato 3</td>
-                <td>Dato 3</td>
-                <td>Dato 3</td>
-                <td>
-                    <label class="toggle-switch">
-                        <input class="chbTable" type="checkbox">
-                        <div class="toggle-switch-background">
-                            <div class="toggle-switch-handle"></div>
-                        </div>
-                    </label>
-                </td>
-                <td><img src="~/images/svg/circle-info-solid.svg" class="edit" /></td>
-                <td><img src="~/images/svg/pen-to-square-solid.svg" class="edit" /></td>
+
+                <td>ghgggggggg</td>
+                <td>hjfghfgh</td>
+                <td>hjfghfgh</td>
+
             </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>fffffff</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>fffcvcc</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>hjfgcccccccchfgh</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>hjfghfgh</td>
+                <td>hjfg         hfgh</td>
+
+            </tr>
+
         </tbody>
 
     </table>
 
+    <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedModel"></aside>
+
 </section>
 
-<div id="paginated" class="justify-content-center d-flex my-2"></div>
 
 
+@* *********************************************************************************************** *@
+                                            @* ALL *@
+@* *********************************************************************************************** *@
 
+<section class="title border-eas text-center rounded-4 mt-3">
+
+    <h2><b><span class="color-pale">M</span>arca de motor</b></h2>
+
+</section>
+
+<section class="row title justify-content-between p my-2 ">
+
+    <aside class="col-5 col-lg-2 d-flex align-items-center justify-content-around bg-eas my-2 add p-2" id="openComponent">
+        <img src="~/images/svg/Motor.svg" class="icon-btn align-self-center" alt="Motor Icon" />
+        <p class="d-flex align-items-center m-0">Registrar</p>
+    </aside>
+
+    <aside class="col-5 col-lg-2 d-flex align-items-center  rounded-4 my-2 border-eas p">
+
+        <div class="row justify-content-between w">
+
+            <div class="col-12 d-flex justify-content-center my-1">
+                <img src="~/images/svg/Filter.svg" class="icon-btn align-self-center mx-3" alt="Filter" />
+                <h4 class="d-flex align-items-center m-0">Filtro</h4>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center p my-1">
+
+                <select id="rowsPageTable" class="rowsPerPage">
+                    <option value="5">5 resultados</option>
+                    <option value="1">1 resultados</option>
+                    <option value="2">2 resultados</option>
+                    <option value="50">50 resultados</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    <aside class="col-12 col-lg-7 my-2 border-celestial rounded-4 d-flex p">
+
+        <div class="col-2 d-flex justify-content-start">
+            <h5 class="d-flex align-items-center mx-2 m-0">Buscador</h5>
+        </div>
+
+        <div class="col justify-content-center d-flex">
+
+            <input class="input-search my-2 text-center" type="text" placeholder="Num. Serie" />
+
+        </div>
+        <p class="d-flex align-items-center mx-2 m-0"><b>O</b></p>
+        <div class="col justify-content-center d-flex">
+
+            <input class="input-search my-2 text-center" type="text" placeholder="Planeador" />
+
+        </div>
+
+        <div class="col-3 justify-content-center align-items-center d-flex">
+
+            <input type="submit" class="submit " value="Buscar" />
+
+        </div>
+
+    </aside>
+
+</section>
+
+<section class="row h-80 cont-Tables">
+
+    <table id="table" class=" table">
+
+        <thead>
+
+            <tr>
+
+                <th> Hola</th>
+                <th> Hola</th>
+                <th> Hola</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>ghgggggggg</td>
+                <td>hjfghfgh</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>fffffff</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>fffcvcc</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>hjfgcccccccchfgh</td>
+                <td>hjfghfgh</td>
+
+            </tr>
+
+            <tr>
+
+                <td>hjfghfgh</td>
+                <td>hjfghfgh</td>
+                <td>hjfg         hfgh</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedTable"></aside>
+
+</section>
+
+
+@* *********************************************************************************************** *@
+                                            @* FORMS *@
+@* *********************************************************************************************** *@
+@* Brand *@
+
+<section class="form container p" id="formBrand">
+    <aside class="row justify-content-end p-2">
+
+        <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeBrand"/>
+
+    </aside>
+    <h2>Nueva marca</h2>
+    <form>
+
+        <aside class="row w mb-2">
+
+            <h5><b>Nombre</b></h5>
+            <input class="input-Form" type="text" />
+
+        </aside>
+        <aside class="row w my-3">
+            <input type="submit" class="submit " value="Agregar" />
+        </aside>
+
+    </form>
+</section>
+
+@* Model *@
+<section class="form container p" id="formModel">
+
+    <aside class="row justify-content-end p-2">
+
+        <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeModel" />
+
+    </aside>
+
+    <h2>Nuevo modelo</h2>
+
+    <form>
+
+        <aside class="row w mb-3 p">
+
+            <div class="col">
+                <h5><b>Marca</b></h5>
+
+                <select class="input-Twin">
+                    <option value="Maraca" selected></option>
+                    <option value="Maraca1">Marca</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <h5><b>Nombre</b></h5>
+                <input class="input-Twin" type="text" />
+            </div>
+
+        </aside>
+
+        <h4>Horas de remplazo</h4>
+
+        <aside class="row w mb-2 p">
+
+            <div class="col">
+                <input class="input-Twin text-center" type="number" />
+                <h5><b>Horas</b></h5>
+            </div>
+            :
+            <div class="col">
+                <input class="input-Twin text-center" type="number" />
+                <h5><b>Minutos</b></h5>
+            </div>
+
+        </aside>
+
+        <h4>Tiempo de remplazo</h4>
+
+        <aside class="row w mb-2 p">
+
+            <div class="col">
+                <select class="input-Twin ">
+                    <option value="Maraca" selected></option>
+                    <option value="Maraca1">Años</option>
+                    <option value="Maraca1">Meses</option>
+                </select>
+                <h5><b>Unidad de tiempo</b></h5>
+            </div>
+            :
+            <div class="col">
+                <input class="input-Twin text-center" type="number" />
+                <h5><b>Cantidad</b></h5>
+            </div>
+
+        </aside>
+
+    </form>
+
+    <aside class="row w my-3">
+        <input type="submit" class="submit " value="Agregar" />
+    </aside>
+
+</section>
+
+@* Component *@
+<section class="form container p" id="formComponent">
+  
+    <aside class="row justify-content-end p-2">
+
+        <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeComponent" />
+
+    </aside>
+
+    <h2>Nuevo Motor</h2>
+
+    <form>
+
+        <aside class="row w mb-2">
+
+            <h5><b>Nombre</b></h5>
+            <input class="input-Form" type="text" />
+
+        </aside>
+
+         <aside class="row w mb-2">
+
+            <h5><b>Modelo</b></h5>
+
+            <select class="input-Form">
+                <option value="Modelo" selected></option>
+                <option value="Modelo">Modelo</option>
+            </select>
+
+        </aside>
+
+        <aside class="row w my-3">
+            <input type="submit" class="submit " value="Agregar" />
+        </aside>
+
+    </form>
+
+</section>
 
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_TableScripts");
+        <script src="~/js/FrontJS/forms/forms.js"></script>
+
     }
 }

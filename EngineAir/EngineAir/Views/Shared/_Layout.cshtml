@@ -6,113 +6,114 @@
     <title>@ViewData["Title"] - EngineAir</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/forms.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/componente.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EngineAir.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/componente.css" asp-append-version="true" />
 </head>
-<body id="body" class="bg-graylight">
+<body class="container-fluid bg-lightgray p" id="body">
 
-    <main role="main" class="container-fluid">
+    <main role="main" class="row w ">
 
-        <section class="row d-flex justify-content-center ">
-            @*Slide Menu*@
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-            <aside class="slide-menu bg-celestial" id="slide">
 
-                @*Logo*@
-                <div class="row border-2 bg-light  p-2 " id="logoSlide">
-                    <img src="~/images/svg/ENGINIE.svg" alt="EnginieLogo" class="logoSlide">
-                </div>
-                @*Icono*@
-                <div class="cont-icon py-3">
-                    <img src="~/images/svg/bars-solid.svg" class="menu" id="menu">
-                </div>
+        @* °°°°°°°°°°°°°°°°°°°°°°°°°°°° * MENU * °°°°°°°°°°°°°°°°°°°°°°°°°°°°°° *@
+        <section class="container bg-eas " id="menu">
 
-            </aside>
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+            <div class="row bg-lightgray py-2 mb-2" id="slider-logo">
 
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-            @*Overlay*@
-            <aside id="overlay" class="overlay"></aside>
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+                <img src="~/images/svg/ENGINIE.svg"/>
 
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-            @*Content*@
-            <aside class="content  " id="content">
+            </div>
 
-                @*header*@
-                <header >
+            <div class="content-bars w ">
+               
+                <img src="~/images/svg/bars-solid.svg" id="bars" />
 
-                    <nav class="navbar navbar-expand-lg navbar-light bg-grayserene py-3" id="navbar">
+            </div>
 
-                        <div class="container-fluid ">
+            <div class="options"></div>
 
-                            <div class="col-lg-2 col-6">
-                                <a class="navbar-brand" href="#">
-                                    <img src="~/images/svg/ENGINIE.svg" class="logo" id="logo">
-                                </a>
-                            </div>
-                            <div class="col settings  text-end">
+        </section>
 
-                                <img src="~/images/svg/gear-solid.svg" alt="Settings" id="settingsIcon">
+        <section id="overlay" class="overlay"></section>
 
-                                <div id="optionsMenu" class="bg-bright text-light">
-                                    <label class="p-2" for="darkModeSwitch"><b>Configuración</b></label><br />
-                                    <label class="switch-label" for="darkModeSwitch"><b>Dark Mode:</b></label><br />
-                                    <label class="switch my-2">
-                                        <input type="checkbox" id="darkModeSwitch">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
+        @* °°°°°°°°°°°°°°°°°°°°°°°°°°°° * CONTENT * °°°°°°°°°°°°°°°°°°°°°°°°°°°°°° *@
+        <section class="content" id="content">
 
-                            </div>
-                            <div class="col-6  text-end nav-movil">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsivo" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                            </div>
+            <header>
+
+                <nav class="navbar navbar-expand-lg bg-lightgray navbar-light py-3" id="nav">
+                  
+                    <div class="container-fluid ">
+                        
+                        <div class="col-9 col-lg-2">
+
+                            <a class="navbar-brand" href="#"> <img src="~/images/svg/ENGINIE.svg" alt="Enginie Air SA de CV" class="logo" /> </a>
 
                         </div>
-                    </nav>
+                        
+                        <div class="col justify-content-end d-flex">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                           
+                            <ul class="navbar-nav d-block d-lg-none  text-center">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Pricing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                                </li>
+                            </ul>
 
-                    <div class="collapse  text-light rounded-3" id="navbarResponsivo">
+                        </div>
 
-                        <div class="p-4">
-                            @*Inicio*@
 
-                            @* <div class="row">
-                                <label><b>DarkMode</b></label>
-                                <label class="switch mb-2 mt-2">
-                                    <input type="checkbox" id="darkModeSwitchMovil">
+                         @* /////// SETTINGS \\\\\\\\\  *@
+
+                        <div class="col d-none d-lg-block settings  text-end">
+
+                            <img src="~/images/svg/gear-solid.svg" alt="Settings" id="settingsIcon">
+
+                            <div id="optionsMenu" class="bg-pale text-light">
+                                <label class="p-2" for="darkModeSwitch"><b>Configuración</b></label><br />
+                                <label class="switch-label" for="darkModeSwitch"><b>Dark Mode:</b></label><br />
+                                <label class="switch my-2">
+                                    <input type="checkbox" id="darkModeSwitch">
                                     <span class="slider round"></span>
                                 </label>
-                            </div> *@
-                            <div class="mt-3 t-none justify-content-start d-flex">
-                                <a class="t-none d-flex align-items-center link">
-                                    @*<img class="icons" src="~/images/house-solid.svg" />*@
-                                    <b> Inicio</b>
-                                </a>
                             </div>
 
                         </div>
+
+
                     </div>
-                </header>
+                </nav>
 
-                <article class="render text-dark text-center container-fluid" id="render">
-                    @RenderBody()
-                </article>
+            </header>
 
-            </aside>
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+            <div class="container-fluid render p">
+                @RenderBody()
+            </div>
 
         </section>
 
     </main>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/FrontJS/layout/layout.js" asp-append-version="true"></script>
-    <script src="~/js/FrontJS/layout/darkmode.js" asp-append-version="true"></script>
+    <script src="~/js/FrontJS/layout/sliderBar.js" asp-append-version="true"></script>
+    <script src="~/js/FrontJS/layout/darkMode.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
