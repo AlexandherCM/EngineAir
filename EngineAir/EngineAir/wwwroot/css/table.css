@@ -1,17 +1,32 @@
-﻿.table {
-    width: 100%;
-    margin: auto;
+﻿.contable {
     border-spacing: 0;
     border-collapse: separate;
-    border-radius: 0 0 10px 10px;
-    height: 90%;
-    padding: 0;
-    box-shadow: 0px 3px 7px var(--pale);
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3PX var(--gray);
+    padding:0;
+}
+.table {
+    width: 100%;
+    margin: auto;
     text-align: center;
+    padding:0;
+    border:none;
 }
 
-    .table thead {
-        background: var(--gray);
+table thead th:first-child {
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 5px 0 0 0;
+}
+
+table thead th:last-child {
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 0 5px  0 0;
+}
+
+    .table thead tr th {
+        background: var(--pale);
         border: none;
     }
 
@@ -21,14 +36,13 @@
             border: none;
         }
 
-    .table tbody tr td {
-        border: none;
+    .table tbody tr {
+        border-bottom: solid #ddd;
     }
 
-    .table tbody tr:hover {
-        background: var(--bright);
-    }
-
+        .table tbody tr:hover td {
+            background: var(--gray);  
+        }
 .rowsPerPage {
     width: 90%;
     margin: auto;
@@ -68,8 +82,8 @@
             border-radius: 10px;
         }
 
-
-
+.table-icon{height:2rem; cursor:pointer;}
+    .table-icon:hover{height:2.2rem; }
 
 
 /* \\\\\\\\\\\\\ SWITCH \\\\\\\\\\\\\\\\\ */

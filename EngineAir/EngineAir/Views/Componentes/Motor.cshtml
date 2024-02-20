@@ -30,10 +30,10 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center p my-1">
 
                 <select id="rowsPageBrand" class="rowsPerPage">
-                    <option value="5">5 resultados</option>
                     <option value="1">1 resultados</option>
-                    <option value="2">2 resultados</option>
-                    <option value="50">50 resultados</option>
+                    <option value="5">5 resultados</option>
+                    <option value="7">7 resultados</option>
+                    <option value="10">10 resultados</option>
                 </select>
 
             </div>
@@ -65,71 +65,53 @@
 </section>
 
 <section class="row h-80 cont-Tables">
+    
+    @******************   TABLA   ***********************@
+    <aside class="contable ">
 
-    <table id="brand" class=" table">
+        <table id="brand" class=" table ">
 
-        <thead>
+            <thead>
 
-            <tr>
+                <tr>
 
-                <th> Hola</th>
-                <th> Hola</th>
-                <th> Hola</th>
+                    <th> Nombre</th>
+                    <th> Estado</th>
+                    <th> Detalles</th>
 
-            </tr>
+                </tr>
 
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
 
-            <tr>
+                <tr>
 
-                <td>ghgggggggg</td>
-                <td>hjfghfgh</td>
-                <td>hjfghfgh</td>
+                    <td>Lorem</td>
 
-            </tr>
+                    <td><img  src="~/images/svg/pen-to-square-solid.svg" class="table-icon"/></td>
+                    
+                    <td>
+                        <label class="toggle-switch my-2">
+                            <input class="chbTable" type="checkbox">
+                            <div class="toggle-switch-background">
+                                <div class="toggle-switch-handle"></div>
+                            </div>
+                        </label>
+                    </td>
 
-            <tr>
+                </tr>
 
-                <td>hjfghfgh</td>
-                <td>fffffff</td>
-                <td>hjfghfgh</td>
+            </tbody>
 
-            </tr>
+        </table>
 
-            <tr>
-
-                <td>hjfghfgh</td>
-                <td>fffcvcc</td>
-                <td>hjfghfgh</td>
-
-            </tr>
-
-            <tr>
-
-                <td>hjfghfgh</td>
-                <td>hjfgcccccccchfgh</td>
-                <td>hjfghfgh</td>
-
-            </tr>
-
-            <tr>
-
-                <td>hjfghfgh</td>
-                <td>hjfghfgh</td>
-                <td>hjfg         hfgh</td>
-
-            </tr>
-
-        </tbody>
-
-    </table>
-
+    </aside>
+   
+    @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center paginated m-0" id="paginatedBrand"></aside>
 
 </section>
-
 
 
 
@@ -162,10 +144,10 @@
             <div class="col-12 col-lg-6 d-flex justify-content-center p my-1">
 
                 <select id="rowsPageModel" class="rowsPerPage">
-                    <option value="5">5 resultados</option>
                     <option value="1">1 resultados</option>
-                    <option value="2">2 resultados</option>
-                    <option value="50">50 resultados</option>
+                    <option value="5">5 resultados</option>
+                    <option value="7">7 resultados</option>
+                    <option value="10">10 resultados</option>
                 </select>
 
             </div>
@@ -198,65 +180,47 @@
 
 <section class="row h-80 cont-Tables">
 
-    <table id="model" class=" table">
+    <aside class="contable ">
 
-        <thead>
+        <table id="model" class=" table">
 
-            <tr>
+            <thead>
 
-                <th> Hola</th>
-                <th> Hola</th>
-                <th> Hola</th>
+                <tr>
 
-            </tr>
+                    <th> Marca</th>
+                    <th> Nombre</th>
+                    <th> Horas</th>
+                    <th> Años</th>
+                    <th> Estado</th>
+                    <th> Años</th>
 
-        </thead>
+                </tr>
 
-        <tbody>
+            </thead>
 
-            <tr>
+            <tbody>
 
-                <td>ghgggggggg</td>
-                <td>hjfghfgh</td>
-                <td>hjfghfgh</td>
+                <tr>
 
-            </tr>
+                    <td>ghgggggggg</td>
+                    <td>hjfghfgh</td>
+                    <td>
+                        <label class="toggle-switch">
+                            <input class="chbTable" type="checkbox">
+                            <div class="toggle-switch-background">
+                                <div class="toggle-switch-handle"></div>
+                            </div>
+                        </label>
+                    </td>
 
-            <tr>
+                </tr>
 
-                <td>hjfghfgh</td>
-                <td>fffffff</td>
-                <td>hjfghfgh</td>
+            </tbody>
 
-            </tr>
+        </table>
 
-            <tr>
-
-                <td>hjfghfgh</td>
-                <td>fffcvcc</td>
-                <td>hjfghfgh</td>
-
-            </tr>
-
-            <tr>
-
-                <td>hjfghfgh</td>
-                <td>hjfgcccccccchfgh</td>
-                <td>hjfghfgh</td>
-
-            </tr>
-
-            <tr>
-
-                <td>hjfghfgh</td>
-                <td>hjfghfgh</td>
-                <td>hjfg         hfgh</td>
-
-            </tr>
-
-        </tbody>
-
-    </table>
+    </aside>    
 
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedModel"></aside>
 
@@ -281,7 +245,7 @@
         <p class="d-flex align-items-center m-0">Registrar</p>
     </aside>
 
-    <aside class="col-5 col-lg-2 d-flex align-items-center  rounded-4 my-2 border-eas p">
+    <aside class="col-5 col-lg-2  d-flex align-items-center  rounded-4 my-2 border-eas p">
 
         <div class="row justify-content-between w">
 
@@ -293,10 +257,10 @@
             <div class="col-12 d-flex justify-content-center p my-1">
 
                 <select id="rowsPageTable" class="rowsPerPage">
-                    <option value="5">5 resultados</option>
                     <option value="1">1 resultados</option>
-                    <option value="2">2 resultados</option>
-                    <option value="50">50 resultados</option>
+                    <option value="5">5 resultados</option>
+                    <option value="7">7 resultados</option>
+                    <option value="10">10 resultados</option>
                 </select>
 
             </div>
@@ -305,95 +269,259 @@
 
     </aside>
 
-    <aside class="col-12 col-lg-7 my-2 border-celestial rounded-4 d-flex p">
+    <aside class="col-12 col-lg-7 my-2 border-celestial rounded-4 align-items-center d-flex flex-column p">
 
-        <div class="col-2 d-flex justify-content-start">
-            <h5 class="d-flex align-items-center mx-2 m-0">Buscador</h5>
-        </div>
+       <div class="row w  text-center">
+           <h4>Buscadores</h4>
+       </div>
 
-        <div class="col justify-content-center d-flex">
+       <div class="row w  justify-content-center ">
 
-            <input class="input-search my-2 text-center" type="text" placeholder="Num. Serie" />
+           <div class="col  justify-content-center d-flex ">
+                <input class="input-search my-2 text-center" type="text" placeholder="Num. Serie" />
+           </div>
 
-        </div>
-        <p class="d-flex align-items-center mx-2 m-0"><b>O</b></p>
-        <div class="col justify-content-center d-flex">
+            <div class="col-1  text-center d-flex"><h5 class="d-flex align-items-center mx-2 m-0"><b>O</b></h5></div>
+           
+            <div class="col  justify-content-center d-flex">
+                <input class="input-search my-2 text-center" type="text" placeholder="Planeador" />
+            </div>
+           
+            <div class="col d-flex align-items-center ">
+                <input type="submit" class="submit " value="Buscar" />
+            </div>
 
-            <input class="input-search my-2 text-center" type="text" placeholder="Planeador" />
-
-        </div>
-
-        <div class="col-3 justify-content-center align-items-center d-flex">
-
-            <input type="submit" class="submit " value="Buscar" />
-
-        </div>
+       </div>
 
     </aside>
 
 </section>
 
 <section class="row h-80 cont-Tables">
+   
+    <aside class="contable ">
+      
+        <table id="table" class=" table ">
 
-    <table id="table" class=" table">
+            <thead>
 
-        <thead>
+                <tr>
 
-            <tr>
+                    <th> Hola</th>
+                    <th> Hola</th>
+                    <th> Holas</th>
 
-                <th> Hola</th>
-                <th> Hola</th>
-                <th> Hola</th>
+                </tr>
 
-            </tr>
+            </thead>
 
-        </thead>
+            <tbody>
 
-        <tbody>
+                <tr>
 
-            <tr>
+                    <td>Gokla</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
 
-                <td>ghgggggggg</td>
-                <td>hjfghfgh</td>
-                <td>hjfghfgh</td>
+                </tr>
 
-            </tr>
+                <tr>
 
-            <tr>
+                    <td>hjfghfgh</td>
+                    <td>fffffff</td>
+                    <td>hjfghfgh</td>
 
-                <td>hjfghfgh</td>
-                <td>fffffff</td>
-                <td>hjfghfgh</td>
+                </tr>
 
-            </tr>
+                <tr>
 
-            <tr>
+                    <td>hjfghfgh</td>
+                    <td>fffcvcc</td>
+                    <td>hjfghfgh</td>
 
-                <td>hjfghfgh</td>
-                <td>fffcvcc</td>
-                <td>hjfghfgh</td>
+                </tr>
 
-            </tr>
+                <tr>
 
-            <tr>
+                    <td>hjfghfgh</td>
+                    <td>hjfgcccccccchfgh</td>
+                    <td>hjfghfgh</td>
 
-                <td>hjfghfgh</td>
-                <td>hjfgcccccccchfgh</td>
-                <td>hjfghfgh</td>
+                </tr>
 
-            </tr>
+                <tr>
 
-            <tr>
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfg   dsfasdfds   hola      hfgh</td>
 
-                <td>hjfghfgh</td>
-                <td>hjfghfgh</td>
-                <td>hjfg         hfgh</td>
+                </tr>
 
-            </tr>
+                <tr>
 
-        </tbody>
+                    <td>Gokla</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
 
-    </table>
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffffff</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffcvcc</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfgcccccccchfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfg   dsfasdfds   hola      hfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Gokla</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffffff</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffcvcc</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfgcccccccchfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfg   dsfasdfds   hola      hfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Gokla</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffffff</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffcvcc</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfgcccccccchfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfg   dsfasdfds   hola      hfgh</td>
+
+                </tr>
+                <tr>
+
+                    <td>Gokla</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffffff</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>fffcvcc</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfgcccccccchfgh</td>
+                    <td>hjfghfgh</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>hjfghfgh</td>
+                    <td>hjfghfgh</td>
+                    <td>hjfg   dsfasdfds   hola      hfgh</td>
+
+                </tr>
+            </tbody>
+
+
+        </table>
+
+    </aside>
+    
 
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedTable"></aside>
 
