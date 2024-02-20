@@ -3,7 +3,8 @@
     border-collapse: separate;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 3PX var(--gray);
-    padding:0;
+    padding: 0;
+    overflow-x: auto;
 }
 .table {
     width: 100%;
@@ -41,7 +42,8 @@ table thead th:last-child {
     }
 
         .table tbody tr:hover td {
-            background: var(--gray);  
+            background: #fff;
+            color:var(--pale);
         }
 .rowsPerPage {
     width: 90%;
@@ -84,6 +86,29 @@ table thead th:last-child {
 
 .table-icon{height:2rem; cursor:pointer;}
     .table-icon:hover{height:2.2rem; }
+
+.motors tbody td:nth-child(1),
+.motors thead th:nth-child(1){
+    width:7%;
+}
+
+/* \\\\\\\\\\\\\ MEDIA \\\\\\\\\\\\\\\\\ */
+
+@media(max-width:1000px) {
+    .motors tbody td:nth-child(2),
+    .motors tbody td:nth-child(4),
+    .motors tbody td:nth-child(5),
+    .motors thead th:nth-child(2),
+    .motors thead th:nth-child(4),
+    .motors thead th:nth-child(5),
+    .motors thead > tr:nth-child(1) th {
+       display:none;
+    }
+}
+
+
+
+
 
 
 /* \\\\\\\\\\\\\ SWITCH \\\\\\\\\\\\\\\\\ */

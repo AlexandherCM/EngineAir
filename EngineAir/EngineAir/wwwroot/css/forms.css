@@ -24,13 +24,20 @@
 .input-Form {
     width: 80%;
     margin: auto;
-    border: none;
+    border-radius: 5px;
+    border: solid 2px var(--bluelight);
+}
+
+.input-Searches {
+    width: 90%;
+    margin: auto;
+    border: solid 2px var(--bluelight);
     border-radius: 5px;
 }
 
 .input-Twin {
     width: 65%;
     margin: auto;
-    border: none;
+    border: solid 2px var(--bluelight);
     border-radius: 5px;
 }

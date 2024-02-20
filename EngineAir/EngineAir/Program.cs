@@ -53,6 +53,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Componentes}/{action=Motor}/{id?}");
+    pattern: "{controller=Componentes}/{action=Variante}/{id?}");
 
 app.Run();

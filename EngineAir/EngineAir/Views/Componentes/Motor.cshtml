@@ -89,7 +89,7 @@
 
                     <td>Lorem</td>
 
-                    <td><img  src="~/images/svg/pen-to-square-solid.svg" class="table-icon"/></td>
+                    <td><img  src="~/images/svg/pen-to-square-regular.svg" class="table-icon"/></td>
                     
                     <td>
                         <label class="toggle-switch my-2">
@@ -179,21 +179,30 @@
 </section>
 
 <section class="row h-80 cont-Tables">
-
+    @******************   TABLA   ***********************@
     <aside class="contable ">
 
-        <table id="model" class=" table">
+        <table id="model" class=" table modelMotors">
 
             <thead>
+                <tr>
+
+                    <th> </th>
+                    <th> </th>
+                    <th colspan="2" class="border">Tiempo de remplazo</th>
+                    <th> </th>
+                    <th> </th>
+
+                </tr>
 
                 <tr>
 
                     <th> Marca</th>
                     <th> Nombre</th>
-                    <th> Horas</th>
-                    <th> Años</th>
+                    <th class="border"> Horas</th>
+                    <th class="border"> Años</th>
                     <th> Estado</th>
-                    <th> Años</th>
+                    <th> Editar</th>
 
                 </tr>
 
@@ -203,9 +212,11 @@
 
                 <tr>
 
-                    <td>ghgggggggg</td>
-                    <td>hjfghfgh</td>
-                    <td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td class="my-2">
                         <label class="toggle-switch">
                             <input class="chbTable" type="checkbox">
                             <div class="toggle-switch-background">
@@ -213,6 +224,8 @@
                             </div>
                         </label>
                     </td>
+
+                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
 
                 </tr>
 
@@ -222,6 +235,7 @@
 
     </aside>    
 
+    @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedModel"></aside>
 
 </section>
@@ -269,10 +283,49 @@
 
     </aside>
 
-    <aside class="col-12 col-lg-7 my-2 border-celestial rounded-4 align-items-center d-flex flex-column p">
+    <aside class="col-12 col-lg-3 my-2 border-celestial rounded-4 align-items-center d-flex flex-column p">
+        
+        <div class="row w  text-center">
+            <h4>Buscadores</h4>
+        </div>
+
+        <div class="row p w">
+
+            <div class="col justify-content-center d-flex p">
+                <select class="input-Searches">
+                    <option value="Maraca" selected></option>
+                    <option value="Maraca1">Marca</option>
+                </select>
+            </div>
+
+            <div class="col justify-content-center d-flex p">
+                <select class="input-Searches">
+                    <option value="Maraca" selected></option>
+                    <option value="Maraca1">Marca</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row p w">
+
+            <div class="col justify-content-center d-flex p">
+                <p><b>Marca</b></p>
+            </div>
+
+            <div class="col justify-content-center d-flex p">
+                <p><b>Modelo</b></p>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <aside class="col-12 col-lg-4 my-2 border-celestial rounded-4 align-items-center d-flex flex-column p">
 
        <div class="row w  text-center">
-           <h4>Buscadores</h4>
+           <h5>Buscar por número de serie</h5>
        </div>
 
        <div class="row w  justify-content-center ">
@@ -280,12 +333,6 @@
            <div class="col  justify-content-center d-flex ">
                 <input class="input-search my-2 text-center" type="text" placeholder="Num. Serie" />
            </div>
-
-            <div class="col-1  text-center d-flex"><h5 class="d-flex align-items-center mx-2 m-0"><b>O</b></h5></div>
-           
-            <div class="col  justify-content-center d-flex">
-                <input class="input-search my-2 text-center" type="text" placeholder="Planeador" />
-            </div>
            
             <div class="col d-flex align-items-center ">
                 <input type="submit" class="submit " value="Buscar" />
@@ -299,17 +346,33 @@
 
 <section class="row h-80 cont-Tables">
    
+    @******************   TABLA   ***********************@
     <aside class="contable ">
       
-        <table id="table" class=" table ">
+        <table id="table" class=" table  motors">
 
             <thead>
-
                 <tr>
 
-                    <th> Hola</th>
-                    <th> Hola</th>
-                    <th> Holas</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan="2" class="border">Tiempo de remplazo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+                <tr>
+
+                    <th>N° serie</th>
+                    <th>Hélice</th>
+                    <th>Planeador</th>
+                    <th class="border">Años</th>
+                    <th class="border">Horas</th>
+                    <th>Estado</th>
+                    <th>Detalles</th>
+                    <th>Editar</th>
 
                 </tr>
 
@@ -319,202 +382,26 @@
 
                 <tr>
 
-                    <td>Gokla</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td class="my-2">
+                        <label class="toggle-switch">
+                            <input class="chbTable" type="checkbox">
+                            <div class="toggle-switch-background">
+                                <div class="toggle-switch-handle"></div>
+                            </div>
+                        </label>
+                    </td>
+
+                    <td><img src="~/images/svg/circle-info-solid.svg" class="table-icon" /></td>
+
+                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
 
                 </tr>
 
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffffff</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffcvcc</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfgcccccccchfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfg   dsfasdfds   hola      hfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Gokla</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffffff</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffcvcc</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfgcccccccchfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfg   dsfasdfds   hola      hfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Gokla</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffffff</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffcvcc</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfgcccccccchfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfg   dsfasdfds   hola      hfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Gokla</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffffff</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffcvcc</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfgcccccccchfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfg   dsfasdfds   hola      hfgh</td>
-
-                </tr>
-                <tr>
-
-                    <td>Gokla</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffffff</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>fffcvcc</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfgcccccccchfgh</td>
-                    <td>hjfghfgh</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>hjfghfgh</td>
-                    <td>hjfghfgh</td>
-                    <td>hjfg   dsfasdfds   hola      hfgh</td>
-
-                </tr>
             </tbody>
 
 
@@ -522,7 +409,7 @@
 
     </aside>
     
-
+    @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedTable"></aside>
 
 </section>
