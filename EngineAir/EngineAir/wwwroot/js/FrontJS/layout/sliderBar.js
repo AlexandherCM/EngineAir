@@ -13,6 +13,8 @@
     let optionsMenu = getElement('optionsMenu');
     var isOpen = false;
     let contIcon = getElements('content-bars');
+    let titles = getElements('titles');
+    let w80 = getElements('w-80');
 
     /* ------------- SLIDER ------------------ */
 
@@ -24,7 +26,10 @@
         overlay.style.display = isOpen ? 'none' : 'block';
         let justifyContentValue = isOpen ? 'center' : 'flex-end';
         Array.from(contIcon).forEach(item => item.style.justifyContent = justifyContentValue);
+        Array.from(titles).forEach(element => element.style.display = isOpen ? "none" : "block");
+        Array.from(w80).forEach(element => element.style.width = isOpen ? "100%" : "60%");
 
+       
         isOpen = !isOpen;
     }
     icon.onclick = sliderMenu;

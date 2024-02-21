@@ -18,6 +18,20 @@ namespace EngineAir.Controllers
             return View();
         }
 
+        public IActionResult Motores()
+        {
+            return RedirectToAction("Motor", "Componentes");
+        }
+        public IActionResult Helices()
+        {
+            return RedirectToAction("Helice", "Componentes");
+        }
+
+        public IActionResult Componentes()
+        {
+            return RedirectToAction("Variante", "Componentes");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

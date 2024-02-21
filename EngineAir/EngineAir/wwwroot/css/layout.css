@@ -113,7 +113,19 @@ nav {
     border: dashed 3px var(--eas);
 }
 
-
+.options-icon{height:3rem;}
+.titles {
+    display:none;
+    padding-left:2rem;
+}
+a {
+    color: aliceblue;
+    text-decoration: none;
+}
+a:hover {
+    color: aliceblue;
+    transform:scale(1.1)
+}
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
 /*Switch*/
 /*°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
