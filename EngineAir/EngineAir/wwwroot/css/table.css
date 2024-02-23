@@ -2,9 +2,9 @@
     border-spacing: 0;
     border-collapse: separate;
     border-radius: 10px;
-    box-shadow: 3px 3px 3px 3PX var(--gray);
     padding: 0;
     overflow-x: auto;
+    
 }
 .table {
     width: 100%;
@@ -14,17 +14,18 @@
     border:none;
 }
 
-table thead th:first-child {
+table thead tr:first-child th:first-child {
     border-spacing: 0;
     border-collapse: separate;
     border-radius: 5px 0 0 0;
 }
 
-table thead th:last-child {
+table thead tr:first-child th:last-child {
     border-spacing: 0;
     border-collapse: separate;
-    border-radius: 0 5px  0 0;
+    border-radius: 0 5px 0 0;
 }
+
 
     .table thead tr th {
         background: var(--pale);

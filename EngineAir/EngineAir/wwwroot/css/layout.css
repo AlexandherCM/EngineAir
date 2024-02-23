@@ -10,7 +10,7 @@
     --darkgray: #252424;
     --anthracitegray: #3c3c3c;
     --charcoalgray: #333333;
-    --lightgray: #f1f1f1;
+    --lightgray: #eeeded;
     --gray: #A3A6AB;
 }
 
@@ -86,9 +86,6 @@ main {
 }
 
 /*°°°°°°°°°°°°°°°°° -NAVBAR- °°°°°°°°°°°°°°°°°°°°°°°°°°°°*/
-nav {
-    box-shadow: 0px 3px 5px var(--serene);
-}
 
 .logo {
     height: 2rem;
@@ -195,6 +192,7 @@ input:checked + .slider {
     overflow-y: auto;
     height: 100vh;
 }
+.shadow{ box-shadow: 3px 3px 3px 3PX var(--gray);}
 
 
 /* /////// MEDIA \\\\\\\\\ */

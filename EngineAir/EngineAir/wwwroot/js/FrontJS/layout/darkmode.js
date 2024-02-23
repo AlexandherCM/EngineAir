@@ -8,6 +8,8 @@
     const darkModeSwitch = getElement('darkModeSwitch');
     const isDarkModeEnabled = localStorage.getItem('darkModeState') === 'true';
     let tables = getElements('table');
+    let conTable = getElements('contable');
+
 
     /* ------------- FUNCTIONS ------------------ */
     function toggleDarkMode(enable) {
@@ -17,12 +19,17 @@
         body.classList.toggle('text-light', enable);
         nav.classList.toggle('navbar-dark', enable);
         nav.classList.toggle('navbar-lighty', !enable);
-        nav.classList.toggle('bg-darkgray', enable);
-        nav.classList.toggle('bg-lightgray', !enable);
+        nav.classList.toggle('bg-kingdark', enable);
+        nav.classList.toggle('bg-white', !enable);
         
         tables = Array.from(tables);
         tables.forEach(table => {
             table.classList.toggle('text-light', enable);
+        });
+        conTable = Array.from(conTable);
+        conTable.forEach(conTable => {
+            conTable.classList.toggle('bg-lightgray', enable);
+            conTable.classList.toggle('bg-gray', !enable);
         });
 
         localStorage.setItem("darkModeState", enable.toString());

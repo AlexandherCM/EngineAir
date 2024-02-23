@@ -10,8 +10,11 @@
     --darkgray: #252424;
     --anthracitegray: #3c3c3c;
     --charcoalgray: #333333;
-    --lightgray: #f1f1f1;
+    --lightgray: #eeeded;
     --gray: #A3A6AB;
+    --white: #fff;
+    --kingdark: #181313fa;
+    --subgray: #fdfdfdb6;
 }
 
 /* \\\\\\\\\\\\\ CLASSES \\\\\\\\\\\\\\\\\ */
@@ -27,6 +30,9 @@
 .bg-charcoalgray{background-color:var(--charcoalgray)}
 .bg-lightgray{background-color:var(--lightgray)}
 .bg-gray{background-color:var(--gray)}
+.bg-white{background-color:var(--white)}
+.bg-kingdark{background-color:var(--kingdark)}
+.bg-subgray{background-color:var(--subgray)}
 
 .color-eas{color:var(--eas)}
 .color-serene{color:var(--serene)}
