@@ -1,7 +1,5 @@
 using EngineAir.Models;
 using Microsoft.EntityFrameworkCore;
-using MVC.Services.Classes.Brands;
-using MVC.Services.Classes.Components;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,17 +22,17 @@ builder.Services.AddDbContext<Context>(options =>
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var app = builder.Build();
-using (var serviceScope = app.Services.CreateScope())
-{
-    var serviceProvider = serviceScope.ServiceProvider;
+//using (var serviceScope = app.Services.CreateScope())
+//{
+//    var serviceProvider = serviceScope.ServiceProvider;
 
-    // Get the context
-    var context = serviceProvider.GetRequiredService<Context>();
+//    // Get the context
+//    var context = serviceProvider.GetRequiredService<Context>();
 
-    // Initialize the ComponentType and call the AddTypes method
-    var componentType = new ComponentType(context);
-    componentType.AddTypes().Wait(); // async/await en lugar de Wait
-}
+//    // Initialize the ComponentType and call the AddTypes method
+//    var componentType = new ComponentType(context);
+//    componentType.AddTypes().Wait(); // async/await en lugar de Wait
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

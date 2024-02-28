@@ -1,17 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-#pragma warning disable CS8618
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MVC.Models.Entities
 {
-    [Table("MarcaMotor")]
+    [Table("MarcaMotor")] 
     public class MarcaMotor
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public string Nombre { get; set; }
+        public int ID { get; }
+        public string Nombre { get; set; } = string.Empty;
 
-        public virtual ICollection<ModeloMotor> ModelosMotor { get; set; }
-    }
+        // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        public virtual List<ModeloMotor> Modelos { get; set;} = new List<ModeloMotor>();
+    } 
 }

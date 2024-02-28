@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace MVC.Models.Entities
 {
-    [Table("ModeloMotor")]
-    public class ModeloMotor
+    [Table("Variante")]
+    public class Variante
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,13 +17,13 @@ namespace MVC.Models.Entities
         public int MarcaID { get; set; }
         public string Nombre { get; set; } = string.Empty;
         public Decimal TiempoRemplazoHrs { get; set; }
-        public int TiempoRemplazoMeses { get; set; } 
+        public int TiempoRemplazoMeses { get; set; }
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        [ForeignKey(nameof(MarcaID))] 
-        public virtual MarcaMotor Marca { get; set; } = new MarcaMotor();
+        [ForeignKey(nameof(MarcaID))]
+        public virtual TipoComponente Tipo { get; set; } = new TipoComponente();
 
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<Motor> Motores { get; set; } = new List<Motor>(); 
+        public virtual List<Componente> Componentes { get; set;} = new List<Componente>();
     }
 }

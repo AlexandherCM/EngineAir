@@ -22,4 +22,8 @@
     <ProjectReference Include="..\MVC.Services\MVC.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Api\" />
+  </ItemGroup>
+
 </Project>

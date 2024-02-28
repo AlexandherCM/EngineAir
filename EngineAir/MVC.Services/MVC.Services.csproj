@@ -7,11 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="JWT\" />
+    <Compile Remove="JWT\**" />
+    <EmbeddedResource Remove="JWT\**" />
+    <None Remove="JWT\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MVC.Models\MVC.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="DesignPatterns\Repositories\" />
   </ItemGroup>
 
 </Project>

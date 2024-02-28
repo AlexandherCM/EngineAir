@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-#pragma warning disable CS8618
 
 namespace MVC.Models.Entities
 {
@@ -14,8 +13,10 @@ namespace MVC.Models.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public string Componente { get; set; }
-        public virtual ICollection<Catalogo> Catalogo { get; set;}
+        public int ID { get; }
+        public string Nombre { get; set; } = string.Empty;
+
+        // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        public virtual List<Variante> Variantes { get; set; } = new List<Variante>();
     }
 }
