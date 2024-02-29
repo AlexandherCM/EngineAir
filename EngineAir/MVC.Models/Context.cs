@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MVC.Models.Entities;
+#pragma warning disable CS8618
 
 namespace EngineAir.Models
 {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVC.Models.Entities
 {
+    [Table("Componente")]
     public class Componente
     {
         [Key]

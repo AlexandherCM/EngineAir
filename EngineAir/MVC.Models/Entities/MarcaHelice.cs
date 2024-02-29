@@ -13,7 +13,7 @@ namespace MVC.Models.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; }
+        public int ID { get; set; }
         public string Nombre { get; set; } = string.Empty;
 
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
