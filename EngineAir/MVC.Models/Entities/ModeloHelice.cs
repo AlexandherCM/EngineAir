@@ -21,9 +21,9 @@ namespace MVC.Models.Entities
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(MarcaID))]
-        public virtual MarcaHelice Marca { get; set; } = new MarcaHelice(); 
+        public virtual MarcaHelice? Marca { get; set; } = new MarcaHelice(); 
 
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<Helice> Helices { get; set; } = new List<Helice>();
+        public virtual List<Helice>? Helices { get; set; } = new List<Helice>();
     }
 }

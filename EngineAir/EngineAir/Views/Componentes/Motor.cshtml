@@ -1,9 +1,12 @@
-﻿@{
+﻿@model MVC.Models.ViewModels.ComponentViewModel
+@{
     ViewData["Title"] = "Componente Motor";
+    #pragma warning disable CS8602
 }
+@inject IConfiguration _configService;
 
 @* *********************************************************************************************** *@
-                                              @* BRAND *@
+@* BRAND *@
 @* *********************************************************************************************** *@
 <section class="title border-eas text-center rounded-4 mt-3">
 
@@ -11,38 +14,14 @@
 
 </section>
 
-<section class="row title justify-content-between p my-2 ">
+<section class="row title justify-content-between p my-2">
 
-    <aside class="col-5 col-lg-2 d-flex align-items-center justify-content-around bg-eas my-2 add p-2"  id="openBrand">
+    <aside class="col-12 col-lg-6 d-flex align-items-center justify-content-around bg-eas my-2 add p-2" id="openBrand">
         <img src="~/images/svg/Motor.svg" class="icon-btn align-self-center" alt="Motor Icon" />
         <p class="d-flex align-items-center m-0">Registrar</p>
     </aside>
 
-    <aside class="col-5 col-lg-4 d-flex align-items-center  rounded-4 my-2 border-eas p">
-        
-        <div class="row justify-content-between w">
-
-            <div class="col-12 col-lg-5 d-flex justify-content-center my-1">
-                <img src="~/images/svg/Filter.svg" class="icon-btn align-self-center mx-3" alt="Filter" />
-                <h4 class="d-flex align-items-center m-0">Filtro</h4>
-            </div>
-
-            <div class="col-12 col-lg-6 d-flex justify-content-center p my-1">
-
-                <select id="rowsPageBrand" class="rowsPerPage">
-                    <option value="1">1 resultados</option>
-                    <option value="5">5 resultados</option>
-                    <option value="7">7 resultados</option>
-                    <option value="10">10 resultados</option>
-                </select>
-
-            </div>
-
-        </div>
-
-    </aside>
-
-    <aside class="col-12 col-lg-5 my-2 border-celestial rounded-4 d-flex p">
+    <aside class="col-12 col-lg-6 my-2 border-celestial rounded-4 d-flex p">
 
         <div class="col-3 d-flex justify-content-start">
             <h4 class="d-flex align-items-center mx-2 m-0">Buscar</h4>
@@ -65,7 +44,7 @@
 </section>
 
 <section class="row h-80 cont-Tables">
-    
+
     @******************   TABLA   ***********************@
     <aside class="contable  bg-gray shadow">
 
@@ -89,8 +68,8 @@
 
                     <td>Lorem</td>
 
-                    <td><img  src="~/images/svg/pen-to-square-regular.svg" class="table-icon"/></td>
-                    
+                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
+
                     <td>
                         <label class="toggle-switch my-2">
                             <input class="chbTable" type="checkbox">
@@ -107,7 +86,7 @@
         </table>
 
     </aside>
-   
+
     @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center paginated m-0" id="paginatedBrand"></aside>
 
@@ -116,7 +95,7 @@
 
 
 @* *********************************************************************************************** *@
-                                                @* MODEL *@
+@* MODEL *@
 @* *********************************************************************************************** *@
 
 <section class="title border-eas text-center rounded-4 mt-3">
@@ -233,7 +212,7 @@
 
         </table>
 
-    </aside>    
+    </aside>
 
     @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedModel"></aside>
@@ -243,7 +222,7 @@
 
 
 @* *********************************************************************************************** *@
-                                            @* ALL *@
+@* ALL *@
 @* *********************************************************************************************** *@
 
 <section class="title border-eas text-center rounded-4 mt-3">
@@ -284,7 +263,7 @@
     </aside>
 
     <aside class="col-12 col-lg-3 my-2 border-celestial rounded-4 align-items-center d-flex flex-column p">
-        
+
         <div class="row w  text-center">
             <h4>Buscadores</h4>
         </div>
@@ -324,31 +303,31 @@
 
     <aside class="col-12 col-lg-4 my-2 border-celestial rounded-4 align-items-center d-flex flex-column p">
 
-       <div class="row w  text-center">
-           <h5>Buscar por número de serie</h5>
-       </div>
+        <div class="row w  text-center">
+            <h5>Buscar por número de serie</h5>
+        </div>
 
-       <div class="row w  justify-content-center ">
+        <div class="row w  justify-content-center ">
 
-           <div class="col  justify-content-center d-flex ">
+            <div class="col  justify-content-center d-flex ">
                 <input class="input-search my-2 text-center" type="text" placeholder="Num. Serie" />
-           </div>
-           
+            </div>
+
             <div class="col d-flex align-items-center ">
                 <input type="submit" class="submit " value="Buscar" />
             </div>
 
-       </div>
+        </div>
 
     </aside>
 
 </section>
 
 <section class="row h-80 cont-Tables">
-   
+
     @******************   TABLA   ***********************@
     <aside class="contable  bg-gray shadow">
-      
+
         <table id="table" class=" table  motors">
 
             <thead>
@@ -408,7 +387,7 @@
         </table>
 
     </aside>
-    
+
     @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedTable"></aside>
 
@@ -416,30 +395,33 @@
 
 
 @* *********************************************************************************************** *@
-                                            @* FORMS *@
+@* FORMS *@
 @* *********************************************************************************************** *@
 @* Brand *@
 
 <section class="form container p" id="formBrand">
     <aside class="row justify-content-end p-2">
 
-        <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeBrand"/>
+        <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeBrand" />
 
     </aside>
     <h2>Nueva marca</h2>
-    <form>
-
+    @* Formulario - - - - - - - - - - - - - - - - - - -*@
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <aside class="row w mb-2">
-
             <h5><b>Nombre</b></h5>
-            <input class="input-Form" type="text" />
-
+            @*- - - - - - - - - - - Campos - - - - - - - - - - -*@
+            @* Campo oculto *@
+            <input asp-for="MarcaTipo.Entidad" value="@_configService["ApiSettings:EngineBrand"]" type="hidden" />
+            <input asp-for="MarcaTipo.Nombre" class="input-Form" type="text" />
+            @* - - - - - - - - - - - - - - - - - - - - - - - - -*@
         </aside>
         <aside class="row w my-3">
             <input type="submit" class="submit " value="Agregar" />
         </aside>
-
     </form>
+    @* - - - - - - - - - - - - - - - - - - - - - - - -*@
 </section>
 
 @* Model *@
@@ -519,7 +501,7 @@
 
 @* Component *@
 <section class="form container p" id="formComponent">
-  
+
     <aside class="row justify-content-end p-2">
 
         <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeComponent" />
@@ -537,7 +519,7 @@
 
         </aside>
 
-         <aside class="row w mb-2">
+        <aside class="row w mb-2">
 
             <h5><b>Modelo</b></h5>
 

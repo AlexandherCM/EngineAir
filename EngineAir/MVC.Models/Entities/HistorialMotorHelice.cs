@@ -20,9 +20,9 @@ namespace MVC.Models.Entities
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(MotorID))]
-        public virtual Motor Motor { get; set; } = new Motor();
+        public virtual Motor? Motor { get; set; } = new Motor();
 
         [ForeignKey(nameof(HeliceID))]
-        public virtual Helice Helice { get; set; } = new Helice();
+        public virtual Helice? Helice { get; set; } = new Helice();
     }
 }

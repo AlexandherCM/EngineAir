@@ -13,12 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MVC.Models\MVC.Models.csproj" />
+    <Folder Include="DesignPatterns\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Classes\" />
-    <Folder Include="DesignPatterns\Repositories\" />
+    <ProjectReference Include="..\MVC.Models\MVC.Models.csproj" />
   </ItemGroup>
 
 </Project>

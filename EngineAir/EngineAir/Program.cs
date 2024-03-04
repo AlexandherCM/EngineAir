@@ -1,16 +1,31 @@
 using EngineAir.Models;
 using Microsoft.EntityFrameworkCore;
+using MVC.Services.DesignPatterns;
 using System.Globalization;
+using MVC.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Settings for Mexico Spanish
+// Settings for Mexico Spanish - - - - - - - - - - - - - - - - - - - - - - - - - -
 var culture = new CultureInfo("es-MX");
 CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Agregar fuentes de configuración
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+// Inyección de dependencias por sesión - - - - - - - - - - - - - - - - - - - - - 
+// Únidad de trabajo
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+
+// Repositorios
+
+// Servicios intermedios entre repositorio y Unidad de trabajo
+builder.Services.AddScoped<ComponentService>();
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Add services to the container.
+
+// Add services to the container - - - - - - - - - - - - - - - - - - - - - - - - -
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>(options =>
 {
@@ -22,17 +37,6 @@ builder.Services.AddDbContext<Context>(options =>
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 var app = builder.Build();
-//using (var serviceScope = app.Services.CreateScope())
-//{
-//    var serviceProvider = serviceScope.ServiceProvider;
-
-//    // Get the context
-//    var context = serviceProvider.GetRequiredService<Context>();
-
-//    // Initialize the ComponentType and call the AddTypes method
-//    var componentType = new ComponentType(context);
-//    componentType.AddTypes().Wait(); // async/await en lugar de Wait
-//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

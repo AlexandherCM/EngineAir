@@ -16,14 +16,15 @@ namespace MVC.Models.Entities
         public int ID { get; set; }
         public int MarcaID { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public Decimal TiempoRemplazoHrs { get; set; }
-        public int TiempoRemplazoMeses { get; set; } 
+        public Decimal? TiempoRemplazoHrs { get; set; }
+        public int? TiempoRemplazoMeses { get; set; }
+        public bool Estado { get; set; }
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(MarcaID))] 
-        public virtual MarcaMotor Marca { get; set; } = new MarcaMotor();
+        public virtual MarcaMotor? Marca { get; set; } = new MarcaMotor();
 
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<Motor> Motores { get; set; } = new List<Motor>(); 
+        public virtual List<Motor>? Motores { get; set; } = new List<Motor>(); 
     }
 }

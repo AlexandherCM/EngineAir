@@ -23,6 +23,6 @@ namespace MVC.Models.Entities
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(ModeloID))]
-        public virtual ModeloMotor Modelo { get; set; } = new ModeloMotor();
+        public virtual ModeloMotor? Modelo { get; set; } = new ModeloMotor();
     }
 }
