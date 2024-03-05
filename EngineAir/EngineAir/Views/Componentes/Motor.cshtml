@@ -11,6 +11,14 @@
 <section class="title border-eas text-center rounded-4 mt-3">
 
     <h2><b><span class="color-pale">M</span>arcas de motores</b></h2>
+
+    <div id="chat" class="border-gray border-3">
+        <input id="txtMessage" placeholder="Mensaje"/>
+        <button id="btnEnviar">Enviar mensaje</button>
+
+        <div id="MyContent"></div>
+    </div>
+
     @if (ViewBag.Alerta != null)
     {
         <p>Alerta Estado: @ViewBag.Alerta.Leyenda</p>
@@ -552,5 +560,8 @@
         await Html.RenderPartialAsync("_TableScripts");
         <script src="~/js/FrontJS/forms/forms.js"></script>
 
+        // Scripts de realTime (Socckets)
+        <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/Sockets/ChatMessage.js" ></script>
     }
 }

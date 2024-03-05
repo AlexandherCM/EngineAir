@@ -1,19 +1,18 @@
-﻿using EngineAir.Models;
-using Microsoft.EntityFrameworkCore;
-using MVC.Models.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 using MVC.Models.Entities.GeneralFields;
 using MVC.Models.ViewModels;
 using MVC.Services.Classes;
-using MVC.Services.DesignPatterns.AbstractClasses;
 using MVC.Services.DesignPatterns.Interfaces;
 #pragma warning disable CS8602
 #pragma warning disable CS8605
 
 namespace MVC.Services.DesignPatterns.Repositories
 {
-    public class MarcaTipoRepository <T> : AbstractRepository, IMarca<T> where T : BrandFields, new()
-    { 
-        public MarcaTipoRepository(Context context) : base(context) { }
+    public class MarcaTipoRepository <T> : IMarca<T> where T : BrandFields, new()
+    {
+        private AlertaEstado _alertaEstado = new();
+        public MarcaTipoRepository() {  }
+
         public AlertaEstado Insert(MarcaTipoDTO marca, DbSet<T> table) 
         {
             if (table.Any(e => e.Nombre == marca.Nombre))
@@ -23,7 +22,6 @@ namespace MVC.Services.DesignPatterns.Repositories
 
                 return _alertaEstado;
             }
-
             try
             {
                 T model = new()

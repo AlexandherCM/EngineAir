@@ -16,4 +16,8 @@
     <ProjectReference Include="..\MVC.Models\MVC.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DesignPatterns\AbstractClasses\" />
+  </ItemGroup>
+
 </Project>

@@ -13,32 +13,32 @@ namespace MVC.Services.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly ComponentViewModel _viewModel = new();
 
-        private readonly IConfiguration _config;
-        private string MarcaMotor;
-        private string MarcaHelice;
-        private string MarcaOtro;
         private AlertaEstado _alertaEstado = new();
 
         public ComponentService(IUnitOfWork uniOfWork, IConfiguration config)
         {
             _unitOfWork = uniOfWork;
-
-            _config = config;
-            MarcaMotor = _config["Concept:Engine:Brand"];
-            MarcaHelice = _config["Concept:Propeller:Brand"];
-            MarcaOtro = _config["Concept:Component:Brand"];
         }
 
         public async Task<AlertaEstado> CreateBrand(MarcaTipoDTO marca)
         {
-            if (marca.Entidad == MarcaMotor)
-                this._alertaEstado = _unitOfWork.MarcaMotor.Insert(marca, _unitOfWork._context.MarcaMotor);
+            _alertaEstado.Leyenda = "Los datos ingresados no corresponden con el formato correcto";
+            _alertaEstado.Estado = false;
 
-            else if (marca.Entidad == MarcaHelice)
-                this._alertaEstado = _unitOfWork.MarcaHelice.Insert(marca, _unitOfWork._context.MarcaHelice);
-
-            else if (marca.Entidad == MarcaOtro)
-                this._alertaEstado = _unitOfWork.TipoComponente.Insert(marca, _unitOfWork._context.TipoComponente);
+            switch (marca.Entidad)
+            {
+                case "MarcaMotor":
+                    this._alertaEstado = _unitOfWork.MarcaMotor.Insert(marca, _unitOfWork._context.MarcaMotor);
+                    break;
+                case "MarcaHelice":
+                    this._alertaEstado = _unitOfWork.MarcaHelice.Insert(marca, _unitOfWork._context.MarcaHelice);
+                    break;
+                case "Tipo":
+                    this._alertaEstado = _unitOfWork.TipoComponente.Insert(marca, _unitOfWork._context.TipoComponente);
+                    break;
+                default:
+                    return _alertaEstado;
+            }
 
             await _unitOfWork.Save();
             return _alertaEstado;

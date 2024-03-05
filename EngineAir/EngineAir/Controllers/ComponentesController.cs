@@ -37,19 +37,21 @@ namespace EngineAir.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateBrand(MarcaTipoDTO MarcaTipo) 
         {
+            MarcaTipo.Nombre = MarcaTipo.Nombre.Trim();
+
             _alertaEstado = await _service.CreateBrand(MarcaTipo);
             ViewBag.Alerta = _alertaEstado;
 
             switch (MarcaTipo.Entidad)
             {
                 case "MarcaMotor":
-                    return RedirectToAction(nameof(Motor));
+                    return View(nameof(Motor));
                 case "MarcaHelice":
-                    return RedirectToAction(nameof(Helice));
+                    return View(nameof(Helice));
                 case "Tipo":
-                    return RedirectToAction(nameof(Variante));
+                    return View(nameof(Variante));
                 default: 
-                    return RedirectToAction(nameof(Motor));
+                    return RedirectToAction("Index", "Home");
             }
         }
     }

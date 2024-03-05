@@ -5,6 +5,7 @@ using System.Globalization;
 using MVC.Services.Services;
 using MVC.Services.DesignPatterns.Repositories;
 using MVC.Models.Entities;
+using EngineAir.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,8 @@ builder.Services.AddScoped<MarcaTipoRepository<TipoComponente>>();
 
 // Add services to the container - - - - - - - - - - - - - - - - - - - - - - - - -
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
+
 builder.Services.AddDbContext<Context>(options =>
 {
     options.UseSqlServer(
@@ -60,6 +63,11 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Componentes}/{action=Variante}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChatHub>("/ChatMessage");
+});
 
 app.Run();
