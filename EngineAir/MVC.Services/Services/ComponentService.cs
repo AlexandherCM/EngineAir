@@ -20,7 +20,7 @@ namespace MVC.Services.Services
             _unitOfWork = uniOfWork;
         }
 
-        public async Task<AlertaEstado> CreateBrand(MarcaTipoDTO marca)
+        public async Task<AlertaEstado> CreateBrand(MarcaTipo marca)
         {
             _alertaEstado.Leyenda = "Los datos ingresados no corresponden con el formato correcto";
             _alertaEstado.Estado = false;

@@ -2,14 +2,14 @@
 {
     public class ComponentViewModel
     {
-        public MarcaTipoDTO MarcaTipo { get; set; } = new();
-        public ModeloVarianteDTO ModeloVariante { get; set; } = new();
-        public MotorDTO Motor { get; set; } = new();
-        public HeliceDTO Helice { get; set; } = new();
-        public OtroComponenteDTO OtroComponente { get; set; } = new();
+        public MarcaTipo MarcaTipo { get; set; } = new();
+        public ModeloVariante ModeloVariante { get; set; } = new();
+        public Motor Motor { get; set; } = new();
+        public Helice Helice { get; set; } = new();
+        public OtroComponente OtroComponente { get; set; } = new();
     }
 
-    public class MarcaTipoDTO
+    public class MarcaTipo
     {
         public string Nombre { get; set; } = string.Empty;
         public bool Estado { get; set; } = true;
@@ -17,7 +17,7 @@
     }
 
 
-    public class ModeloVarianteDTO
+    public class ModeloVariante
     {
         public int MarcaTipoID { get; set; }
         public string Nombre { get; set; } = string.Empty;
@@ -36,20 +36,20 @@
         protected string Entidad { get; set; } = string.Empty;
     }
 
-    public class MotorDTO : Componente
+    public class Motor : Componente
     {
         public int? Aeronave { get; set; }
         public Decimal TiempoTotal { get; set; }
         public Decimal TURM { get; set; }
     }
 
-    public class HeliceDTO : Componente
+    public class Helice : Componente
     {
         public Decimal TiempoTotal { get; set; }
         public Decimal TURM { get; set; }
     }
 
-    public class OtroComponenteDTO : Componente
+    public class OtroComponente : Componente
     {
         public int? Aeronave { get; set; }
     }

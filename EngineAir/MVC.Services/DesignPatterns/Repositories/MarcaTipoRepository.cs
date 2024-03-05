@@ -13,7 +13,7 @@ namespace MVC.Services.DesignPatterns.Repositories
         private AlertaEstado _alertaEstado = new();
         public MarcaTipoRepository() {  }
 
-        public AlertaEstado Insert(MarcaTipoDTO marca, DbSet<T> table) 
+        public AlertaEstado Insert(MarcaTipo marca, DbSet<T> table) 
         {
             if (table.Any(e => e.Nombre == marca.Nombre))
             {

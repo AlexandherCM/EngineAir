@@ -35,7 +35,7 @@ namespace EngineAir.Controllers
 
         [HttpPost] 
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateBrand(MarcaTipoDTO MarcaTipo) 
+        public async Task<IActionResult> CreateBrand(MarcaTipo MarcaTipo) 
         {
             MarcaTipo.Nombre = MarcaTipo.Nombre.Trim();
 

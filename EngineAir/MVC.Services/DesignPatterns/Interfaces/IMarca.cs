@@ -9,7 +9,7 @@ namespace MVC.Services.DesignPatterns.Interfaces
     {
         //public List<T> GetAll();
         //public T GetById(int id);
-        public AlertaEstado Insert(MarcaTipoDTO marca, DbSet<T> table); 
+        public AlertaEstado Insert(MarcaTipo marca, DbSet<T> table); 
         //public void Update(T entity);
         //public void Delete(int id);
     } 
