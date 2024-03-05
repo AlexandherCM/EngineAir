@@ -12,7 +12,6 @@ namespace EngineAir.Models
         {
 
         }
-
         public virtual DbSet<MarcaMotor> MarcaMotor { get; set; } 
         public virtual DbSet<MarcaHelice> MarcaHelice { get; set; } 
         public virtual DbSet<TipoComponente> TipoComponente { get; set; }  

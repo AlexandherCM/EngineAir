@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Models.ViewModels;
+using MVC.Services.Classes;
 using MVC.Services.Services;
 
 namespace EngineAir.Controllers
@@ -7,6 +8,8 @@ namespace EngineAir.Controllers
     public class ComponentesController : Controller
     {
         private ComponentService _service;
+        private AlertaEstado _alertaEstado = new();
+
         //private ComponentViewModel _viewModel = new(); 
         public ComponentesController(ComponentService service)
         {
@@ -30,11 +33,24 @@ namespace EngineAir.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost] 
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MarcaTipoDTO MarcaTipo) 
+        public async Task<IActionResult> CreateBrand(MarcaTipoDTO MarcaTipo) 
         {
-            return RedirectToAction(nameof(Motor)); // Varia
+            _alertaEstado = await _service.CreateBrand(MarcaTipo);
+            ViewBag.Alerta = _alertaEstado;
+
+            switch (MarcaTipo.Entidad)
+            {
+                case "MarcaMotor":
+                    return RedirectToAction(nameof(Motor));
+                case "MarcaHelice":
+                    return RedirectToAction(nameof(Helice));
+                case "Tipo":
+                    return RedirectToAction(nameof(Variante));
+                default: 
+                    return RedirectToAction(nameof(Motor));
+            }
         }
     }
 }

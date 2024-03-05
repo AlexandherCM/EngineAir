@@ -1,18 +1,28 @@
 ﻿using EngineAir.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MVC.Models.Entities;
+using MVC.Services.DesignPatterns.Repositories;
 
 namespace MVC.Services.DesignPatterns
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly Context _context; 
-        public UnitOfWork(Context context)
+        public Context _context { get; }
+        public MarcaTipoRepository<MarcaMotor> MarcaMotor { get;}
+        public MarcaTipoRepository<MarcaHelice> MarcaHelice {get;}
+        public MarcaTipoRepository<TipoComponente> TipoComponente {get;}
+
+        public UnitOfWork
+        (
+            Context context,
+            MarcaTipoRepository<MarcaMotor> MarcaMotor,
+            MarcaTipoRepository<MarcaHelice> MarcaHelice,
+            MarcaTipoRepository<TipoComponente> TipoComponente
+        )
         {
             _context = context;
+            this.MarcaMotor = MarcaMotor;
+            this.MarcaHelice = MarcaHelice;
+            this.TipoComponente = TipoComponente;
         }
 
         public async Task Save()

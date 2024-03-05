@@ -1,0 +1,14 @@
+﻿
+            //Type type = typeof(T);
+
+            //// Obtener el DbSet correspondiente mediante Reflection
+            //var dbSet = _context.GetType().GetMethod("Set").MakeGenericMethod(type).Invoke(_context, null);
+            //// Verificar si existe un elemento con el nombre especificado
+            //bool existente = (bool)dbSet.GetType().GetMethod("Any").Invoke(dbSet, new object[] { $"Nombre == \"{marca.Nombre}\"" });
+
+            //if (existente)
+            //{
+            //    _alertaEstado.Leyenda = "¡Ya existe un estatus con ese nombre!";
+            //    _alertaEstado.Estado = false;
+            //    return _alertaEstado;
+            //}

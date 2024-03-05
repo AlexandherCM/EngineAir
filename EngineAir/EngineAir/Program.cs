@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MVC.Services.DesignPatterns;
 using System.Globalization;
 using MVC.Services.Services;
+using MVC.Services.DesignPatterns.Repositories;
+using MVC.Models.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +20,13 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnCh
 // Únidad de trabajo
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
 
-// Repositorios
-
 // Servicios intermedios entre repositorio y Unidad de trabajo
 builder.Services.AddScoped<ComponentService>();
+
+// Repositorios
+builder.Services.AddScoped<MarcaTipoRepository<MarcaMotor>>();
+builder.Services.AddScoped<MarcaTipoRepository<MarcaHelice>>();
+builder.Services.AddScoped<MarcaTipoRepository<TipoComponente>>();
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -1,19 +1,16 @@
 ﻿using EngineAir.Models;
+using Microsoft.EntityFrameworkCore;
+using MVC.Models.ViewModels;
 using MVC.Services.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MVC.Services.DesignPatterns.Interfaces
 {
-    public interface ICrud<T>
+    public interface IMarca<T> where T : class 
     {
         //public List<T> GetAll();
         //public T GetById(int id);
-        public Task<AlertaEstado> Insert(T entity);
+        public AlertaEstado Insert(MarcaTipoDTO marca, DbSet<T> model);
         //public void Update(T entity);
         //public void Delete(int id);
-    }
+    } 
 }               
