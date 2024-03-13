@@ -153,6 +153,11 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/FrontJS/layout/sliderBar.js" asp-append-version="true"></script>
     <script src="~/js/FrontJS/layout/darkMode.js" asp-append-version="true"></script>
+    @* SignalR y clase fetch - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *@
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/ConnectionSignalR.js"></script>
+    <script src="~/js/ConnectionApi.js"></script>
+    @* SignalR y clase fetch - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

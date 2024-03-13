@@ -65,6 +65,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Configuración de los Sockets
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<ChatHub>("/ChatMessage");

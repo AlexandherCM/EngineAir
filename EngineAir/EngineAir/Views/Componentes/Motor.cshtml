@@ -1,4 +1,4 @@
-﻿@model MVC.Models.ViewModels.ComponentViewModel
+﻿@model MVC.Models.ViewModels.MotorViewModel
 @{
     ViewData["Title"] = "Componente Motor";
 #pragma warning disable CS8602
@@ -11,23 +11,21 @@
 <section class="title border-eas text-center rounded-4 mt-3">
 
     <h2><b><span class="color-pale">M</span>arcas de motores</b></h2>
-
-    <div id="chat" class="border-gray border-3">
-        <input id="txtMessage" placeholder="Mensaje"/>
+    @*<div id="chat" class="border-gray border-3">
+        <input id="txtMessage" placeholder="Mensaje" />
         <button id="btnEnviar">Enviar mensaje</button>
 
         <div id="MyContent"></div>
-    </div>
+    </div>*@
 
-    @if (ViewBag.Alerta != null)
+    @*@if (ViewBag.Alerta != null)
     {
-        <p>Alerta Estado: @ViewBag.Alerta.Leyenda</p>
+    <p>Alerta Estado: @ViewBag.Alerta.Leyenda</p>
     }
     else
     {
-        <p>No hay información de alerta</p>
-    }
-
+    <p>No hay información de alerta</p>
+    }*@
 </section>
 
 <section class="row title justify-content-between p my-2">
@@ -67,36 +65,31 @@
         <table id="brand" class=" table ">
 
             <thead>
-
                 <tr>
-
                     <th> Nombre</th>
                     <th> Estado</th>
                     <th> Detalles</th>
 
                 </tr>
-
             </thead>
 
             <tbody>
+                @foreach (var item in Model.MarcasTipos)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
 
-                <tr>
-
-                    <td>Lorem</td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-
-                    <td>
-                        <label class="toggle-switch my-2">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                </tr>
-
+                        <td>
+                            <label class="toggle-switch my-2">
+                                <input class="chbTable" type="checkbox" checked="@item.Estado">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
+                    </tr>
+                }
             </tbody>
 
         </table>
@@ -561,7 +554,6 @@
         <script src="~/js/FrontJS/forms/forms.js"></script>
 
         // Scripts de realTime (Socckets)
-        <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
-        <script src="~/js/Sockets/ChatMessage.js" ></script>
+        <script src="~/js/Sockets/ChatMessage.js"></script>
     }
 }

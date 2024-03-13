@@ -7,7 +7,7 @@ namespace EngineAir.Controllers
 {
     public class ComponentesController : Controller
     {
-        private ComponentService _service;
+        private readonly ComponentService _service;
         private AlertaEstado _alertaEstado = new();
 
         //private ComponentViewModel _viewModel = new(); 
@@ -17,9 +17,14 @@ namespace EngineAir.Controllers
         }
 
         // End-Points de la interfaz de los motores - - - - - - - - - - - -
-        public IActionResult Motor()
+        public async Task<IActionResult> Motor()
         {
-            return View();
+            MotorViewModel model = new()
+            {
+                MarcasTipos = await _service.GetMarcasMotores()
+            };
+
+            return View(model);
         }
         // End-Points de la interfaz de las hélices- - - - - - - - - - - - -
         public IActionResult Helice()
@@ -37,22 +42,20 @@ namespace EngineAir.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateBrand(MarcaTipo MarcaTipo) 
         {
-            MarcaTipo.Nombre = MarcaTipo.Nombre.Trim();
-
             _alertaEstado = await _service.CreateBrand(MarcaTipo);
             ViewBag.Alerta = _alertaEstado;
 
-            switch (MarcaTipo.Entidad)
+            return MarcaTipo.Entidad switch
             {
-                case "MarcaMotor":
-                    return View(nameof(Motor));
-                case "MarcaHelice":
-                    return View(nameof(Helice));
-                case "Tipo":
-                    return View(nameof(Variante));
-                default: 
-                    return RedirectToAction("Index", "Home");
-            }
-        }
+                "MarcaMotor" => 
+                    View(nameof(Motor)),
+                "MarcaHelice" => 
+                    View(nameof(Helice)),
+                "Tipo" => 
+                    View(nameof(Variante)),
+                _ => 
+                    RedirectToAction("Index", "Home"),
+            };
+        }   
     }
 }

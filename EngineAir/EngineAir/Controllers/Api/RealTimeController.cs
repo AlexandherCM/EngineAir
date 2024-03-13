@@ -16,9 +16,9 @@ namespace EngineAir.Controllers.Api
         }
 
         [HttpGet("Send")]
-        public async Task<IActionResult> Send(string message)
+        public async Task<IActionResult> Send(string data)
         {
-            await _hubContext.Clients.All.SendAsync("sendMessage", message);
+            await _hubContext.Clients.All.SendAsync("sendMessage", data);
             return Ok();
         }
     }

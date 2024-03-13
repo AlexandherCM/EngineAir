@@ -11,8 +11,6 @@ namespace MVC.Services.Services
     public class ComponentService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ComponentViewModel _viewModel = new();
-
         private AlertaEstado _alertaEstado = new();
 
         public ComponentService(IUnitOfWork uniOfWork, IConfiguration config)
@@ -20,8 +18,21 @@ namespace MVC.Services.Services
             _unitOfWork = uniOfWork;
         }
 
+        // Lista de las marcas y/o tipos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        public async Task<List<MarcaMotor>> GetMarcasMotores()
+            => await _unitOfWork.MarcaMotor.GetList(_unitOfWork._context.MarcaMotor);
+
+        public async Task<List<MarcaHelice>> GetMarcasHelices()
+            => await _unitOfWork.MarcaHelice.GetList(_unitOfWork._context.MarcaHelice);
+
+        public async Task<List<TipoComponente>> GetTiposComponente()
+            => await _unitOfWork.TipoComponente.GetList(_unitOfWork._context.TipoComponente);
+
+        // Agregar una nueva marca y/o tipo  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         public async Task<AlertaEstado> CreateBrand(MarcaTipo marca)
         {
+            marca.Nombre = marca.Nombre.Trim();
+
             _alertaEstado.Leyenda = "Los datos ingresados no corresponden con el formato correcto";
             _alertaEstado.Estado = false;
 
@@ -42,6 +53,8 @@ namespace MVC.Services.Services
 
             await _unitOfWork.Save();
             return _alertaEstado;
-        } 
+        }
+
+        
     }
 }

@@ -1,13 +1,22 @@
-﻿namespace MVC.Models.ViewModels
+﻿using MVC.Models.Entities;
+
+namespace MVC.Models.ViewModels
 {
-    public class ComponentViewModel
+    // Generalidades de los ViewModels - - - - - - - - - - - - -
+    public abstract class ComponentViewModel
     {
         public MarcaTipo MarcaTipo { get; set; } = new();
+        public List<MarcaMotor> MarcasTipos { get; set; } = new(); 
+
         public ModeloVariante ModeloVariante { get; set; } = new();
+    }   
+
+    // ViewModels - - - - - - - - - - - - -
+    public class MotorViewModel : ComponentViewModel
+    {
         public Motor Motor { get; set; } = new();
-        public Helice Helice { get; set; } = new();
-        public OtroComponente OtroComponente { get; set; } = new();
-    }
+        public List<Motor> Motores { get; set; } = new();
+    } 
 
     public class MarcaTipo
     {
@@ -15,7 +24,6 @@
         public bool Estado { get; set; } = true;
         public string Entidad { get; set; } = string.Empty; 
     }
-
 
     public class ModeloVariante
     {

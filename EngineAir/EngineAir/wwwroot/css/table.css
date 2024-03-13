@@ -133,7 +133,7 @@ table thead tr:first-child th:last-child {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #1AD800;
+    background-color: red;
     border-radius: 17px;
     transition: background-color 0.4s;
 }
@@ -151,7 +151,7 @@ table thead tr:first-child th:last-child {
 }
 
 .toggle-switch input:checked + .toggle-switch-background {
-    background-color: red;
+    background-color: #1AD800;
 }
 
     .toggle-switch input:checked + .toggle-switch-background .toggle-switch-handle {

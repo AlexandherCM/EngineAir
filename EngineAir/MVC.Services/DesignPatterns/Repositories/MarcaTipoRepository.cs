@@ -13,6 +13,11 @@ namespace MVC.Services.DesignPatterns.Repositories
         private AlertaEstado _alertaEstado = new();
         public MarcaTipoRepository() {  }
 
+        // OBTENER LA LISTAS DE LOS REGISTROS DEL GENÉRICO <T>
+        public async Task<List<T>> GetList(DbSet<T> table)
+            => await table.ToListAsync();
+
+        // INSERTAR UN NUEVO REGISTRO DE MARCA
         public AlertaEstado Insert(MarcaTipo marca, DbSet<T> table) 
         {
             if (table.Any(e => e.Nombre == marca.Nombre))
@@ -46,4 +51,5 @@ namespace MVC.Services.DesignPatterns.Repositories
             }
         }
     }
+
 }
