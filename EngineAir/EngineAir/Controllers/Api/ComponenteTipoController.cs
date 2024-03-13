@@ -1,8 +1,10 @@
 ﻿using EngineAir.Hubs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using MVC.Services.Classes;
+using MVC.Models.Classes;
+using MVC.Models.ViewModels;
 using MVC.Services.Services;
+using Newtonsoft.Json;
 
 namespace EngineAir.Controllers.Api
 {
@@ -12,7 +14,7 @@ namespace EngineAir.Controllers.Api
     {
         private ComponentService _service;
         private IHubContext<ChatHub> _hubContext;
-        private AlertaEstado _alertaEstado = new();
+        private ResponseJS _response = new();
 
         public ComponenteTipoController(ComponentService service, IHubContext<ChatHub> hubContext)
         {
@@ -20,14 +22,17 @@ namespace EngineAir.Controllers.Api
             _hubContext = hubContext;
         }
 
-        //[HttpGet("GetMotores")]
-        //public async Task<IActionResult> GetMotores([FromBody] MarcaTipo MarcaTipo)
-        //{
-        //    //_alertaEstado = await _service.CreateBrand(MarcaTipo);
+        [HttpPost("GetMotores")]
+        public async Task<IActionResult> GetMotores([FromBody] MarcaTipo MarcaTipo)
+        {
+            _response = await _service.CreateBrand(MarcaTipo);
+            _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
 
-        //    //await _hubContext.Clients.All.SendAsync("sendMessage", Json);
-        //    return Ok();
-        //} 
+            string Json = JsonConvert.SerializeObject(_response);
+
+            await _hubContext.Clients.All.SendAsync("sendMessage", Json);
+            return Ok();
+        }
 
     }
 }

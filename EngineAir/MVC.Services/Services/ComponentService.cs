@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using MVC.Models.Classes;
 using MVC.Models.Entities;
 using MVC.Models.ViewModels;
-using MVC.Services.Classes;
 using MVC.Services.DesignPatterns;
 
 namespace MVC.Services.Services
@@ -11,7 +11,7 @@ namespace MVC.Services.Services
     public class ComponentService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private AlertaEstado _alertaEstado = new();
+        private ResponseJS _response = new();
 
         public ComponentService(IUnitOfWork uniOfWork, IConfiguration config)
         {
@@ -29,30 +29,30 @@ namespace MVC.Services.Services
             => await _unitOfWork.TipoComponente.GetList(_unitOfWork._context.TipoComponente);
 
         // Agregar una nueva marca y/o tipo  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        public async Task<AlertaEstado> CreateBrand(MarcaTipo marca)
+        public async Task<ResponseJS> CreateBrand(MarcaTipo marca)
         {
             marca.Nombre = marca.Nombre.Trim();
 
-            _alertaEstado.Leyenda = "Los datos ingresados no corresponden con el formato correcto";
-            _alertaEstado.Estado = false;
+            _response.Leyenda = "Los datos ingresados no corresponden con el formato correcto";
+            _response.Estado = false;
 
             switch (marca.Entidad)
             {
                 case "MarcaMotor":
-                    this._alertaEstado = _unitOfWork.MarcaMotor.Insert(marca, _unitOfWork._context.MarcaMotor);
+                    this._response = _unitOfWork.MarcaMotor.Insert(marca, _unitOfWork._context.MarcaMotor);
                     break;
                 case "MarcaHelice":
-                    this._alertaEstado = _unitOfWork.MarcaHelice.Insert(marca, _unitOfWork._context.MarcaHelice);
+                    this._response = _unitOfWork.MarcaHelice.Insert(marca, _unitOfWork._context.MarcaHelice);
                     break;
                 case "Tipo":
-                    this._alertaEstado = _unitOfWork.TipoComponente.Insert(marca, _unitOfWork._context.TipoComponente);
+                    this._response = _unitOfWork.TipoComponente.Insert(marca, _unitOfWork._context.TipoComponente);
                     break;
                 default:
-                    return _alertaEstado;
+                    return _response;
             }
 
             await _unitOfWork.Save();
-            return _alertaEstado;
+            return _response;
         }
 
         

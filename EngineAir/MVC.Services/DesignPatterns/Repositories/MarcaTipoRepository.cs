@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MVC.Models.Classes;
 using MVC.Models.Entities.GeneralFields;
 using MVC.Models.ViewModels;
-using MVC.Services.Classes;
 using MVC.Services.DesignPatterns.Interfaces;
 #pragma warning disable CS8602
 #pragma warning disable CS8605
@@ -10,7 +10,7 @@ namespace MVC.Services.DesignPatterns.Repositories
 {
     public class MarcaTipoRepository <T> : IMarca<T> where T : BrandFields, new()
     {
-        private AlertaEstado _alertaEstado = new();
+        private ResponseJS _alertaEstado = new();
         public MarcaTipoRepository() {  }
 
         // OBTENER LA LISTAS DE LOS REGISTROS DEL GENÉRICO <T>
@@ -18,7 +18,7 @@ namespace MVC.Services.DesignPatterns.Repositories
             => await table.ToListAsync();
 
         // INSERTAR UN NUEVO REGISTRO DE MARCA
-        public AlertaEstado Insert(MarcaTipo marca, DbSet<T> table) 
+        public ResponseJS Insert(MarcaTipo marca, DbSet<T> table) 
         {
             if (table.Any(e => e.Nombre == marca.Nombre))
             {

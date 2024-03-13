@@ -7,17 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DesignPatterns\AbstractClasses\**" />
     <Compile Remove="JWT\**" />
+    <EmbeddedResource Remove="DesignPatterns\AbstractClasses\**" />
     <EmbeddedResource Remove="JWT\**" />
+    <None Remove="DesignPatterns\AbstractClasses\**" />
     <None Remove="JWT\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MVC.Models\MVC.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DesignPatterns\AbstractClasses\" />
   </ItemGroup>
 
 </Project>

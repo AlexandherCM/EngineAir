@@ -1,4 +1,7 @@
-﻿@model MVC.Models.ViewModels.MotorViewModel
+﻿@using MVC.Models.ViewModels
+@using MVC.Models.Entities
+@model ComponentViewModel<MarcaMotor>
+
 @{
     ViewData["Title"] = "Componente Motor";
 #pragma warning disable CS8602
@@ -12,10 +15,10 @@
 
     <h2><b><span class="color-pale">M</span>arcas de motores</b></h2>
     @*<div id="chat" class="border-gray border-3">
-        <input id="txtMessage" placeholder="Mensaje" />
-        <button id="btnEnviar">Enviar mensaje</button>
+    <input id="txtMessage" placeholder="Mensaje" />
+    <button id="btnEnviar">Enviar mensaje</button>
 
-        <div id="MyContent"></div>
+    <div id="MyContent"></div>
     </div>*@
 
     @*@if (ViewBag.Alerta != null)
@@ -30,12 +33,36 @@
 
 <section class="row title justify-content-between p my-2">
 
-    <aside class="col-12 col-lg-6 d-flex align-items-center justify-content-around bg-eas my-2 add p-2" id="openBrand">
+    <aside class="col-5 col-lg-2 d-flex align-items-center justify-content-around bg-eas my-2 add p-2" id="openBrand">
         <img src="~/images/svg/Motor.svg" class="icon-btn align-self-center" alt="Motor Icon" />
         <p class="d-flex align-items-center m-0">Registrar</p>
     </aside>
 
-    <aside class="col-12 col-lg-6 my-2 border-celestial rounded-4 d-flex p">
+    <aside class="col-5 col-lg-4 d-flex align-items-center  rounded-4 my-2 border-eas p">
+
+        <div class="row justify-content-between w">
+
+            <div class="col-12 col-lg-5 d-flex justify-content-center my-1">
+                <img src="~/images/svg/Filter.svg" class="icon-btn align-self-center mx-3" alt="Filter" />
+                <h4 class="d-flex align-items-center m-0">Filtro</h4>
+            </div>
+
+            <div class="col-12 col-lg-6 d-flex justify-content-center p my-1">
+
+                <select id="rowsPageBrand" class="rowsPerPage">
+                    <option value="1">1 resultados</option>
+                    <option value="5">5 resultados</option>
+                    <option value="7">7 resultados</option>
+                    <option value="10">10 resultados</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    <aside class="col-12 col-lg-5 my-2 border-celestial rounded-4 d-flex p">
 
         <div class="col-3 d-flex justify-content-start">
             <h4 class="d-flex align-items-center mx-2 m-0">Buscar</h4>
@@ -197,6 +224,25 @@
             </thead>
 
             <tbody>
+
+                <tr>
+
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td>Lorem</td>
+                    <td class="my-2">
+                        <label class="toggle-switch">
+                            <input class="chbTable" type="checkbox">
+                            <div class="toggle-switch-background">
+                                <div class="toggle-switch-handle"></div>
+                            </div>
+                        </label>
+                    </td>
+
+                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
+
+                </tr>
 
                 <tr>
 
@@ -416,14 +462,13 @@
     </aside>
     <h2>Nueva marca</h2>
     @* Formulario - - - - - - - - - - - - - - - - - - -*@
-    <form asp-action="CreateBrand">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form id="NewEngineBrand">
         <aside class="row w mb-2">
             <h5><b>Nombre</b></h5>
             @*- - - - - - - - - - - Campos - - - - - - - - - - -*@
             @* Campo oculto *@
-            <input asp-for="MarcaTipo.Entidad" value="@_configService["Concept:Engine:Brand"]" type="hidden" />
-            <input asp-for="MarcaTipo.Nombre" class="input-Form" type="text" />
+            <input name="Entidad" value="@_configService["Concept:Engine:Brand"]" type="hidden" />
+            <input name="Nombre" class="input-Form" type="text" />
             @* - - - - - - - - - - - - - - - - - - - - - - - - -*@
         </aside>
         <aside class="row w my-3">
@@ -554,6 +599,9 @@
         <script src="~/js/FrontJS/forms/forms.js"></script>
 
         // Scripts de realTime (Socckets)
-        <script src="~/js/Sockets/ChatMessage.js"></script>
+        //<script src="~/js/Sockets/ChatMessage.js"></script>
+
+        <script src="~/js/ScriptsComponents/Prototypes.js"></script>
+        <script src="~/js/ScriptsComponents/MotorScript.js"></script>
     }
 }

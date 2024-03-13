@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC.Models.Classes;
+using MVC.Models.Entities;
 using MVC.Models.ViewModels;
-using MVC.Services.Classes;
 using MVC.Services.Services;
 
 namespace EngineAir.Controllers
@@ -8,7 +9,9 @@ namespace EngineAir.Controllers
     public class ComponentesController : Controller
     {
         private readonly ComponentService _service;
-        private AlertaEstado _alertaEstado = new();
+        private ResponseJS _alertaEstado = new();
+
+        private ComponentViewModel<MarcaMotor> ViewModel = new();
 
         //private ComponentViewModel _viewModel = new(); 
         public ComponentesController(ComponentService service)
@@ -19,12 +22,12 @@ namespace EngineAir.Controllers
         // End-Points de la interfaz de los motores - - - - - - - - - - - -
         public async Task<IActionResult> Motor()
         {
-            MotorViewModel model = new()
+            this.ViewModel = new()
             {
                 MarcasTipos = await _service.GetMarcasMotores()
             };
 
-            return View(model);
+            return View(ViewModel);
         }
         // End-Points de la interfaz de las hélices- - - - - - - - - - - - -
         public IActionResult Helice()
