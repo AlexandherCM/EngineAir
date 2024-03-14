@@ -22,15 +22,15 @@ namespace EngineAir.Controllers.Api
             _hubContext = hubContext;
         }
 
-        [HttpPost("GetMotores")]
-        public async Task<IActionResult> GetMotores([FromBody] MarcaTipo MarcaTipo)
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create([FromBody] MarcaTipo MarcaTipo)
         {
             _response = await _service.CreateBrand(MarcaTipo);
             _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
 
-            string Json = JsonConvert.SerializeObject(_response);
+            //string Json = JsonConvert.SerializeObject(_response);
 
-            await _hubContext.Clients.All.SendAsync("sendMessage", Json);
+            await _hubContext.Clients.All.SendAsync("sendMessage", _response);
             return Ok();
         }
 

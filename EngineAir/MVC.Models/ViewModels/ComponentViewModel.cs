@@ -1,6 +1,7 @@
 ﻿using MVC.Models.Classes;
 using MVC.Models.Entities;
 using MVC.Models.Entities.GeneralFields;
+using System.Text.Json.Serialization;
 
 namespace MVC.Models.ViewModels
 {

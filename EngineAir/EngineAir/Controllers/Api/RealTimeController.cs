@@ -8,17 +8,17 @@ namespace EngineAir.Controllers.Api
     [ApiController]
     public class RealTimeController : ControllerBase
     {
-        private IHubContext<ChatHub> _hubContext;
-        public RealTimeController(IHubContext<ChatHub> hubContext)
-        { 
-            _hubContext = hubContext; 
-        }
+        //private IHubContext<ChatHub> _hubContext;
+        //public RealTimeController(IHubContext<ChatHub> hubContext)
+        //{ 
+        //    _hubContext = hubContext; 
+        //}
 
-        [HttpGet("Send")]
-        public async Task<IActionResult> Send(string data)
-        {
-            await _hubContext.Clients.All.SendAsync("sendMessage", data);
-            return Ok();
-        }
+        //[HttpGet("Send")]
+        //public async Task<IActionResult> Send(string data)
+        //{
+        //    await _hubContext.Clients.All.SendAsync("sendMessage", data);
+        //    return Ok();
+        //}
     }
 }

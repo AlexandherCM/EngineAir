@@ -100,12 +100,11 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="RowEngineBrand">
                 @foreach (var item in Model.MarcasTipos)
                 {
                     <tr>
                         <td>@item.Nombre</td>
-
                         <td>
                             <label class="toggle-switch my-2">
                                 <input class="chbTable" type="checkbox" checked="@item.Estado">
@@ -114,7 +113,7 @@
                                 </div>
                             </label>
                         </td>
-                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
+                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon"/></td>
                     </tr>
                 }
             </tbody>
