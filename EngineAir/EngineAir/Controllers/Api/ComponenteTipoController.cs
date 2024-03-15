@@ -29,6 +29,9 @@ namespace EngineAir.Controllers.Api
             _response = await _service.CreateBrand(MarcaTipo);
             _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
 
+            if(MarcaTipo.ClientID != null)
+                _response.ClientID = MarcaTipo.ClientID;
+
             await _hubContext.Clients.All.SendAsync("sendMessage", _response); 
             return Ok();
         }

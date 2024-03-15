@@ -1,4 +1,7 @@
 ﻿
+// Genera un identificador único para esta sesión de cliente (MOMENTÁNEO)
+const uniqueId = Date.now().toString() + Math.random().toString(36).substring(2, 9);
+
 // Recorrer el objeto donde se contiene la información
 Object.keys(Prototypes).forEach(key => {
     const Prototype = Prototypes[key];
@@ -29,7 +32,8 @@ function CreateFormsListener(Prototype) {
         let MarcaTipo = {
             Nombre: Objects.Nombre,
             Estado: true,
-            Entidad: Objects.Entidad
+            Entidad: Objects.Entidad,
+            ClientID: uniqueId
         };
         // - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,7 +52,10 @@ connection.on("sendMessage", (_response) => {
     if (_response.Estado)
         NewBrandFile(JSON.parse(_response.Body), Prototypes);
 
-    AlertaJS(_response);
+    //Validar la sesión actual para mostrar la alerta solo 
+    //al cliente que realizo la petición al servidor
+    if (_response.ClientID == uniqueId && _response.ClientID != null)
+        AlertaJS(_response);
 });
 
 // Nueva fila de una marca de motores

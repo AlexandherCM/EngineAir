@@ -18,7 +18,8 @@ namespace MVC.Models.ViewModels
         public string Nombre { get; set; } = string.Empty;
         public bool Estado { get; set; } = true;
         public string Entidad { get; set; } = string.Empty;
-    }
+        public string? ClientID { get; set; } = string.Empty;
+    } 
 
     public class ModeloVariante
     {

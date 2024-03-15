@@ -17,7 +17,7 @@
 
         return true;
     }
-}
+};
 
 // Objeto general del sistema para hacer peticiones 
 const api = new ConnectionApi();

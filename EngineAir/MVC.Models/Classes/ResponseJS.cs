@@ -17,5 +17,8 @@ namespace MVC.Models.Classes
 
         [JsonPropertyName("Body")]
         public string Body { get; set; } = string.Empty; 
+
+        [JsonPropertyName("ClientID")]
+        public string? ClientID { get; set; } = string.Empty; 
     }  
 }
