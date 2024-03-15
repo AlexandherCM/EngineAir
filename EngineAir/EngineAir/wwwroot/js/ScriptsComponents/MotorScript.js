@@ -7,7 +7,7 @@ Object.keys(Prototypes).forEach(key => {
 });
 
 //Obtener el contenido de los inputs de un formulario
-function GetFormsData(event){
+function GetFormsData(event) {
     let Objetos = {};
     let formData = new FormData(event.target);
 
@@ -15,38 +15,62 @@ function GetFormsData(event){
         Objetos[key] = value;
     });
     return Objetos;
-} 
+};
 
 // Evento observador - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function CreateFormsListener(Prototype) {
     document.getElementById(Prototype.Brand).addEventListener('submit', (event) => {
         // Detener evento de recarga
         event.preventDefault();
-        let Objects = GetFormsData(event);
+        OpenCloseBrand(); // Método global en el archivo forms.js (Cerrar el Forms modal)
 
-        // Objeto ViewModel
+        let Objects = GetFormsData(event);
+        // Objeto ViewModel - - - - - - - - - - - -
         let MarcaTipo = {
             Nombre: Objects.Nombre,
-            Estado : true,
+            Estado: true,
             Entidad: Objects.Entidad
         };
+        // - - - - - - - - - - - - - - - - - - - - -
 
         //Petición con la api
         api.SendPost(`api/ComponenteTipo/Create`, MarcaTipo)
-            .then(data => {
-                console.log("Solicitud recibida por el servidor correctamente.");
-            })
+            .then(data => { /* Conexión establecida correctamente */ })
             .catch(error => {
-                console.error('POST Error:', error)
+                Modal('¡Error!', '¡La conexión con el servidor fallo!', false);
             });
     });
 };
-// Observador del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+// Observador del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 connection.on("sendMessage", (_response) => {
-    console.log(_response.Leyenda);
-    console.log("\n\n\n\n");
-    console.log(_response.Estado);
-    console.log("\n\n\n\n");
-    console.log(JSON.parse(_response.Body));
-    /*console.log(Json.json());*/
+    if (_response.Estado)
+        NewBrandFile(JSON.parse(_response.Body), Prototypes);
+
+    AlertaJS(_response);
 });
+
+// Nueva fila de una marca de motores
+function NewBrandFile(Records, Prototypes) {
+    let tbody = document.getElementById(Prototypes.Engine.Row);
+    let status = Records[Records.length - 1].Estado;
+    let name = Records[Records.length - 1].Nombre;
+
+    tbody.innerHTML += `
+        <tr>
+            <td>${name}</td>
+            <td>
+                <label class="toggle-switch my-2">
+                    <input class="chbTable" type="checkbox" checked="${status}">
+                    <div class="toggle-switch-background">
+                        <div class="toggle-switch-handle"></div>
+                    </div>
+                </label>
+            </td>
+            <td>
+                <img src="../../images/svg/pen-to-square-regular.svg" class="table-icon"/>
+            </td>
+        </tr>
+    `;
+};

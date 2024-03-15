@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EngineAir.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/componente.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/AlertStyle.css" asp-append-version="true" />
 </head>
 <body class="container-fluid bg-lightgray p" id="body">
 
-    <main role="main" class="row w ">
+    <main id="main" role="main" class="row w ">
 
 
         @* °°°°°°°°°°°°°°°°°°°°°°°°°°°° * MENU * °°°°°°°°°°°°°°°°°°°°°°°°°°°°°° *@
@@ -154,6 +155,7 @@
     <script src="~/js/FrontJS/layout/sliderBar.js" asp-append-version="true"></script>
     <script src="~/js/FrontJS/layout/darkMode.js" asp-append-version="true"></script>
     @* SignalR y clase fetch - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *@
+    <script src="~/js/FrontJS/Alerts/AlertScript.js"></script> @* Script para invocar alertas *@
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/ConnectionSignalR.js"></script>
     <script src="~/js/ConnectionApi.js"></script>

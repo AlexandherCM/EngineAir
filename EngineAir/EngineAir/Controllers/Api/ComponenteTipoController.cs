@@ -1,4 +1,5 @@
 ﻿using EngineAir.Hubs;
+using EngineAir.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using MVC.Models.Classes;
@@ -28,9 +29,7 @@ namespace EngineAir.Controllers.Api
             _response = await _service.CreateBrand(MarcaTipo);
             _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
 
-            //string Json = JsonConvert.SerializeObject(_response);
-
-            await _hubContext.Clients.All.SendAsync("sendMessage", _response);
+            await _hubContext.Clients.All.SendAsync("sendMessage", _response); 
             return Ok();
         }
 

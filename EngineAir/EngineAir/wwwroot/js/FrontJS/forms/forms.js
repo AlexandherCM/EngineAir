@@ -14,12 +14,11 @@ const formC = getElement('formComponent');
 const closeC = getElement('closeComponent');
 
 
-const openBrand = () => {
+const OpenCloseBrand = () => {
     if (formB.classList.contains('active')) {
         formB.classList.remove('active');
     } else {
         formB.classList.add('active');
-
     }
 }
 
@@ -41,8 +40,8 @@ const openComponent = () => {
     }
 }
 
-openB.onclick = openBrand;
-closeB.onclick = openBrand;
+openB.onclick = OpenCloseBrand;
+closeB.onclick = OpenCloseBrand;
 
 openM.onclick = openModel;
 closeM.onclick = openModel;
