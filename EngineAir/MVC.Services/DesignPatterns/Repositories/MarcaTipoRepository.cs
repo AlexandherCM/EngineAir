@@ -8,17 +8,32 @@ using MVC.Services.DesignPatterns.Interfaces;
 
 namespace MVC.Services.DesignPatterns.Repositories
 {
-    public class MarcaTipoRepository <T> : IMarca<T> where T : BrandFields, new()
+    public class MarcaTipoRepository<T> : IMarca<T> where T : BrandFields, new()
     {
         private ResponseJS _alertaEstado = new();
-        public MarcaTipoRepository() {  }
+        public MarcaTipoRepository() { }
 
         // OBTENER LA LISTAS DE LOS REGISTROS DEL GENÉRICO <T>
         public async Task<List<T>> GetList(DbSet<T> table)
             => await table.ToListAsync();
 
+        // ACTUALIZAR EL ESTADO DEL REGISTRO
+        public async Task<(bool, bool)> UpdateStatus(int ID, DbSet<T> table)
+        {
+            try
+            {
+                var BrandTipe = await table.FindAsync(ID);
+                BrandTipe.Estado = !BrandTipe.Estado;
+                return (true, BrandTipe.Estado);
+            }
+            catch
+            {
+                return (false, false);
+            }
+        }
+
         // INSERTAR UN NUEVO REGISTRO DE MARCA
-        public ResponseJS Insert(MarcaTipo marca, DbSet<T> table) 
+        public ResponseJS Insert(MarcaTipo marca, DbSet<T> table)
         {
             if (table.Any(e => e.Nombre == marca.Nombre))
             {

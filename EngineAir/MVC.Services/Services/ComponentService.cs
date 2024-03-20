@@ -55,6 +55,35 @@ namespace MVC.Services.Services
             return _response;
         }
 
-        
+        public async Task<(bool, bool)> UpdateStatus(UpdateStatusDTO obj)
+        {
+            bool OpEstado = false;
+            bool status = false;
+
+            switch (obj.Entidad)
+            {
+                case "MarcaMotor":
+                    (OpEstado, status) =
+                        await _unitOfWork.MarcaMotor.UpdateStatus(obj.ID, _unitOfWork._context.MarcaMotor);
+                    break;
+                // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                case "MarcaHelice":
+                    (OpEstado, status) =
+                        await _unitOfWork.MarcaHelice.UpdateStatus(obj.ID, _unitOfWork._context.MarcaHelice);
+                    break;
+                // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                case "Tipo":
+                    (OpEstado, status) =
+                        await _unitOfWork.TipoComponente.UpdateStatus(obj.ID, _unitOfWork._context.TipoComponente);
+                    break;
+                // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                default:
+                    return (OpEstado, status);
+            }
+
+            await _unitOfWork.Save();
+            return (OpEstado, status);
+        }
+
     }
 }

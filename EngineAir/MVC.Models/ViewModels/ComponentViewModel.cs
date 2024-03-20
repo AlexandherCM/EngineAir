@@ -13,6 +13,18 @@ namespace MVC.Models.ViewModels
         public ModeloVariante ModeloVariante { get; set; } = new();
     }   
 
+    public class UpdateStatusDTO
+    {
+        [JsonPropertyName("ID")]
+        public int ID { get; set; }
+
+        [JsonPropertyName("Entidad")]
+        public string Entidad { get; set; } = string.Empty;
+
+        [JsonPropertyName("Status")]
+        public bool? Status { get; set; }    
+    }
+
     public class MarcaTipo
     {
         public string Nombre { get; set; } = string.Empty;

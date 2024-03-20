@@ -29,10 +29,26 @@ namespace EngineAir.Controllers.Api
             _response = await _service.CreateBrand(MarcaTipo);
             _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
 
-            if(MarcaTipo.ClientID != null)
+            if (MarcaTipo.ClientID != null)
                 _response.ClientID = MarcaTipo.ClientID;
 
-            await _hubContext.Clients.All.SendAsync("sendMessage", _response); 
+            await _hubContext.Clients.All.SendAsync("CreateBrandType", _response);
+            return Ok();
+        }
+
+        [HttpPost("UpdateStatus")]
+        public async Task<IActionResult> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
+        {
+            (bool OpEstado, bool status) = await _service.UpdateStatus(UpdateStatusDTO);
+
+            if (OpEstado)
+            {
+                UpdateStatusDTO.Status = status;
+                await _hubContext.Clients.All.SendAsync("updateStatus", UpdateStatusDTO);
+            }
+            else
+                return BadRequest();
+
             return Ok();
         }
 

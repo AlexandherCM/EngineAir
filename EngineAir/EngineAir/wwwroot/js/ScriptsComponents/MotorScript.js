@@ -1,5 +1,4 @@
-﻿
-// Genera un identificador único para esta sesión de cliente (MOMENTÁNEO)
+﻿// Genera un identificador único para esta sesión de cliente (MOMENTÁNEO)
 const uniqueId = Date.now().toString() + Math.random().toString(36).substring(2, 9);
 
 // Recorrer el objeto donde se contiene la información
@@ -20,15 +19,34 @@ function GetFormsData(event) {
     return Objetos;
 };
 
+// Eventos observador - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 //Obtener todos los chbox del concepto marca o tipo y agregar la función de update
-var cbxBrandsTypes = document.querySelectorAll('.chbBrandType');
-BtnEditar.forEach((chbx) => {
-    element.addEventListener('click', (event) => {
-
-    });
+let chbxBrandsTypes = document.querySelectorAll('.chbBrandType');
+chbxBrandsTypes.forEach((chbx) => {
+    CreateChbxListener(chbx);
 });
 
-// Evento observador - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function CreateChbxListener(chbx) {
+    chbx.addEventListener('change', (event) => {
+        let id = event.currentTarget.getAttribute('data-id');
+        let entity = event.currentTarget.getAttribute('data-entity');
+
+        // Objeto DTO - - - - - - - - - - - -
+        let UpdateStatusDTO = {
+            ID: parseInt(id),
+            Entidad: entity
+        };
+
+        //Petición con la api
+        api.SendPost(`api/ComponenteTipo/UpdateStatus`, UpdateStatusDTO)
+            .then(data => { /* Conexión establecida correctamente */ })
+            .catch(error => {
+                Modal('¡Error!', '¡La conexión con el servidor fallo!', false);
+            });
+    });
+};
+
+//Obtener el formulario y aplicar el evento objervador
 function CreateFormsListener(Prototype) {
     document.getElementById(Prototype.Brand).addEventListener('submit', (event) => {
         // Detener evento de recarga
@@ -55,8 +73,8 @@ function CreateFormsListener(Prototype) {
 };
 
 
-// Observador del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-connection.on("sendMessage", (_response) => {
+// Observadores del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+connection.on("CreateBrandType", (_response) => {
     if (_response.Estado)
         NewBrandFile(JSON.parse(_response.Body), Prototypes);
 
@@ -66,18 +84,37 @@ connection.on("sendMessage", (_response) => {
         AlertaJS(_response);
 });
 
+connection.on("updateStatus", (obj) => {
+    //Recargar valores para detectar nuevas filas
+    chbxBrandsTypes = document.querySelectorAll('.chbBrandType');
+
+    chbxBrandsTypes.forEach((chbx) => {
+        let id = chbx.getAttribute('data-id');
+        let entity = chbx.getAttribute('data-entity');
+
+        if (parseInt(id) === obj.ID && entity === obj.Entidad)
+            chbx.checked = Boolean(obj.Status);
+    });
+});
+
 // Nueva fila de una marca de motores
 function NewBrandFile(Records, Prototypes) {
     let tbody = document.getElementById(Prototypes.Engine.Row);
+
+    let id = Records[Records.length - 1].ID;
     let status = Records[Records.length - 1].Estado;
     let name = Records[Records.length - 1].Nombre;
 
-    tbody.innerHTML += `
+    let tr = document.createElement('tr');
+    tr.innerHTML = `
         <tr>
             <td>${name}</td>
             <td>
                 <label class="toggle-switch my-2">
-                    <input class="chbTable" type="checkbox" checked="${status}">
+
+                    <input data-id="${id}" data-entity="MarcaMotor"
+                           class="chbTable chbBrandType" type="checkbox" checked="${status}">
+
                     <div class="toggle-switch-background">
                         <div class="toggle-switch-handle"></div>
                     </div>
@@ -88,4 +125,15 @@ function NewBrandFile(Records, Prototypes) {
             </td>
         </tr>
     `;
+
+    tbody.appendChild(tr);
+    NewEventListenerChbx(tbody);
+};
+
+function NewEventListenerChbx(tbody) {
+    let rows = Array.from(tbody.children).filter(child => child.tagName.toLowerCase() === 'tr');
+    let LastRow = rows[rows.length - 1];
+
+    let chbx = LastRow.querySelector('input[type="checkbox"]');
+    CreateChbxListener(chbx);
 };
