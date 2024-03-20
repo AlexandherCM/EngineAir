@@ -107,7 +107,10 @@
                         <td>@item.Nombre</td>
                         <td>
                             <label class="toggle-switch my-2">
-                                <input class="chbTable" type="checkbox" checked="@item.Estado">
+                                @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
+                                <input data-id="@item.ID" data-entity="@_configService["Concept:Engine:Brand"]"
+                                       class="chbTable chbBrandType" type="checkbox" checked="@item.Estado">
+                                @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
                                 <div class="toggle-switch-background">
                                     <div class="toggle-switch-handle"></div>
                                 </div>

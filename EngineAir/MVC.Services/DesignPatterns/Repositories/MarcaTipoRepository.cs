@@ -50,6 +50,6 @@ namespace MVC.Services.DesignPatterns.Repositories
                 return _alertaEstado;
             }
         }
-    }
 
+    }
 }

@@ -20,6 +20,14 @@ function GetFormsData(event) {
     return Objetos;
 };
 
+//Obtener todos los chbox del concepto marca o tipo y agregar la función de update
+var cbxBrandsTypes = document.querySelectorAll('.chbBrandType');
+BtnEditar.forEach((chbx) => {
+    element.addEventListener('click', (event) => {
+
+    });
+});
+
 // Evento observador - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 function CreateFormsListener(Prototype) {
     document.getElementById(Prototype.Brand).addEventListener('submit', (event) => {
@@ -54,7 +62,7 @@ connection.on("sendMessage", (_response) => {
 
     //Validar la sesión actual para mostrar la alerta solo 
     //al cliente que realizo la petición al servidor
-    if (_response.ClientID == uniqueId && _response.ClientID != null)
+    if (_response.ClientID != null && _response.ClientID == uniqueId)
         AlertaJS(_response);
 });
 
