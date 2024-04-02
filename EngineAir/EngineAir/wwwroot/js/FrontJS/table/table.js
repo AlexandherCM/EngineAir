@@ -1,10 +1,25 @@
 ﻿//document.addEventListener("DOMContentLoaded", function () {
-BrandOP();
+PaginatedBrand();
 
-function BrandOP() {
+function RefreshInRealTime() {
+    let totalRecord = document.getElementById('brand').getElementsByTagName('tbody')[0].getElementsByTagName('tr').length;
+    let ddlRowsNumber = parseInt(document.getElementById("rowsPageBrand").value);
+    let module = totalRecord % ddlRowsNumber;
+
+    // Si el módulo es 1, significa que el nuevo registro inicia una nueva página
+    if (module === 1 || ddlRowsNumber === 1) {
+        let paginatedBrand = document.getElementById('paginatedBrand');
+        while (paginatedBrand.firstChild) {
+            paginatedBrand.removeChild(paginatedBrand.firstChild);
+        }
+        PaginatedBrand();
+    }
+}
+
+function PaginatedBrand() {
     var tableBrand = document.getElementById('brand');
     var dataRowsBrand = tableBrand.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    var paginationRowBrand = 5;
+    var paginationRowBrand = parseInt(document.getElementById("rowsPageBrand").value);
     var rowTotalBrand = dataRowsBrand.length;
     var totalPagesBrand = Math.ceil(rowTotalBrand / paginationRowBrand);
     var paginatedBrand = document.getElementById('paginatedBrand');
@@ -23,6 +38,7 @@ function BrandOP() {
     }
 
     showPageBrand(currentPageBrand);
+
 
     function showPageBrand(pageNumber) {
         for (let i = 0; i < dataRowsBrand.length; i++) {
@@ -70,19 +86,11 @@ function BrandOP() {
         }
     }
 
-    //let element = document.getElementById('rowsPageBrand');
-    //if (element) {
-    //    element.addEventListener('change', changeRowsByPagesBrand);
-    //} else {
-    //    console.log('El elemento con el id "rowsPageBrand" no existe.');
-    //}
     document.getElementById('rowsPageBrand').addEventListener('change', changeRowsByPagesBrand);
-};
-
-
-
-
-
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // Para la tabla del modelo
 var tableModel = document.getElementById('model');
