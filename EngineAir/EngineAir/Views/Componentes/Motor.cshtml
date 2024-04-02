@@ -14,21 +14,6 @@
 <section class="title border-eas text-center rounded-4 mt-3">
 
     <h2><b><span class="color-pale">M</span>arcas de motores</b></h2>
-    @*<div id="chat" class="border-gray border-3">
-    <input id="txtMessage" placeholder="Mensaje" />
-    <button id="btnEnviar">Enviar mensaje</button>
-
-    <div id="MyContent"></div>
-    </div>*@
-
-    @*@if (ViewBag.Alerta != null)
-    {
-    <p>Alerta Estado: @ViewBag.Alerta.Leyenda</p>
-    }
-    else
-    {
-    <p>No hay información de alerta</p>
-    }*@
 </section>
 
 <section class="row title justify-content-between p my-2">
@@ -51,7 +36,7 @@
 
                 <select id="rowsPageBrand" class="rowsPerPage">
                     <option value="1">1 resultados</option>
-                    <option value="5">5 resultados</option>
+                    <option selected value="5">5 resultados</option>
                     <option value="7">7 resultados</option>
                     <option value="10">10 resultados</option>
                 </select>

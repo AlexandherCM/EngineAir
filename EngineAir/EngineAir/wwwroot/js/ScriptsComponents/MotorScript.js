@@ -74,10 +74,18 @@ function CreateFormsListener(Prototype) {
 
 
 // Observadores del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+let flagBrandType = false; //Vandera de animación
 connection.on("CreateBrandType", (_response) => {
-    if (_response.Estado)
+    if (_response.Estado) {
         NewBrandFile(JSON.parse(_response.Body), Prototypes);
 
+        // Validar animación de páginación - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        let ddlRowsNumber = document.getElementById("rowsPageBrand").value;
+        let totalRecord =
+            document.getElementById('brand').getElementsByTagName('tbody')[0].getElementsByTagName('tr').length;
+        let module = totalRecord % ddlRowsNumber;
+        flagBrandType = module == 0 ? true : false;
+    }
     //Validar la sesión actual para mostrar la alerta solo 
     //al cliente que realizo la petición al servidor
     if (_response.ClientID != null && _response.ClientID == uniqueId)
