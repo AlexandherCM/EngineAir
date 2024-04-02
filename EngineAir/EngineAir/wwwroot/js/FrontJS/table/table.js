@@ -1,4 +1,5 @@
 ﻿//document.addEventListener("DOMContentLoaded", function () {
+var InitListener = true;
 PaginatedBrand();
 
 function RefreshInRealTime() {
@@ -15,11 +16,11 @@ function RefreshInRealTime() {
         PaginatedBrand();
     }
 }
-
 function PaginatedBrand() {
     var tableBrand = document.getElementById('brand');
     var dataRowsBrand = tableBrand.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
     var paginationRowBrand = parseInt(document.getElementById("rowsPageBrand").value);
+
     var rowTotalBrand = dataRowsBrand.length;
     var totalPagesBrand = Math.ceil(rowTotalBrand / paginationRowBrand);
     var paginatedBrand = document.getElementById('paginatedBrand');
@@ -38,7 +39,6 @@ function PaginatedBrand() {
     }
 
     showPageBrand(currentPageBrand);
-
 
     function showPageBrand(pageNumber) {
         for (let i = 0; i < dataRowsBrand.length; i++) {
@@ -86,8 +86,13 @@ function PaginatedBrand() {
         }
     }
 
-    document.getElementById('rowsPageBrand').addEventListener('change', changeRowsByPagesBrand);
+    //Solo crear el listener en la primera carga
+    if (InitListener) {
+        document.getElementById('rowsPageBrand').addEventListener('change', changeRowsByPagesBrand);
+        InitListener = false;
+    }
 }
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
