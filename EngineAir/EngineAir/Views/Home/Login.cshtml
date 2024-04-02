@@ -1,0 +1,85 @@
+﻿@model MVC.Models.ViewModels.SesionViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]  Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <main id="content-main" class="bg-index container-fluid">
+        <article class="">
+            <section style="margin:auto; width:25%;" class="bg-light text-center mt-5 p-5">
+                <form asp-action="ValidarAcceso" id="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    @* - - - - - - - - - - - - - Bienvenida - - - - - - - - - - - - - *@
+                    <section class="row text-center">
+                        <h2>
+                            <b>
+                                <span class="color-R">I</span>niciar sesi<span class="color-R">ó</span>n
+                            </b>
+                        </h2>
+                    </section>
+                    @* - - - - - - - - - - - - - Correo - - - - - - - - - - - - - *@
+                    <section class="row mt-2">
+                        <div class="sesion-input">
+                            <label asp-for="Correo" for="exampleInputEmail1">Dirección de correo eléctronico</label>
+                            <br />
+                            <input asp-for="Correo" type="email" style="width:100%">
+                            <br />
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+                    </section>
+                    @* - - - - - - - - - - - - - Contraseña - - - - - - - - - - - - -*@
+                    <section class="row pt-3">
+                        <div class="sesion-input">
+                            <label asp-for="Clave" for="exampleInputPassword1">Contraseña</label>
+                            <br />
+                            <input asp-for="Clave" type="password" style="width:100%">
+                            <br />
+                            <span asp-validation-for="Clave" class="text-danger"></span>
+                        </div>
+                    </section>
+
+                    <section class="row pt-3">
+                        <div class="sesion-input">
+                            @if (ViewBag.Sesion != null)
+                            {
+                                <span class="text-danger">@ViewBag.Sesion</span>
+                            }
+                        </div>
+                    </section>
+                    @* - - - - - - - - - - - - - Registrarse - - - - - - - - - - - - -*@
+                    <section class="row mt-2">
+                        <a asp-controller="Acceso" asp-action="Registro"><p>¿Aún no tienes una cuenta? <b id="registrar">Registrate aquí</b></p></a>
+                    </section>
+                    @* - - - - - - - - - - - - - Olvidaste tu contraseña - - - - - - - - - - - - - *@
+                    <section class="row mb-2">
+                        <b>
+                            <a asp-action="Recuperar">¿Olvidaste tu contraseña?</a>
+                        </b>
+                    </section>
+
+                    <section class="row pb-3">
+                        <div class="sesion-input">
+                            <input type="submit" value="Iniciar sesión" class="boton" />
+                        </div>
+                    </section>
+
+                </form>
+            </section>
+
+        </article>
+    </main>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

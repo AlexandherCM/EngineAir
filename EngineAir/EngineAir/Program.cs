@@ -6,6 +6,7 @@ using MVC.Services.Services;
 using MVC.Services.DesignPatterns.Repositories;
 using MVC.Models.Entities;
 using EngineAir.Hubs;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,9 @@ CultureInfo.DefaultThreadCurrentUICulture = culture;
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
 // Inyección de dependencias por sesión - - - - - - - - - - - - - - - - - - - - - 
-// Únidad de trabajo
+// Únidad de trabajo y otros servicios
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+builder.Services.AddScoped<AutenticarService>();
 
 // Servicios intermedios entre repositorio y Unidad de trabajo
 builder.Services.AddScoped<ComponentService>();
@@ -34,6 +36,16 @@ builder.Services.AddScoped<MarcaTipoRepository<TipoComponente>>();
 // Add services to the container - - - - - - - - - - - - - - - - - - - - - - - - -
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Configuraciones de autenticación por roles - - - - - - - - - - - - - - - - - - - - - -
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Home/Login";
+        option.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+        option.AccessDeniedPath = "/Home/Privacy";
+    });
 
 builder.Services.AddDbContext<Context>(options =>
 {
@@ -59,11 +71,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// CONFIGURACIÓN DE LOS ROLES
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Login}/{id?}");
 
 // Configuración de los Sockets
 app.UseEndpoints(endpoints =>

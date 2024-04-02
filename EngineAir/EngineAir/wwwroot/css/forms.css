@@ -1,5 +1,5 @@
 ﻿.form {
-    width: 30%;
+    width: 20%;
     background-color: var(--eas);
     border-radius: 10px;
     color: white;
@@ -9,6 +9,7 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: transform 0.5s ease-in-out;
+    padding: 0.5% 0.1%;
 }
 
 .close {
