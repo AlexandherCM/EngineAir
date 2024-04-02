@@ -1,4 +1,14 @@
-﻿// Genera un identificador único para esta sesión de cliente (MOMENTÁNEO)
+﻿// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//Scripts anteriores referenciados
+//  ~/js/FrontJS/table/table.js
+//  ~/js/ScriptsComponents/Prototypes.js
+//  ~/js/FrontJS/Alerts/AlertScript.js
+//  ~/lib/microsoft/signalr/dist/browser/signalr.js
+//  ~/js/ConnectionSignalR.js
+//  ~/js/ConnectionApi.js
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+// Genera un identificador único para esta sesión de cliente (MOMENTÁNEO)
 const uniqueId = Date.now().toString() + Math.random().toString(36).substring(2, 9);
 
 // Recorrer el objeto donde se contiene la información
