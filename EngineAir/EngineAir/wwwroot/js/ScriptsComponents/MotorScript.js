@@ -49,7 +49,9 @@ function CreateChbxListener(chbx) {
 
         //Petición con la api
         api.SendPost(`api/ComponenteTipo/UpdateStatus`, UpdateStatusDTO)
-            .then(data => { /* Conexión establecida correctamente */ })
+            .then(data => {
+                let d = data; /* Conexión establecida correctamente */
+            })
             .catch(error => {
                 Modal('¡Error!', '¡La conexión con el servidor fallo!', false);
             });

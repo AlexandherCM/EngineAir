@@ -10,6 +10,9 @@
             body: JSON.stringify(data),
         });
 
+        // Deserializa la respuesta JSON
+        //const responseData = await response.json();
+
         // Verifica si el código de estado es 200-299
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

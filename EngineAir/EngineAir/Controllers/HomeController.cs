@@ -15,24 +15,25 @@ namespace EngineAir.Controllers
             _service = service;
         }
 
-        //[Authorize(Roles = "ADM")]
+        [Authorize(Roles = "ADM")]
         public IActionResult Index()
         {
-            string rol =
-                    User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
-
             return View();
         }
 
+        [Authorize(Roles = "ADM, GRL")]
         public IActionResult Motores()
         {
             return RedirectToAction("Motor", "Componentes");
         }
+
+        [Authorize(Roles = "ADM, GRL")]
         public IActionResult Helices()
         {
             return RedirectToAction("Helice", "Componentes");
         }
 
+        [Authorize(Roles = "ADM, GRL")]
         public IActionResult Componentes()
         {
             return RedirectToAction("Variante", "Componentes");

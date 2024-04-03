@@ -1,11 +1,14 @@
 ﻿using EngineAir.Hubs;
 using EngineAir.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using MVC.Models.Classes;
 using MVC.Models.ViewModels;
 using MVC.Services.Services;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace EngineAir.Controllers.Api
 {
@@ -36,9 +39,13 @@ namespace EngineAir.Controllers.Api
             return Ok();
         }
 
+        [Authorize(Roles = "ADM, GRL")]
         [HttpPost("UpdateStatus")]
         public async Task<IActionResult> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
         {
+            var userId = User.FindFirstValue(ClaimTypes.Role);
+            var ID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             (bool OpEstado, bool status) = await _service.UpdateStatus(UpdateStatusDTO);
 
             if (OpEstado)

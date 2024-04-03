@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MVC.Models.Classes;
 using MVC.Models.Entities;
 using MVC.Models.ViewModels;
 using MVC.Services.Services;
+using System.Data;
 
 namespace EngineAir.Controllers
 {
@@ -20,6 +22,8 @@ namespace EngineAir.Controllers
         }
 
         // End-Points de la interfaz de los motores - - - - - - - - - - - -
+
+        [Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Motor()
         {
             this.ViewModel = new()
@@ -30,12 +34,16 @@ namespace EngineAir.Controllers
             return View(ViewModel);
         }
         // End-Points de la interfaz de las hélices- - - - - - - - - - - - -
+
+        [Authorize(Roles = "ADM, GRL")]
         public IActionResult Helice()
         {
             return View();
         }
 
         // End-Points de la interfaz de otros componentes - - - - - - - - - -
+
+        [Authorize(Roles = "ADM, GRL")]
         public IActionResult Variante()
         {
             return View();
@@ -43,6 +51,7 @@ namespace EngineAir.Controllers
 
         [HttpPost] 
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> CreateBrand(MarcaTipo MarcaTipo) 
         {
             _alertaEstado = await _service.CreateBrand(MarcaTipo);
