@@ -1,6 +1,15 @@
 ﻿class ConnectionApi {
+
+    url = 'https://localhost:7109';
+    static timeSpam = 2000;
     static host = 'https://localhost:7109/';
-    
+
+    async redirectToAction(endPoint) {
+        setTimeout(() => {
+            window.location.href = `${ConnectionApi.host}${endPoint}`;
+        }, ConnectionApi.timeSpam);
+    }
+
     async SendPost(endpoint, data) {
         const response = await fetch(`${ConnectionApi.host}${endpoint}`, {
             method: 'POST',
@@ -10,15 +19,12 @@
             body: JSON.stringify(data),
         });
 
-        // Deserializa la respuesta JSON
-        //const responseData = await response.json();
-
         // Verifica si el código de estado es 200-299
-        if (!response.ok) {
+        if (!response.ok)
             throw new Error(`HTTP error! status: ${response.status}`);
-        }
 
-        return true;
+        // Lee el cuerpo de la respuesta como JSON
+        return await response.json();
     }
 };
 

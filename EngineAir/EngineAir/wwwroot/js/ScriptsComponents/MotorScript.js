@@ -49,11 +49,13 @@ function CreateChbxListener(chbx) {
 
         //Petición con la api
         api.SendPost(`api/ComponenteTipo/UpdateStatus`, UpdateStatusDTO)
-            .then(data => {
-                let d = data; /* Conexión establecida correctamente */
+            .then(_response => {
+                if (_response.Estado === false)
+                    AlertaJS(_response);
             })
             .catch(error => {
-                Modal('¡Error!', '¡La conexión con el servidor fallo!', false);
+                Modal('¡Sesión expirada!', '¡vuelva a iniciar sesión!', false);
+                api.redirectToAction("Home/Logout");
             });
     });
 };

@@ -41,10 +41,16 @@ namespace EngineAir.Controllers.Api
 
         [Authorize(Roles = "ADM, GRL")]
         [HttpPost("UpdateStatus")]
-        public async Task<IActionResult> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
+        public async Task<ResponseJS> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
         {
             var userId = User.FindFirstValue(ClaimTypes.Role);
             var ID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ResponseJS response = new ResponseJS()
+            {
+                Leyenda = "Actualización correcta",
+                Estado = true
+            };
 
             (bool OpEstado, bool status) = await _service.UpdateStatus(UpdateStatusDTO);
 
@@ -54,9 +60,14 @@ namespace EngineAir.Controllers.Api
                 await _hubContext.Clients.All.SendAsync("updateStatus", UpdateStatusDTO);
             }
             else
-                return BadRequest();
+            {
+                response.Leyenda = "Actualización fallida";
+                response.Estado = false;
 
-            return Ok();
+                return response;
+            }
+
+            return response;
         }
 
     }

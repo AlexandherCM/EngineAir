@@ -64,7 +64,7 @@ namespace EngineAir.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Logout()
         {
             await _service.CerrarSesion(HttpContext);
