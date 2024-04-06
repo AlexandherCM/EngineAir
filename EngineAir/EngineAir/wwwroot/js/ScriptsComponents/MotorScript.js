@@ -79,9 +79,13 @@ function CreateFormsListener(Prototype) {
 
         //Petición con la api
         api.SendPost(`api/ComponenteTipo/Create`, MarcaTipo)
-            .then(data => { /* Conexión establecida correctamente */ })
+            .then(_response => {
+                if (_response.Estado === false)
+                    AlertaJS(_response);
+            })
             .catch(error => {
-                Modal('¡Error!', '¡La conexión con el servidor fallo!', false);
+                Modal('¡Sesión expirada!', '¡vuelva a iniciar sesión!', false);
+                api.redirectToAction("Home/Logout");
             });
     });
 };
