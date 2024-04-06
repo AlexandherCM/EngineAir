@@ -7,6 +7,7 @@ using MVC.Services.DesignPatterns.Repositories;
 using MVC.Models.Entities;
 using EngineAir.Hubs;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using QuestPDF.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,8 @@ builder.Services.AddScoped<MarcaTipoRepository<TipoComponente>>();
 // Add services to the container - - - - - - - - - - - - - - - - - - - - - - - - -
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 // Configuraciones de autenticación por roles - - - - - - - - - - - - - - - - - - - - - -

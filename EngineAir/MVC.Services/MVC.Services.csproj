@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="QuestPDF" Version="2023.12.3" />
   </ItemGroup>
 
   <ItemGroup>
