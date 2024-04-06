@@ -27,20 +27,37 @@ namespace EngineAir.Controllers.Api
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] MarcaTipo MarcaTipo)
+        [Authorize(Roles = "ADM, GRL")]
+        public async Task<ResponseJS> Create([FromBody] MarcaTipo MarcaTipo)
         {
-            _response = await _service.CreateBrand(MarcaTipo);
-            _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
+            ResponseJS response = new ResponseJS()
+            {
+                Leyenda = "Registro correcto",
+                Estado = true
+            };
 
-            if (MarcaTipo.ClientID != null)
-                _response.ClientID = MarcaTipo.ClientID;
+            try
+            {
+                _response = await _service.CreateBrand(MarcaTipo);
+                _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
 
-            await _hubContext.Clients.All.SendAsync("CreateBrandType", _response);
-            return Ok();
+                if (MarcaTipo.ClientID != null)
+                    _response.ClientID = MarcaTipo.ClientID;
+
+                await _hubContext.Clients.All.SendAsync("CreateBrandType", _response);
+                return response;
+            }
+            catch
+            {
+                response.Leyenda = "Registro fallido";
+                response.Estado = false;
+
+                return response;
+            }
         }
 
-        [Authorize(Roles = "ADM, GRL")]
         [HttpPost("UpdateStatus")]
+        [Authorize(Roles = "ADM, GRL")]
         public async Task<ResponseJS> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
         {
             var userId = User.FindFirstValue(ClaimTypes.Role);

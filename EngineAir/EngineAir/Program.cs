@@ -43,7 +43,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(option =>
     {
         option.LoginPath = "/Home/Login";
-        option.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+        //option.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
         option.AccessDeniedPath = "/Home/Privacy";
     });
 
