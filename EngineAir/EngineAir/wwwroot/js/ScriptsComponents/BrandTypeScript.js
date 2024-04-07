@@ -1,5 +1,11 @@
 ﻿// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //Scripts anteriores referenciados
+
+// Este script esta en el final de las páginas de HTML - - - - - - - - - - - - - - - - - - - -
+//<script>
+//    var BrandEntity = '@_configService["Concept:"ObjetoEnAppSetting.json":Brand"]';
+//</script>
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //  ~/js/FrontJS/table/table.js
 //  ~/js/ScriptsComponents/Prototypes.js
 //  ~/js/FrontJS/Alerts/AlertScript.js
@@ -55,13 +61,16 @@ function CreateChbxListener(chbx) {
             })
             .catch(error => {
                 Modal('¡Sesión expirada!', '¡vuelva a iniciar sesión!', false);
-                api.redirectToAction("Home/Logout");
+                api.redirectToAction();
             });
     });
 };
 
-//Obtener el formulario y aplicar el evento objervador
+//Obtener el formulario y aplicar el evento observador
 function CreateFormsListener(Prototype) {
+    if (!document.getElementById(Prototype.Brand))
+        return;
+
     document.getElementById(Prototype.Brand).addEventListener('submit', (event) => {
         // Detener evento de recarga
         event.preventDefault();
@@ -85,7 +94,7 @@ function CreateFormsListener(Prototype) {
             })
             .catch(error => {
                 Modal('¡Sesión expirada!', '¡vuelva a iniciar sesión!', false);
-                api.redirectToAction("Home/Logout");
+                api.redirectToAction();
             });
     });
 };
@@ -95,7 +104,7 @@ function CreateFormsListener(Prototype) {
 connection.on("CreateBrandType", (_response) => {
     if (_response.Estado) {
         NewBrandFile(JSON.parse(_response.Body), Prototypes);
-        RefreshInRealTime()
+        RefreshBrandInRealTime()
     }
 
     // Validar la sesión actual para mostrar la alerta solo al cliente que realizó la petición al servidor
@@ -119,11 +128,12 @@ connection.on("updateStatus", (obj) => {
 
 // Nueva fila de una marca de motores
 function NewBrandFile(Records, Prototypes) {
-    let tbody = document.getElementById(Prototypes.Engine.Row);
+    let tbody = document.getElementById(Prototypes.ConceptBrandType.Row);
 
     let id = Records[Records.length - 1].ID;
     let status = Records[Records.length - 1].Estado;
     let name = Records[Records.length - 1].Nombre;
+    let entity = BrandEntity; // "BrandEntity" esta definida en la vista, en los scripts
 
     let tr = document.createElement('tr');
     tr.innerHTML = `
@@ -132,7 +142,7 @@ function NewBrandFile(Records, Prototypes) {
             <td>
                 <label class="toggle-switch my-2">
 
-                    <input data-id="${id}" data-entity="MarcaMotor"
+                    <input data-id="${id}" data-entity="${entity}"
                            class="chbTable chbBrandType" type="checkbox" checked="${status}">
 
                     <div class="toggle-switch-background">

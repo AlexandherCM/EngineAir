@@ -18,7 +18,19 @@ namespace EngineAir.Controllers.Api
     {
         private ComponentService _service;
         private IHubContext<ChatHub> _hubContext;
-        private ResponseJS _response = new();
+
+        private ResponseJS _observerResponse = new();
+        private ResponseJS _code200 = new()  
+        {
+            Leyenda = "Consulta exitosa al servidor.", 
+            Estado = true
+        }; 
+        
+        private ResponseJS _code500 = new()  
+        {
+            Leyenda = "Ocurrió un error interno en el servidor.", 
+            Estado = true
+        }; 
 
         public ComponenteTipoController(ComponentService service, IHubContext<ChatHub> hubContext)
         {
@@ -30,29 +42,36 @@ namespace EngineAir.Controllers.Api
         [Authorize(Roles = "ADM, GRL")]
         public async Task<ResponseJS> Create([FromBody] MarcaTipo MarcaTipo)
         {
-            ResponseJS response = new ResponseJS()
-            {
-                Leyenda = "Registro correcto",
-                Estado = true
-            };
-
             try
             {
-                _response = await _service.CreateBrand(MarcaTipo);
-                _response.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
+                _observerResponse = await _service.CreateBrand(MarcaTipo);
+                if (_observerResponse.Estado)
+                {
+                    switch (MarcaTipo.Entidad)
+                    {
+                        case "MarcaMotor":
+                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
+                            break;
+                        case "MarcaHelice":
+                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetMarcasHelices());
+                            break;
+                        case "Tipo":
+                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetTiposComponente());
+                            break;
+                        default:
+                            return _observerResponse;
+                    }
+                }
 
                 if (MarcaTipo.ClientID != null)
-                    _response.ClientID = MarcaTipo.ClientID;
+                    _observerResponse.ClientID = MarcaTipo.ClientID;
 
-                await _hubContext.Clients.All.SendAsync("CreateBrandType", _response);
-                return response;
+                await _hubContext.Clients.All.SendAsync("CreateBrandType", _observerResponse);
+                return _code200;
             }
             catch
             {
-                response.Leyenda = "Registro fallido";
-                response.Estado = false;
-
-                return response;
+                return _code500;
             }
         }
 
@@ -63,12 +82,6 @@ namespace EngineAir.Controllers.Api
             var userId = User.FindFirstValue(ClaimTypes.Role);
             var ID = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            ResponseJS response = new ResponseJS()
-            {
-                Leyenda = "Actualización correcta",
-                Estado = true
-            };
-
             (bool OpEstado, bool status) = await _service.UpdateStatus(UpdateStatusDTO);
 
             if (OpEstado)
@@ -78,13 +91,10 @@ namespace EngineAir.Controllers.Api
             }
             else
             {
-                response.Leyenda = "Actualización fallida";
-                response.Estado = false;
-
-                return response;
+                return _code500;
             }
-
-            return response;
+             
+            return _code200;
         }
 
     }

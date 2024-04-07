@@ -1,12 +1,12 @@
 ﻿class ConnectionApi {
-
-    url = 'https://localhost:7109';
     static timeSpam = 2000;
+
+    static logOut = "Home/Logout";
     static host = 'https://localhost:7109/';
 
-    async redirectToAction(endPoint) {
+    async redirectToAction() {
         setTimeout(() => {
-            window.location.href = `${ConnectionApi.host}${endPoint}`;
+            window.location.href = `${ConnectionApi.host}${ConnectionApi.logOut}`;
         }, ConnectionApi.timeSpam);
     }
 
