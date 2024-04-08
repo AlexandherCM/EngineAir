@@ -15,7 +15,7 @@ namespace EngineAir.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "ADM")]
+        [Authorize(Roles = "ADM, GRL")]
         public IActionResult Index()
         {
             return View();
@@ -49,6 +49,7 @@ namespace EngineAir.Controllers
         public IActionResult Login()
         {
             ViewBag.Sesion = TempData["Sesion"];
+            ViewBag.Registro = TempData["Registro"];
             return View();
         }
 
@@ -61,6 +62,19 @@ namespace EngineAir.Controllers
             }
 
             TempData["Sesion"] = Acceso;
+            return RedirectToAction(nameof(Login));
+        }
+
+        public async Task<IActionResult> CrearCuenta(SesionViewModel sesion)
+        {
+            var Registro = await _service.RegistrarUsuario(sesion, HttpContext);
+
+            if (Registro == "ok")
+            {
+              
+            }
+
+            TempData["Registro"] = Registro;
             return RedirectToAction(nameof(Login));
         }
 

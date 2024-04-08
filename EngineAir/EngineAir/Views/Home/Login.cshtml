@@ -21,16 +21,27 @@
         <div class="col-lg-10">
             <div class="contenedor" id="contenedor">
                 <div class="form-container registro">
-                    <form>
+                    <form asp-action="CrearCuenta">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <h1>Crear cuenta</h1>
                         <span>Complete la siguiente informacion con sus datos personales</span>
-                        <input type="text" placeholder="Nombre">
-                        <input type="email" placeholder="Correo">
-                        <input type="password" placeholder="Contraseña">
-                        <input type="password" placeholder="Confirmar contraseña">
+                        <input asp-for="Nombre" type="text" placeholder="Nombre">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                        <input asp-for="Correo" type="email" placeholder="Correo" required title="por favor, introduce una dirección de correo electrónico válida.">
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                        <input asp-for="Clave" type="password" placeholder="Contraseña">
+                        <span asp-validation-for="Clave" class="text-danger"></span>
+                        <input asp-for="ConfirmarClave" type="password" placeholder="Confirmar contraseña">
+                        @if (ViewBag.Registro != null)
+                        {
+                            <span class="text-danger">@ViewBag.Registro</span>
+                        }
+                        <span asp-validation-for="ConfirmarClave" class="text-danger"></span>
                         <button>Registrarse</button>
                     </form>
                 </div>
+
+
                 <div class="form-container login">
                     <form asp-action="ValidarAcceso">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

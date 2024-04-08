@@ -13,10 +13,9 @@ namespace MVC.Models.Entities
         public string Nombre { get; set; } = string.Empty;
         public string Correo { get; set; } = string.Empty;
         public string Clave { get; set; } = string.Empty;
-
-        //public bool Restablecer { get; set; }
-        //public bool Validado { get; set; }
-        //public string Token { get; set; } = string.Empty;
+        public bool Restablecer { get; set; }
+        public bool Validado { get; set; }
+        public string Token { get; set; } = string.Empty;
 
         [ForeignKey(nameof(PerfilID))]
         public virtual Perfil Perfil { get; set; } = new Perfil();

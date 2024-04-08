@@ -6,14 +6,17 @@ using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MVC.Services.Services
 {
     public class AutenticarService
     {
         private readonly Context _context;
+        
+        LoginService LoginService = new LoginService();
 
-        public AutenticarService(Context context)
+        public AutenticarService(Context context )
         {
             _context = context;
         }
@@ -22,17 +25,46 @@ namespace MVC.Services.Services
         {
             var Mensaje = "Las credenciales son incorrectas.";
 
-            //var Clave = _herramientaRegistro.EncriptarPassword(sesion.Clave);
             List<Usuario> Usuarios = await _context.Usuario
-            .Where(c => c.Correo == sesion.Correo && c.Clave == sesion.Clave)
+            .Where(c => c.Correo == sesion.Correo && c.Clave == LoginService.EncriptarPassword(sesion.Clave))
             .Include(r => r.Perfil)
             .ToListAsync();
 
             var usuario = Usuarios.FirstOrDefault();
             if (usuario != null)
             {
-                await CrearCoockie(usuario, HttpContext);
-                return Mensaje = "ok";
+                if (usuario.Validado != false)
+                {
+                    if (usuario.Restablecer != true)
+                    {
+                        await CrearCoockie(usuario, HttpContext);
+                        return Mensaje = "ok";
+                    }
+                    return Mensaje = "Ha solicitado la recuperacion de la cuenta, favor de revisar su correo.";
+                }
+                return Mensaje = "La cuenta esta en espera de validacion.";
+            }
+
+            return Mensaje;
+        }
+
+        public async Task<string> RegistrarUsuario(SesionViewModel sesion, HttpContext httpContext)
+        {
+            string Mensaje = "Las contraseñas no coinciden";
+
+            if(sesion.Clave == sesion.ConfirmarClave)
+            {
+                var Usuario = await _context.Usuario.FirstOrDefaultAsync(u => u.Correo == sesion.Correo);
+                if (Usuario == null)
+                {
+                    var NuevoUsuario = LoginService.CrearUsuario(sesion, "GRL", false);
+                    var Destinatario = "carlosivan12.ci2@gmail.com";
+                    var Plantilla = "Confirmar.html";
+                    var Ruta = $"Home/Confirmar?token={NuevoUsuario.Token}";
+
+                    var Correo = LoginService.CrearPlantilla(/*_webHost,*/ httpContext, NuevoUsuario, Destinatario, Plantilla, Ruta);
+                }
+                return Mensaje = "Ya existe un usuario asociado a esa cuenta";
             }
 
             return Mensaje;
