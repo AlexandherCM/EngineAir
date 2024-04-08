@@ -24,9 +24,10 @@ namespace EngineAir.Controllers
         [Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Motor()
         {
-            ComponentViewModel<MarcaMotor> MotorViewModel = new()
+            ComponentViewModel<MarcaMotor, ModeloMotor> MotorViewModel = new()
             {
-                MarcasTipos = await _service.GetMarcasMotores()
+                MarcasTipos = await _service.GetMarcasMotores(),
+                ModelosVariantes = await _service.GetModelosMotores(),
             };
 
             return View(MotorViewModel);
@@ -36,9 +37,10 @@ namespace EngineAir.Controllers
         [Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Helice()
         {
-            ComponentViewModel<MarcaHelice> HeliceViewModel = new()
+            ComponentViewModel<MarcaHelice, ModeloHelice> HeliceViewModel = new()
             {
-                MarcasTipos = await _service.GetMarcasHelices()
+                MarcasTipos = await _service.GetMarcasHelices(),
+                ModelosVariantes = await _service.GetModelosHelices()
             };
 
             return View(HeliceViewModel);
@@ -49,10 +51,11 @@ namespace EngineAir.Controllers
         [Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Variante()
         { 
-            ComponentViewModel<TipoComponente> TipoComponenteViewModel = new()
+            ComponentViewModel<TipoComponente, Variante> TipoComponenteViewModel = new()
             {
-                MarcasTipos = await _service.GetTiposComponente()
-            };
+                MarcasTipos = await _service.GetTiposComponente(),
+                ModelosVariantes = await _service.GetVariantesComponente()
+            }; 
 
             return View(TipoComponenteViewModel);
         }

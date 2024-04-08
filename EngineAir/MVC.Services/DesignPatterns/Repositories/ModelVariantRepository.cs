@@ -3,20 +3,46 @@ using MVC.Models.Classes;
 using MVC.Models.Entities.GeneralFields;
 using MVC.Models.ViewModels;
 using MVC.Services.DesignPatterns.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
+#pragma warning disable CS8602
 
 namespace MVC.Services.DesignPatterns.Repositories
 {
-    public class ModelVariantRepository<T> : IModelVariant<T> where T : ModalFields, new()
+    public class ModelVariantRepository<T> : IModelVariant<T> where T : ModelFields, new()
     {
         private ResponseJS _alertaEstado = new();
         public ModelVariantRepository() { }
-         
+
+        //public async Task<List<T>> GetList(DbSet<T> table)
+        //    => await table.ToListAsync();
+
+        public async Task<List<T>> GetList(DbSet<T> table, params Expression<Func<T, object>>[] includes)
+        {
+            var query = table.AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.ToListAsync();
+        }
+
+        // ACTUALIZAR EL ESTADO DEL REGISTRO
+        public async Task<(bool, bool)> UpdateStatus(int ID, DbSet<T> table)
+        {
+            try
+            {
+                var BrandTipe = await table.FindAsync(ID);
+                BrandTipe.Estado = !BrandTipe.Estado;
+                return (true, BrandTipe.Estado);
+            }
+            catch
+            {
+                return (false, false);
+            }
+        }
+
         public ResponseJS Insert(ModeloVariante ModeloVariante, DbSet<T> table)
         {
             if (table.Any(e => e.Nombre == ModeloVariante.Nombre))

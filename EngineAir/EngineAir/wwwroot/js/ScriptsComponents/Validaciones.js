@@ -1,4 +1,5 @@
-﻿function ValidarTodosCampos(formulario) {
+﻿
+function ValidarTodosCampos(formulario) {
     let EstadoFormulario = true;
     let inputs = formulario.querySelectorAll('input[type="text"], input[type="number"], select');
 

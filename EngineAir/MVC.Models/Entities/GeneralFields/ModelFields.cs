@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVC.Models.Entities.GeneralFields
 {
-    public class ModalFields
+    public class ModelFields 
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

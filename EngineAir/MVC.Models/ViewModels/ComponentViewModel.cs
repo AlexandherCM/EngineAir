@@ -7,11 +7,14 @@ using System.Text.Json.Serialization;
 namespace MVC.Models.ViewModels
 {
     // Generalidades de los ViewModels - - - - - - - - - - - - -
-    public class ComponentViewModel<T> where T : BrandFields
+    public class ComponentViewModel<marcaTipo, modeloVariante>
+    where marcaTipo : BrandFields
+    where modeloVariante : ModelFields
     {
-        public List<T> MarcasTipos { get; set; } = new();
+        public List<marcaTipo> MarcasTipos { get; set; } = new();
+        public List<modeloVariante> ModelosVariantes { get; set; } = new();
 
-        public MarcaTipo MarcaTipo { get; set; } = new();
+        public ViewModels.MarcaTipo MarcaTipo { get; set; } = new();
         public ModeloVariante ModeloVariante { get; set; } = new();
     }
 
@@ -45,10 +48,11 @@ namespace MVC.Models.ViewModels
         public int? Cantidad { get; set; }
 
         public bool Estado { get; set; } = true;
+        public string? ClientID { get; set; } = string.Empty;
 
         public int? MesesTotales()
         {
-            if (UnidadTiempo == true)
+            if (UnidadTiempo == false)
                 return Cantidad * 12;
             else
                 return Cantidad;

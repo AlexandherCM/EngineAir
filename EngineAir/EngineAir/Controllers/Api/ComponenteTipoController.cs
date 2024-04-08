@@ -101,8 +101,37 @@ namespace EngineAir.Controllers.Api
         [Authorize(Roles = "ADM, GRL")] 
         public async Task<ResponseJS> CreateModelVariant([FromBody] ModeloVariante ModeloVariante)
         {
-            _observerResponse = await _service.CreateModel(ModeloVariante);
-            return _code200;
+            try
+            {
+                _observerResponse = await _service.CreateModel(ModeloVariante);
+                if (_observerResponse.Estado)
+                {
+                    switch (ModeloVariante.Entidad)
+                    {
+                        case "ModeloMotor":
+                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetModelosMotores());
+                            break;
+                        case "ModeloHelice":
+                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetModelosHelices());
+                            break;
+                        case "Variante":
+                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetVariantesComponente());
+                            break;
+                        default:
+                            return _observerResponse;
+                    }
+                }
+
+                if (ModeloVariante.ClientID != null)
+                    _observerResponse.ClientID = ModeloVariante.ClientID;
+
+                await _hubContext.Clients.All.SendAsync("CreateModelVariant", _observerResponse);
+                return _code200;
+            }
+            catch
+            {
+                return _code500;
+            }
         }
 
     }

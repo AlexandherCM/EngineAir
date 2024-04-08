@@ -1,6 +1,6 @@
 ﻿@using MVC.Models.ViewModels
 @using MVC.Models.Entities
-@model ComponentViewModel<MarcaHelice>
+@model ComponentViewModel<MarcaHelice, ModeloHelice>
 
 @{
     ViewData["Title"] = "Componente Hélice";
@@ -98,7 +98,7 @@
                             <label class="toggle-switch my-2">
                                 @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
                                 <input data-id="@item.ID" data-entity="@_configService["Concept:Propeller:Brand"]"
-                                       class="chbTable chbBrandType" type="checkbox" checked="@item.Estado">
+                                       class="chbTable chbUpdateStatus" type="checkbox" checked="@item.Estado">
                                 @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
                                 <div class="toggle-switch-background">
                                     <div class="toggle-switch-handle"></div>
@@ -214,126 +214,28 @@
 
             </thead>
 
-            <tbody>
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
-
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                </tr>
-
+            <tbody id="RowModel">
+                @foreach (var item in Model.ModelosVariantes)
+                {
+                    <tr>
+                        <td>@item.Marca.Nombre</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.TiempoRemplazoHrs</td>
+                        <td>@item.TiempoRemplazoMeses</td>
+                        <td>
+                            <label class="toggle-switch my-2">
+                                @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
+                                <input data-id="@item.ID" data-entity="@_configService["Concept:Propeller:Model"]"
+                                       class="chbTable chbUpdateStatus" type="checkbox" checked="@item.Estado">
+                                @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
+                    </tr>
+                }
             </tbody>
 
         </table>
@@ -831,10 +733,12 @@
 
         <script src="~/js/FrontJS/forms/forms.js"></script>
         <script>
-            var BrandEntity = '@_configService["Concept:Engine:Brand"]';
+            var BrandEntity = '@_configService["Concept:Propeller:Brand"]';
+            var ModelEntity = '@_configService["Concept:Propeller:Model"]';
         </script>
         <script src="~/js/ScriptsComponents/Validaciones.js"></script>
         <script src="~/js/ScriptsComponents/Prototypes.js"></script>
+        <script src="~/js/ScriptsComponents/GeneralActions.js"></script>
         <script src="~/js/ScriptsComponents/BrandTypeScript.js"></script>
         <script src="~/js/ScriptsComponents/ModelVariantScript.js"></script>
     }

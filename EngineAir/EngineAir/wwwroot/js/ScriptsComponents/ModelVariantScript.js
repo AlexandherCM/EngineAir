@@ -46,7 +46,7 @@ function CreateModelVariantListener(Prototype) {
             TiempoRemplazoHrs: parseInt(Objects.TiempoRemplazoHrs),
             UnidadTiempo: Objects.UnidadTiempo === 'true' ? true : false,
             Cantidad: parseInt(Objects.Cantidad),
-            Estado: true,
+            ClientID: uniqueId
         };
         // - - - - - - - - - - - - - - - - - - - - -
 
@@ -61,4 +61,71 @@ function CreateModelVariantListener(Prototype) {
                 api.redirectToAction();
             });
     });
+};
+
+// Observadores del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+connection.on("CreateModelVariant", (_response) => {
+    if (_response.Estado) {
+        NewBrandFile(JSON.parse(_response.Body), ConceptModelVariant);
+        RefreshModelInRealTime()
+    }
+
+    // Validar la sesión actual para mostrar la alerta solo al cliente que realizó la petición al servidor
+    if (_response.ClientID != null && _response.ClientID == uniqueId) {
+        AlertaJS(_response); // Mostrar alerta al usuario apropiado
+    }
+});
+
+// Nueva fila de un modelos o variente
+function NewBrandFile(Records, Prototype) {
+    let tbody = document.getElementById(Prototype.Row);
+
+    let id = Records[Records.length - 1].ID;
+    let status = Records[Records.length - 1].Estado;
+    let name = Records[Records.length - 1].Nombre;
+
+    let nameBrand;
+    try {
+        nameBrand = Records[Records.length - 1].Marca.Nombre;
+    } catch {
+        // Bloque de código a ejecutar en caso de que ocurra un error
+        nameBrand = Records[Records.length - 1].Tipo.Nombre;
+    }
+
+    let timeHrs = Records[Records.length - 1].TiempoRemplazoHrs;
+    let timeMounts = Records[Records.length - 1].TiempoRemplazoMeses;
+    let entity = ModelEntity; // "ModelEntity" esta definida en la vista, en los scripts
+
+    let tr = document.createElement('tr');
+    tr.innerHTML = `
+        <tr>
+            <td>${nameBrand}</td>
+            <td>${name}</td>
+            <td>${timeHrs}</td>
+            <td>${timeMounts}</td>
+            <td>
+                <label class="toggle-switch my-2">
+                    <input data-id="${id}" data-entity="${entity}"
+                            class="chbTable chbUpdateStatus" type="checkbox" checked="${status}">
+                    <div class="toggle-switch-background">
+                        <div class="toggle-switch-handle"></div>
+                    </div>
+                </label>
+            </td>
+            <td>
+                <img src="../../images/svg/pen-to-square-regular.svg" class="table-icon"/>
+            </td>
+        </tr>
+    `;
+
+    tbody.appendChild(tr);
+    NewEventListenerChbx(tbody);
+};
+
+function NewEventListenerChbx(tbody) {
+    let rows = Array.from(tbody.children).filter(child => child.tagName.toLowerCase() === 'tr');
+    let LastRow = rows[rows.length - 1];
+
+    let chbx = LastRow.querySelector('input[type="checkbox"]');
+    CreateChbxListener(chbx);
 };

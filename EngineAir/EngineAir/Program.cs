@@ -43,7 +43,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 
 QuestPDF.Settings.License = LicenseType.Community;
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 // Configuraciones de autenticación por roles - - - - - - - - - - - - - - - - - - - - - -
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

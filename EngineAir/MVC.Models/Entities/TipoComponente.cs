@@ -7,6 +7,6 @@ namespace MVC.Models.Entities
     public class TipoComponente : BrandFields
     {
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<Variante>? Variantes { get; set; }
+        //public virtual List<Variante>? Variantes { get; set; }
     }
 }

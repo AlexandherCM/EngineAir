@@ -61,3 +61,10 @@
                 table: "Usuario",
                 columns: new[] { "PerfilID", "Nombre", "Correo", "Clave" },
                 values: new object[] { "GRL", "Carlos Ivan", "carlosivanlopez@gmail.com", "654321" });
+
+
+
+
+
+                public async Task<List<ModeloMotor>> GetModelosMotores()
+    => await _unitOfWork.ModeloMotor.GetList(_unitOfWork._context.ModeloMotor, x => x.Marca);
