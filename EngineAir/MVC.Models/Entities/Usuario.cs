@@ -19,6 +19,6 @@ namespace MVC.Models.Entities
         //public string Token { get; set; } = string.Empty;
 
         [ForeignKey(nameof(PerfilID))]
-        public virtual Perfil Perfil { get; set; } = new Perfil();
+        public virtual Perfil? Perfil { get; set; }
     }
 }

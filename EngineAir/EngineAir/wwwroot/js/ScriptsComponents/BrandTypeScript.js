@@ -17,12 +17,8 @@
 // Genera un identificador único para esta sesión de cliente (MOMENTÁNEO)
 const uniqueId = Date.now().toString() + Math.random().toString(36).substring(2, 9);
 
-// Recorrer el objeto donde se contiene la información
-Object.keys(Prototypes).forEach(key => {
-    const Prototype = Prototypes[key];
-
-    CreateFormsListener(Prototype);
-});
+// Crear el listener del concepto Marca o Tipo
+CreateFormsListener(ConceptBrandType);
 
 //Obtener el contenido de los inputs de un formulario
 function GetFormsData(event) {
@@ -54,7 +50,7 @@ function CreateChbxListener(chbx) {
         };
 
         //Petición con la api
-        api.SendPost(`api/ComponenteTipo/UpdateStatus`, UpdateStatusDTO)
+        api.SendPost(`api/ComponenteTipo/UpdateBrandStatus`, UpdateStatusDTO)
             .then(_response => {
                 if (_response.Estado === false)
                     AlertaJS(_response);
@@ -68,13 +64,20 @@ function CreateChbxListener(chbx) {
 
 //Obtener el formulario y aplicar el evento observador
 function CreateFormsListener(Prototype) {
-    if (!document.getElementById(Prototype.Brand))
+
+    var formulario = document.getElementById(Prototype.Brand);
+    if (!formulario)
         return;
 
-    document.getElementById(Prototype.Brand).addEventListener('submit', (event) => {
+    formulario.addEventListener('submit', (event) => {
         // Detener evento de recarga
         event.preventDefault();
         OpenCloseBrand(); // Método global en el archivo forms.js (Cerrar el Forms modal)
+
+        if (!ValidarTodosCampos(formulario)) {
+            Modal('¡Campos vacíos!', '¡Por favor, completa todos los campos antes de enviar el formulario.!', false);
+            return;
+        }
 
         let Objects = GetFormsData(event);
         // Objeto ViewModel - - - - - - - - - - - -
@@ -87,7 +90,7 @@ function CreateFormsListener(Prototype) {
         // - - - - - - - - - - - - - - - - - - - - -
 
         //Petición con la api
-        api.SendPost(`api/ComponenteTipo/Create`, MarcaTipo)
+        api.SendPost(`api/ComponenteTipo/CreateBrand`, MarcaTipo)
             .then(_response => {
                 if (_response.Estado === false)
                     AlertaJS(_response);
@@ -103,7 +106,7 @@ function CreateFormsListener(Prototype) {
 // Observadores del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 connection.on("CreateBrandType", (_response) => {
     if (_response.Estado) {
-        NewBrandFile(JSON.parse(_response.Body), Prototypes);
+        NewBrandFile(JSON.parse(_response.Body), ConceptBrandType);
         RefreshBrandInRealTime()
     }
 
@@ -127,8 +130,8 @@ connection.on("updateStatus", (obj) => {
 });
 
 // Nueva fila de una marca de motores
-function NewBrandFile(Records, Prototypes) {
-    let tbody = document.getElementById(Prototypes.ConceptBrandType.Row);
+function NewBrandFile(Records, Prototype) {
+    let tbody = document.getElementById(Prototype.Row);
 
     let id = Records[Records.length - 1].ID;
     let status = Records[Records.length - 1].Estado;

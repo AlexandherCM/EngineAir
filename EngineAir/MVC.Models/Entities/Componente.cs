@@ -21,6 +21,6 @@ namespace MVC.Models.Entities
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(VarianteID))]
-        public virtual Variante? Variante { get; set; } = new Variante();
+        public virtual Variante? Variante { get; set; }
     }
 }

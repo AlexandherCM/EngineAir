@@ -3,7 +3,6 @@ using EngineAir.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
 using MVC.Models.Classes;
 using MVC.Models.ViewModels;
 using MVC.Services.Services;
@@ -18,6 +17,8 @@ namespace EngineAir.Controllers.Api
     {
         private ComponentService _service;
         private IHubContext<ChatHub> _hubContext;
+        //private string Rol; 
+        //private string UserID;
 
         private ResponseJS _observerResponse = new();
         private ResponseJS _code200 = new()  
@@ -34,13 +35,15 @@ namespace EngineAir.Controllers.Api
 
         public ComponenteTipoController(ComponentService service, IHubContext<ChatHub> hubContext)
         {
-            _service = service;
-            _hubContext = hubContext;
+            this._service = service;
+            this._hubContext = hubContext;
+            //this.Rol = User.FindFirstValue(ClaimTypes.Role);
+            //this.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
 
-        [HttpPost("Create")]
+        [HttpPost("CreateBrand")]
         [Authorize(Roles = "ADM, GRL")]
-        public async Task<ResponseJS> Create([FromBody] MarcaTipo MarcaTipo)
+        public async Task<ResponseJS> CreateBrand([FromBody] MarcaTipo MarcaTipo)
         {
             try
             {
@@ -75,13 +78,10 @@ namespace EngineAir.Controllers.Api
             }
         }
 
-        [HttpPost("UpdateStatus")]
-        [Authorize(Roles = "ADM, GRL")]
-        public async Task<ResponseJS> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
+        [HttpPost("UpdateBrandStatus")]
+        [Authorize(Roles = "ADM, GRL")] 
+        public async Task<ResponseJS> UpdateBrandStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
         {
-            var userId = User.FindFirstValue(ClaimTypes.Role);
-            var ID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             (bool OpEstado, bool status) = await _service.UpdateStatus(UpdateStatusDTO);
 
             if (OpEstado)
@@ -94,6 +94,14 @@ namespace EngineAir.Controllers.Api
                 return _code500;
             }
              
+            return _code200;
+        }
+
+        [HttpPost("CreateModelVariant")]
+        [Authorize(Roles = "ADM, GRL")] 
+        public async Task<ResponseJS> CreateModelVariant([FromBody] ModeloVariante ModeloVariante)
+        {
+            _observerResponse = await _service.CreateModel(ModeloVariante);
             return _code200;
         }
 

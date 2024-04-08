@@ -13,8 +13,4 @@
     <PackageReference Include="QuestPDF" Version="2023.12.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

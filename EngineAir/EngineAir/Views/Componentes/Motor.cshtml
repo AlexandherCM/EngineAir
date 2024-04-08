@@ -101,7 +101,7 @@
                                 </div>
                             </label>
                         </td>
-                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon"/></td>
+                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
                     </tr>
                 }
             </tbody>
@@ -707,22 +707,28 @@
 
     <h2>Nuevo modelo</h2>
 
-    <form>
-
+    <form id="NewModel">
         <aside class="row w mb-3 p">
+            @*- - - - - - - - - - - Entidad - - - - - - - - - - -*@
+            <input name="Entidad" value="@_configService["Concept:Engine:Model"]" type="hidden" />
+            @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
 
             <div class="col">
                 <h5><b>Marca</b></h5>
-
-                <select class="input-Twin">
-                    <option value="Maraca" selected></option>
-                    <option value="Maraca1">Marca</option>
+                @*- - - - - - - - - - - MarcaTipoID - - - - - - - - - - -*@
+                <select name="MarcaTipoID" asp-items="@(new SelectList(Model.MarcasTipos, "ID", "Nombre"))" class="input-Twin">
+                    <option value="" disabled selected>Selecciona una marca</option>
                 </select>
+                @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
+
             </div>
 
             <div class="col">
                 <h5><b>Nombre</b></h5>
-                <input class="input-Twin" type="text" />
+                @*- - - - - - - - - - - Nombre - - - - - - - - - - -*@
+                <input name="Nombre" class="input-Twin" type="text" />
+                @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
+
             </div>
 
         </aside>
@@ -732,15 +738,12 @@
         <aside class="row w mb-2 p">
 
             <div class="col">
-                <input class="input-Twin text-center" type="number" />
+                @*- - - - - - - - - - - TiempoRemplazoHrs - - - - - - - - - - -*@
+                <input name="TiempoRemplazoHrs" class="input-Twin text-center possibleNull" type="number" />
+                @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
+
                 <h5><b>Horas</b></h5>
             </div>
-            :
-            <div class="col">
-                <input class="input-Twin text-center" type="number" />
-                <h5><b>Minutos</b></h5>
-            </div>
-
         </aside>
 
         <h4>Tiempo de remplazo</h4>
@@ -748,26 +751,30 @@
         <aside class="row w mb-2 p">
 
             <div class="col">
-                <select class="input-Twin ">
-                    <option value="Maraca" selected></option>
-                    <option value="Maraca1">Años</option>
-                    <option value="Maraca1">Meses</option>
+                @*- - - - - - - - - - - UnidadTiempo - - - - - - - - - - -*@
+                <select name="UnidadTiempo" id="ddlUnidadTiempo" class="input-Twin possibleNull">
+                    <option value="" selected >Selecciona el plazo de tiempo</option>
+                    <option value="true">Meses</option>
+                    <option value="false">Años</option>
                 </select>
+                @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
                 <h5><b>Unidad de tiempo</b></h5>
             </div>
             :
             <div class="col">
-                <input class="input-Twin text-center" type="number" />
+                @*- - - - - - - - - - - Cantidad - - - - - - - - - - -*@
+                <input name="Cantidad" id="txtCantidad" class="input-Twin text-center possibleNull" type="number" />
+                @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
                 <h5><b>Cantidad</b></h5>
             </div>
 
         </aside>
 
+        <aside class="row w my-3">
+            <input type="submit" class="submit " value="Agregar" />
+        </aside>
     </form>
 
-    <aside class="row w my-3">
-        <input type="submit" class="submit " value="Agregar" />
-    </aside>
 
 </section>
 
@@ -814,12 +821,15 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_TableScripts");
-        <script src="~/js/FrontJS/forms/forms.js"></script>
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
+        <script src="~/js/FrontJS/forms/forms.js"></script>
         <script>
             var BrandEntity = '@_configService["Concept:Engine:Brand"]';
         </script>
+        <script src="~/js/ScriptsComponents/Validaciones.js"></script>
         <script src="~/js/ScriptsComponents/Prototypes.js"></script>
         <script src="~/js/ScriptsComponents/BrandTypeScript.js"></script>
+        <script src="~/js/ScriptsComponents/ModelVariantScript.js"></script>
     }
 }

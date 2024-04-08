@@ -56,6 +56,32 @@ namespace MVC.Services.Services
             return _response;
         }
 
+        public async Task<ResponseJS> CreateModel(ModeloVariante ModeloVariante) 
+        {
+            ModeloVariante.Nombre = ModeloVariante.Nombre.Trim();
+
+            _response.Leyenda = "Los datos ingresados no corresponden con el formato correcto";
+            _response.Estado = false;
+
+            switch (ModeloVariante.Entidad)
+            {
+                case "ModeloMotor":
+                    this._response = _unitOfWork.ModeloMotor.Insert(ModeloVariante, _unitOfWork._context.ModeloMotor);
+                    break;
+                case "ModeloHelice":
+                    this._response = _unitOfWork.ModeloHelice.Insert(ModeloVariante, _unitOfWork._context.ModeloHelice);
+                    break;
+                case "Variante":
+                    this._response = _unitOfWork.Variante.Insert(ModeloVariante, _unitOfWork._context.Variante);
+                    break;
+                default:
+                    return _response;
+            }
+
+            await _unitOfWork.Save();
+            return _response;
+        }
+
         public async Task<(bool, bool)> UpdateStatus(UpdateStatusDTO obj)
         {
             bool OpEstado = false;

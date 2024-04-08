@@ -22,6 +22,6 @@ namespace MVC.Models.Entities
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(ModeloID))]
-        public virtual ModeloHelice? Modelo { get; set; } = new ModeloHelice(); 
+        public virtual ModeloHelice? Modelo { get; set; }
     }
 }

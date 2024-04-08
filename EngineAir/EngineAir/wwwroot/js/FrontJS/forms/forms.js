@@ -22,7 +22,7 @@ const OpenCloseBrand = () => {
     }
 }
 
-const openModel = () => {
+const openCloseModel = () => {
     if (formM.classList.contains('active')) {
         formM.classList.remove('active');
     } else {
@@ -43,8 +43,8 @@ const openComponent = () => {
 openB.onclick = OpenCloseBrand;
 closeB.onclick = OpenCloseBrand;
 
-openM.onclick = openModel;
-closeM.onclick = openModel;
+openM.onclick = openCloseModel;
+closeM.onclick = openCloseModel;
 
 openC.onclick = openComponent;
 closeC.onclick = openComponent;

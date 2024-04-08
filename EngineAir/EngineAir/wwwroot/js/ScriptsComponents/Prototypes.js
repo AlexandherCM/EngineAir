@@ -1,7 +1,17 @@
-﻿const Prototypes = {
-    // Datos del concepto Marca y tipo
-    ConceptBrandType: {
-        Brand: "NewBrand",
-        Row: "RowBrand"
-    }
-};
+﻿
+const ConceptBrandType = {
+    Brand: "NewBrand",
+    Row: "RowBrand"
+}
+
+const ConceptModelVariant = {
+    Model: "NewModel",
+    Row: "RowModel"
+}
+
+const ConceptComponent = {
+    Model: "NewComponent",
+    Row: "RowComponent"
+} 
+
+

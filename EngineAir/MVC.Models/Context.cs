@@ -22,7 +22,9 @@ namespace EngineAir.Models
 
         public virtual DbSet<Motor> Motor { get; set; }  
         public virtual DbSet<Helice> Helice { get; set; }  
-        public virtual DbSet<Componente> Componente { get; set; }  
+        public virtual DbSet<Componente> Componente { get; set; }   
+
+        public virtual DbSet<HistorialMotorHelice> HistorialMotorHelice { get; set; }  
 
         public virtual DbSet<Perfil> Perfil { get; set; }   
         public virtual DbSet<Usuario> Usuario { get; set; }   

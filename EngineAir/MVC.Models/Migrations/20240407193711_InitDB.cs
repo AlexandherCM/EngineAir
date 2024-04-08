@@ -4,7 +4,7 @@
 
 namespace MVC.Models.Migrations
 {
-    public partial class ChangeFields : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,6 +37,18 @@ namespace MVC.Models.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Perfil",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Perfil", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipoComponente",
                 columns: table => new
                 {
@@ -56,17 +68,18 @@ namespace MVC.Models.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MarcaID = table.Column<int>(type: "int", nullable: false),
+                    MarcaTipoID = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TiempoRemplazoHrs = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TiempoRemplazoMeses = table.Column<int>(type: "int", nullable: false)
+                    TiempoRemplazoHrs = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TiempoRemplazoMeses = table.Column<int>(type: "int", nullable: true),
+                    Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ModeloHelice", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ModeloHelice_MarcaHelice_MarcaID",
-                        column: x => x.MarcaID,
+                        name: "FK_ModeloHelice_MarcaHelice_MarcaTipoID",
+                        column: x => x.MarcaTipoID,
                         principalTable: "MarcaHelice",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -78,7 +91,7 @@ namespace MVC.Models.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MarcaID = table.Column<int>(type: "int", nullable: false),
+                    MarcaTipoID = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TiempoRemplazoHrs = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     TiempoRemplazoMeses = table.Column<int>(type: "int", nullable: true),
@@ -88,9 +101,31 @@ namespace MVC.Models.Migrations
                 {
                     table.PrimaryKey("PK_ModeloMotor", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ModeloMotor_MarcaMotor_MarcaID",
-                        column: x => x.MarcaID,
+                        name: "FK_ModeloMotor_MarcaMotor_MarcaTipoID",
+                        column: x => x.MarcaTipoID,
                         principalTable: "MarcaMotor",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuario",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PerfilID = table.Column<string>(type: "nvarchar(3)", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Clave = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuario", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Usuario_Perfil_PerfilID",
+                        column: x => x.PerfilID,
+                        principalTable: "Perfil",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -101,17 +136,18 @@ namespace MVC.Models.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TipoID = table.Column<int>(type: "int", nullable: false),
+                    MarcaTipoID = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TiempoRemplazoHrs = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TiempoRemplazoMeses = table.Column<int>(type: "int", nullable: false)
+                    TiempoRemplazoHrs = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TiempoRemplazoMeses = table.Column<int>(type: "int", nullable: true),
+                    Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Variante", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Variante_TipoComponente_TipoID",
-                        column: x => x.TipoID,
+                        name: "FK_Variante_TipoComponente_MarcaTipoID",
+                        column: x => x.MarcaTipoID,
                         principalTable: "TipoComponente",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -186,6 +222,33 @@ namespace MVC.Models.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "HistorialMotorHelice",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MotorID = table.Column<int>(type: "int", nullable: false),
+                    HeliceID = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HistorialMotorHelice", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_HistorialMotorHelice_Helice_HeliceID",
+                        column: x => x.HeliceID,
+                        principalTable: "Helice",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HistorialMotorHelice_Motor_MotorID",
+                        column: x => x.MotorID,
+                        principalTable: "Motor",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Componente_VarianteID",
                 table: "Componente",
@@ -197,14 +260,24 @@ namespace MVC.Models.Migrations
                 column: "ModeloID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModeloHelice_MarcaID",
-                table: "ModeloHelice",
-                column: "MarcaID");
+                name: "IX_HistorialMotorHelice_HeliceID",
+                table: "HistorialMotorHelice",
+                column: "HeliceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModeloMotor_MarcaID",
+                name: "IX_HistorialMotorHelice_MotorID",
+                table: "HistorialMotorHelice",
+                column: "MotorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ModeloHelice_MarcaTipoID",
+                table: "ModeloHelice",
+                column: "MarcaTipoID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ModeloMotor_MarcaTipoID",
                 table: "ModeloMotor",
-                column: "MarcaID");
+                column: "MarcaTipoID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Motor_ModeloID",
@@ -212,9 +285,14 @@ namespace MVC.Models.Migrations
                 column: "ModeloID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Variante_TipoID",
+                name: "IX_Usuario_PerfilID",
+                table: "Usuario",
+                column: "PerfilID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Variante_MarcaTipoID",
                 table: "Variante",
-                column: "TipoID");
+                column: "MarcaTipoID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -223,22 +301,31 @@ namespace MVC.Models.Migrations
                 name: "Componente");
 
             migrationBuilder.DropTable(
+                name: "HistorialMotorHelice");
+
+            migrationBuilder.DropTable(
+                name: "Usuario");
+
+            migrationBuilder.DropTable(
+                name: "Variante");
+
+            migrationBuilder.DropTable(
                 name: "Helice");
 
             migrationBuilder.DropTable(
                 name: "Motor");
 
             migrationBuilder.DropTable(
-                name: "Variante");
+                name: "Perfil");
+
+            migrationBuilder.DropTable(
+                name: "TipoComponente");
 
             migrationBuilder.DropTable(
                 name: "ModeloHelice");
 
             migrationBuilder.DropTable(
                 name: "ModeloMotor");
-
-            migrationBuilder.DropTable(
-                name: "TipoComponente");
 
             migrationBuilder.DropTable(
                 name: "MarcaHelice");

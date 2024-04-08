@@ -8,6 +8,6 @@ namespace MVC.Models.Entities
     public class MarcaHelice : BrandFields
     {
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<ModeloHelice>? Modelos { get; set; } = new List<ModeloHelice>(); 
+        public virtual List<ModeloHelice>? Modelos { get; set; }
     }
 }

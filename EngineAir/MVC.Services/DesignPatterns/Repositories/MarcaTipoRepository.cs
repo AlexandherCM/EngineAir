@@ -8,7 +8,7 @@ using MVC.Services.DesignPatterns.Interfaces;
 
 namespace MVC.Services.DesignPatterns.Repositories
 {
-    public class MarcaTipoRepository<T> : IMarca<T> where T : BrandFields, new()
+    public class MarcaTipoRepository<T> : IMarcaTipo<T> where T : BrandFields, new()
     {
         private ResponseJS _alertaEstado = new();
         public MarcaTipoRepository() { }
@@ -35,6 +35,14 @@ namespace MVC.Services.DesignPatterns.Repositories
         // INSERTAR UN NUEVO REGISTRO DE MARCA
         public ResponseJS Insert(MarcaTipo marca, DbSet<T> table)
         {
+            if (string.IsNullOrEmpty(marca.Nombre))
+            {
+                _alertaEstado.Leyenda = "¡No se pueden agregar campos núlos!";
+                _alertaEstado.Estado = false;
+
+                return _alertaEstado;
+            }
+            
             if (table.Any(e => e.Nombre == marca.Nombre))
             {
                 _alertaEstado.Leyenda = "¡Ya existe una marca con ese nombre!";

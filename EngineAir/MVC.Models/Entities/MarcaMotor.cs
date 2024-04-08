@@ -8,6 +8,6 @@ namespace MVC.Models.Entities
     public class MarcaMotor : BrandFields
     {
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<ModeloMotor>? Modelos { get; set;} = new List<ModeloMotor>();
+        public virtual List<ModeloMotor>? Modelos { get; set;}
     } 
 }

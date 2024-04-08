@@ -1,29 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using MVC.Models.Entities.GeneralFields;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MVC.Models.Entities
 {
     [Table("Variante")]
-    public class Variante
+    public class Variante : ModalFields
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public int TipoID { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public Decimal TiempoRemplazoHrs { get; set; }
-        public int TiempoRemplazoMeses { get; set; }
-
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        [ForeignKey(nameof(TipoID))]
-        public virtual TipoComponente? Tipo { get; set; } = new TipoComponente();
+        [ForeignKey(nameof(MarcaTipoID))]
+        public virtual TipoComponente? Tipo { get; set; }
 
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<Componente>? Componentes { get; set;} = new List<Componente>();
+        public virtual List<Componente>? Componentes { get; set;}
     }
 }

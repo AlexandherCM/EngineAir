@@ -56,26 +56,5 @@ namespace EngineAir.Controllers
 
             return View(TipoComponenteViewModel);
         }
-
-        //[HttpPost] 
-        //[ValidateAntiForgeryToken]
-        //[Authorize(Roles = "ADM, GRL")]
-        //public async Task<IActionResult> CreateBrand(MarcaTipo MarcaTipo) 
-        //{
-        //    _alertaEstado = await _service.CreateBrand(MarcaTipo);
-        //    ViewBag.Alerta = _alertaEstado;
-
-        //    return MarcaTipo.Entidad switch
-        //    {
-        //        "MarcaMotor" => 
-        //            View(nameof(Motor)),
-        //        "MarcaHelice" => 
-        //            View(nameof(Helice)),
-        //        "Tipo" => 
-        //            View(nameof(Variante)),
-        //        _ => 
-        //            RedirectToAction("Index", "Home"),
-        //    };
-        //}   
     }
 }

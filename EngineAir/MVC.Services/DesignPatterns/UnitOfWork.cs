@@ -11,18 +11,28 @@ namespace MVC.Services.DesignPatterns
         public MarcaTipoRepository<MarcaHelice> MarcaHelice {get;}
         public MarcaTipoRepository<TipoComponente> TipoComponente {get;}
 
+        public ModelVariantRepository<ModeloMotor> ModeloMotor { get; }
+        public ModelVariantRepository<ModeloHelice> ModeloHelice { get; }
+        public ModelVariantRepository<Variante> Variante { get; }
+
         public UnitOfWork
         (
             Context context,
             MarcaTipoRepository<MarcaMotor> MarcaMotor,
             MarcaTipoRepository<MarcaHelice> MarcaHelice,
-            MarcaTipoRepository<TipoComponente> TipoComponente
+            MarcaTipoRepository<TipoComponente> TipoComponente,
+            ModelVariantRepository<ModeloMotor> ModeloMotor,
+            ModelVariantRepository<ModeloHelice> ModeloHelice,
+            ModelVariantRepository<Variante> Variante
         )
         {
             _context = context;
             this.MarcaMotor = MarcaMotor;
             this.MarcaHelice = MarcaHelice;
             this.TipoComponente = TipoComponente;
+            this.ModeloMotor = ModeloMotor;
+            this.ModeloHelice = ModeloHelice;
+            this.Variante = Variante;
         }
 
         public async Task Save()

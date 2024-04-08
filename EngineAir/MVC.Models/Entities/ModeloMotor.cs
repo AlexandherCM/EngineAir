@@ -1,30 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using MVC.Models.Entities.GeneralFields;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MVC.Models.Entities
 {
     [Table("ModeloMotor")]
-    public class ModeloMotor
+    public class ModeloMotor : ModalFields
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public int MarcaID { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public Decimal? TiempoRemplazoHrs { get; set; }
-        public int? TiempoRemplazoMeses { get; set; }
-        public bool Estado { get; set; }
-
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        [ForeignKey(nameof(MarcaID))] 
-        public virtual MarcaMotor? Marca { get; set; } = new MarcaMotor();
+        [ForeignKey(nameof(MarcaTipoID))] 
+        public virtual MarcaMotor? Marca { get; set; }
 
         // Conjuntos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public virtual List<Motor>? Motores { get; set; } = new List<Motor>(); 
+        public virtual List<Motor>? Motores { get; set; }
     }
 }

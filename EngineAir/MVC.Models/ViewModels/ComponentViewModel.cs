@@ -1,4 +1,5 @@
-﻿using MVC.Models.Classes;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using MVC.Models.Classes;
 using MVC.Models.Entities;
 using MVC.Models.Entities.GeneralFields;
 using System.Text.Json.Serialization;
@@ -9,9 +10,10 @@ namespace MVC.Models.ViewModels
     public class ComponentViewModel<T> where T : BrandFields
     {
         public List<T> MarcasTipos { get; set; } = new();
+
         public MarcaTipo MarcaTipo { get; set; } = new();
         public ModeloVariante ModeloVariante { get; set; } = new();
-    }   
+    }
 
     public class UpdateStatusDTO
     {
@@ -22,7 +24,7 @@ namespace MVC.Models.ViewModels
         public string Entidad { get; set; } = string.Empty;
 
         [JsonPropertyName("Status")]
-        public bool? Status { get; set; }    
+        public bool? Status { get; set; }
     }
 
     public class MarcaTipo
@@ -31,16 +33,26 @@ namespace MVC.Models.ViewModels
         public bool Estado { get; set; } = true;
         public string Entidad { get; set; } = string.Empty;
         public string? ClientID { get; set; } = string.Empty;
-    } 
+    }
 
     public class ModeloVariante
     {
+        public string Entidad { get; set; } = string.Empty;
         public int MarcaTipoID { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public Decimal? TiempoRemplazoHrs { get; set; }
-        public int? TiempoRemplazoMeses { get; set; }
+        public int? TiempoRemplazoHrs { get; set; }
+        public bool UnidadTiempo { get; set; }
+        public int? Cantidad { get; set; }
+
         public bool Estado { get; set; } = true;
-        public string Entidad { get; set; } = string.Empty;
+
+        public int? MesesTotales()
+        {
+            if (UnidadTiempo == true)
+                return Cantidad * 12;
+            else
+                return Cantidad;
+        }
     }
 
     // Generalidades de los componentes - - - - - - - - - - - - -

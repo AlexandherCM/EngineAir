@@ -4,8 +4,8 @@ using MVC.Models.Classes;
 using MVC.Models.ViewModels;
 
 namespace MVC.Services.DesignPatterns.Interfaces
-{
-    public interface IMarca<T> where T : class 
+{ 
+    public interface IMarcaTipo<T> where T : class 
     {
         //public List<T> GetAll();
         //public T GetById(int id);

@@ -10,6 +10,10 @@ namespace MVC.Services.DesignPatterns
         public MarcaTipoRepository<MarcaMotor> MarcaMotor { get; }
         public MarcaTipoRepository<MarcaHelice> MarcaHelice { get; }  
         public MarcaTipoRepository<TipoComponente> TipoComponente { get; }
+
+        public ModelVariantRepository<ModeloMotor> ModeloMotor { get; }
+        public ModelVariantRepository<ModeloHelice> ModeloHelice { get; }
+        public ModelVariantRepository<Variante> Variante { get; }
         public Task Save();
     }
 }
