@@ -43,7 +43,7 @@ namespace EngineAir.Controllers.Api
 
         [HttpPost("CreateBrand")]
         [Authorize(Roles = "ADM, GRL")]
-        public async Task<ResponseJS> CreateBrand([FromBody] MarcaTipo MarcaTipo)
+        public async Task<ResponseJS> CreateBrand([FromBody] MarcaTipoViewModel MarcaTipo)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace EngineAir.Controllers.Api
 
         [HttpPost("CreateModelVariant")]
         [Authorize(Roles = "ADM, GRL")] 
-        public async Task<ResponseJS> CreateModelVariant([FromBody] ModeloVariante ModeloVariante)
+        public async Task<ResponseJS> CreateModelVariant([FromBody] ModeloVarianteViewModel ModeloVariante)
         {
             try
             {

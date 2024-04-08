@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#pragma warning disable CS8618
 
 namespace MVC.Models.Entities
 {
@@ -17,11 +13,11 @@ namespace MVC.Models.Entities
         public int ModeloID { get; set; }
         public bool Funcional { get; set; }
         public string NumSerie { get; set; } = string.Empty;
-        public Decimal TiempoTotal { get; set; }
-        public Decimal TURM { get; set; }
+        public decimal TiempoTotal { get; set; }
+        public decimal TURM { get; set; }
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(ModeloID))]
-        public virtual ModeloHelice? Modelo { get; set; }
+        public virtual ModeloHelice Modelo { get; set; }
     }
 }

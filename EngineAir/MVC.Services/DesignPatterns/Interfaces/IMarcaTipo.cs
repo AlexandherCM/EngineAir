@@ -9,7 +9,7 @@ namespace MVC.Services.DesignPatterns.Interfaces
     {
         //public List<T> GetAll();
         //public T GetById(int id);
-        public ResponseJS Insert(MarcaTipo marca, DbSet<T> table);  
+        public ResponseJS Insert(MarcaTipoViewModel marca, DbSet<T> table);  
         public Task<(bool, bool)> UpdateStatus(int ID, DbSet<T> table); 
         public Task<List<T>> GetList(DbSet<T> table); 
         //public void Update(T entity); 

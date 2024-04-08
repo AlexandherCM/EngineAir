@@ -13,7 +13,8 @@ namespace MVC.Models.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }     
+        public int ID { get; set; } 
+        public int? AeronaveID { get; set; }
         public int MotorID { get; set; }     
         public int HeliceID { get; set; }      
         public bool Estado { get; set; }

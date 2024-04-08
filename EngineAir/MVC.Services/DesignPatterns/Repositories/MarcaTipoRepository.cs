@@ -33,7 +33,7 @@ namespace MVC.Services.DesignPatterns.Repositories
         }
 
         // INSERTAR UN NUEVO REGISTRO DE MARCA
-        public ResponseJS Insert(MarcaTipo marca, DbSet<T> table)
+        public ResponseJS Insert(MarcaTipoViewModel marca, DbSet<T> table)
         {
             if (string.IsNullOrEmpty(marca.Nombre))
             {

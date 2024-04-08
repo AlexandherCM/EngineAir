@@ -30,7 +30,7 @@ namespace MVC.Models.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("Aeronave")
+                    b.Property<int?>("AeronaveID")
                         .HasColumnType("int");
 
                     b.Property<bool>("Funcional")
@@ -39,6 +39,12 @@ namespace MVC.Models.Migrations
                     b.Property<string>("NumSerie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TURM")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TiempoTotal")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("VarianteID")
                         .HasColumnType("int");
@@ -88,6 +94,9 @@ namespace MVC.Models.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int?>("AeronaveID")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Estado")
                         .HasColumnType("bit");
@@ -216,9 +225,6 @@ namespace MVC.Models.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<int?>("Aeronave")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Funcional")
                         .HasColumnType("bit");
@@ -384,7 +390,7 @@ namespace MVC.Models.Migrations
             modelBuilder.Entity("MVC.Models.Entities.ModeloHelice", b =>
                 {
                     b.HasOne("MVC.Models.Entities.MarcaHelice", "Marca")
-                        .WithMany("Modelos")
+                        .WithMany()
                         .HasForeignKey("MarcaTipoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -395,7 +401,7 @@ namespace MVC.Models.Migrations
             modelBuilder.Entity("MVC.Models.Entities.ModeloMotor", b =>
                 {
                     b.HasOne("MVC.Models.Entities.MarcaMotor", "Marca")
-                        .WithMany("Modelos")
+                        .WithMany()
                         .HasForeignKey("MarcaTipoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -428,22 +434,12 @@ namespace MVC.Models.Migrations
             modelBuilder.Entity("MVC.Models.Entities.Variante", b =>
                 {
                     b.HasOne("MVC.Models.Entities.TipoComponente", "Tipo")
-                        .WithMany("Variantes")
+                        .WithMany()
                         .HasForeignKey("MarcaTipoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Tipo");
-                });
-
-            modelBuilder.Entity("MVC.Models.Entities.MarcaHelice", b =>
-                {
-                    b.Navigation("Modelos");
-                });
-
-            modelBuilder.Entity("MVC.Models.Entities.MarcaMotor", b =>
-                {
-                    b.Navigation("Modelos");
                 });
 
             modelBuilder.Entity("MVC.Models.Entities.ModeloHelice", b =>
@@ -454,11 +450,6 @@ namespace MVC.Models.Migrations
             modelBuilder.Entity("MVC.Models.Entities.ModeloMotor", b =>
                 {
                     b.Navigation("Motores");
-                });
-
-            modelBuilder.Entity("MVC.Models.Entities.TipoComponente", b =>
-                {
-                    b.Navigation("Variantes");
                 });
 
             modelBuilder.Entity("MVC.Models.Entities.Variante", b =>

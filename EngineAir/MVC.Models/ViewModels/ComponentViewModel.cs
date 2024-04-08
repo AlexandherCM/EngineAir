@@ -14,9 +14,13 @@ namespace MVC.Models.ViewModels
         public List<marcaTipo> MarcasTipos { get; set; } = new();
         public List<modeloVariante> ModelosVariantes { get; set; } = new();
 
-        public ViewModels.MarcaTipo MarcaTipo { get; set; } = new();
-        public ModeloVariante ModeloVariante { get; set; } = new();
-    }
+        public MarcaTipoViewModel MarcaTipo { get; set; } = new();
+        public ModeloVarianteViewModel ModeloVariante { get; set; } = new();
+         
+        public MotorViewModel? MotorViewModel { get; set; } = new();
+        public HeliceViewModel? HeliceViewModel { get; set; } = new();
+        public OtroComponenteViewModel? OtroComponenteViewModel { get; set; } = new();
+    } 
 
     public class UpdateStatusDTO
     {
@@ -30,7 +34,7 @@ namespace MVC.Models.ViewModels
         public bool? Status { get; set; }
     }
 
-    public class MarcaTipo
+    public class MarcaTipoViewModel
     {
         public string Nombre { get; set; } = string.Empty;
         public bool Estado { get; set; } = true;
@@ -38,7 +42,7 @@ namespace MVC.Models.ViewModels
         public string? ClientID { get; set; } = string.Empty;
     }
 
-    public class ModeloVariante
+    public class ModeloVarianteViewModel
     {
         public string Entidad { get; set; } = string.Empty;
         public int MarcaTipoID { get; set; }
@@ -60,7 +64,7 @@ namespace MVC.Models.ViewModels
     }
 
     // Generalidades de los componentes - - - - - - - - - - - - -
-    public abstract class Componente
+    public abstract class ComponenteViewModel
     {
         protected int ModeloVarianteID { get; set; }
         protected bool Estado { get; set; } = true;
@@ -68,20 +72,20 @@ namespace MVC.Models.ViewModels
         protected string Entidad { get; set; } = string.Empty;
     }
 
-    public class Motor : Componente
+    public class MotorViewModel : ComponenteViewModel
     {
         public int? Aeronave { get; set; }
         public Decimal TiempoTotal { get; set; }
         public Decimal TURM { get; set; }
     }
 
-    public class Helice : Componente
+    public class HeliceViewModel : ComponenteViewModel
     {
         public Decimal TiempoTotal { get; set; }
         public Decimal TURM { get; set; }
     }
 
-    public class OtroComponente : Componente
+    public class OtroComponenteViewModel : ComponenteViewModel
     {
         public int? Aeronave { get; set; }
     }

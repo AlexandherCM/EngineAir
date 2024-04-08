@@ -4,7 +4,7 @@
 
 namespace MVC.Models.Migrations
 {
-    public partial class InjectedData : Migration
+    public partial class DataDefault : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

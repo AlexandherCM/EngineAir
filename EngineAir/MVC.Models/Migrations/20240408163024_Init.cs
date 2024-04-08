@@ -4,7 +4,7 @@
 
 namespace MVC.Models.Migrations
 {
-    public partial class InitDB : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -183,7 +183,6 @@ namespace MVC.Models.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ModeloID = table.Column<int>(type: "int", nullable: false),
-                    Aeronave = table.Column<int>(type: "int", nullable: true),
                     Funcional = table.Column<bool>(type: "bit", nullable: false),
                     NumSerie = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TiempoTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -207,9 +206,11 @@ namespace MVC.Models.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     VarianteID = table.Column<int>(type: "int", nullable: false),
-                    Aeronave = table.Column<int>(type: "int", nullable: true),
+                    AeronaveID = table.Column<int>(type: "int", nullable: true),
                     Funcional = table.Column<bool>(type: "bit", nullable: false),
-                    NumSerie = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NumSerie = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TiempoTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TURM = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,6 +229,7 @@ namespace MVC.Models.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    AeronaveID = table.Column<int>(type: "int", nullable: true),
                     MotorID = table.Column<int>(type: "int", nullable: false),
                     HeliceID = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false)

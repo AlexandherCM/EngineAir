@@ -40,7 +40,7 @@ namespace MVC.Services.Services
             => await _unitOfWork.Variante.GetList(_unitOfWork._context.Variante, x => x.Tipo); 
 
         // Agregar una nueva marca y/o tipo  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        public async Task<ResponseJS> CreateBrand(MarcaTipo marca)
+        public async Task<ResponseJS> CreateBrand(MarcaTipoViewModel marca)
         {
             marca.Nombre = marca.Nombre.Trim();
 
@@ -66,7 +66,7 @@ namespace MVC.Services.Services
             return _response;
         }
 
-        public async Task<ResponseJS> CreateModel(ModeloVariante ModeloVariante) 
+        public async Task<ResponseJS> CreateModel(ModeloVarianteViewModel ModeloVariante) 
         {
             ModeloVariante.Nombre = ModeloVariante.Nombre.Trim();
 

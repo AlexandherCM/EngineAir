@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#pragma warning disable CS8618
 
 namespace MVC.Models.Entities
 {
@@ -15,12 +11,14 @@ namespace MVC.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public int VarianteID { get; set; } 
-        public int? Aeronave { get; set; }
+        public int? AeronaveID { get; set; } 
         public bool Funcional { get; set; }
         public string NumSerie { get; set; } = string.Empty;
+        public decimal TiempoTotal { get; set; }
+        public decimal TURM { get; set; }
 
         // Relaciones - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         [ForeignKey(nameof(VarianteID))]
-        public virtual Variante? Variante { get; set; }
+        public virtual Variante Variante { get; set; }
     }
 }

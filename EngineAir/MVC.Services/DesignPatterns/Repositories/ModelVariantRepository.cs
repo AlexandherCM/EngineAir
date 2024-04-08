@@ -43,7 +43,7 @@ namespace MVC.Services.DesignPatterns.Repositories
             }
         }
 
-        public ResponseJS Insert(ModeloVariante ModeloVariante, DbSet<T> table)
+        public ResponseJS Insert(ModeloVarianteViewModel ModeloVariante, DbSet<T> table)
         {
             if (table.Any(e => e.Nombre == ModeloVariante.Nombre))
             {
