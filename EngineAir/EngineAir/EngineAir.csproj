@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\Login.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\table.css" />
   </ItemGroup>
 
