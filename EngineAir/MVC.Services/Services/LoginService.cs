@@ -53,30 +53,19 @@ namespace MVC.Services.Services
             return token;
         }
 
-        public CorreoDTO CrearPlantilla( HttpContext HttpContext, Usuario usuario, string Destinatario, string plantilla, string ruta)
+        public CorreoDTO CrearPlantilla( HttpContext HttpContext, Usuario usuario, string plantilla, string asunto,  string ruta)
         {
-            string folder = "Plantillas";
-
-            // Utiliza el hostingEnvironment para resolver la ruta física
-            var currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-            string webRootPath = Path.Combine(currentDirectory, "..", "wwwroot");
-
-            string path = Path.Combine(webRootPath, folder, plantilla);
-
             string scheme = HttpContext.Request.Scheme;
             string host = HttpContext.Request.Host.ToString();
             string url = $"{scheme}://{host}/{ruta}";
 
-
-            StreamReader reader = new StreamReader(path);
-            string htmlBody = string.Format(reader.ReadToEnd(), url, usuario.Nombre);
-
+            StreamReader reader = new StreamReader(plantilla);
+            string htmlBody = string.Format(reader.ReadToEnd(), usuario.Nombre, url);
 
             CorreoDTO correoDTO = new CorreoDTO()
             {
-                Para = Destinatario,
-                Asunto = "Confirmación de cuenta",
+                Para = "carlosivan12.ci2@gmail.com",
+                Asunto = asunto,
                 Contenido = htmlBody
             };
 

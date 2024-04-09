@@ -48,7 +48,7 @@ namespace MVC.Services.Services
             return Mensaje;
         }
 
-        public async Task<string> RegistrarUsuario(SesionViewModel sesion, HttpContext httpContext)
+        public async Task<string> RegistrarUsuario(string plantilla, SesionViewModel sesion, HttpContext httpContext)
         {
             string Mensaje = "Las contraseñas no coinciden";
 
@@ -58,11 +58,10 @@ namespace MVC.Services.Services
                 if (Usuario == null)
                 {
                     var NuevoUsuario = LoginService.CrearUsuario(sesion, "GRL", false);
-                    var Destinatario = "carlosivan12.ci2@gmail.com";
-                    var Plantilla = "Confirmar.html";
                     var Ruta = $"Home/Confirmar?token={NuevoUsuario.Token}";
-
-                    var Correo = LoginService.CrearPlantilla(/*_webHost,*/ httpContext, NuevoUsuario, Destinatario, Plantilla, Ruta);
+                    string asunto = "Confirmacion de cuenta";
+                     
+                    var Correo = LoginService.CrearPlantilla(httpContext, NuevoUsuario, plantilla, asunto, Ruta);
                 }
                 return Mensaje = "Ya existe un usuario asociado a esa cuenta";
             }

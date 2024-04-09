@@ -8,11 +8,13 @@ namespace EngineAir.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly AutenticarService _service;
 
-        public HomeController(AutenticarService service)
+        public HomeController(AutenticarService service, IWebHostEnvironment webHostEnvironment)
         {
             _service = service;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [Authorize(Roles = "ADM, GRL")]
@@ -67,7 +69,9 @@ namespace EngineAir.Controllers
 
         public async Task<IActionResult> CrearCuenta(SesionViewModel sesion)
         {
-            var Registro = await _service.RegistrarUsuario(sesion, HttpContext);
+            string Plantilla = Path.Combine(_webHostEnvironment.WebRootPath, "Plantillas", "confirmar.html");
+
+            var Registro = await _service.RegistrarUsuario(Plantilla, sesion, HttpContext);
 
             if (Registro == "ok")
             {
