@@ -56,3 +56,11 @@ connection.on("updateStatus", (obj) => {
             chbx.checked = Boolean(obj.Status);
     });
 });
+
+function NewEventListenerChbx(tbody) {
+    let rows = Array.from(tbody.children).filter(child => child.tagName.toLowerCase() === 'tr');
+    let LastRow = rows[rows.length - 1];
+
+    let chbx = LastRow.querySelector('input[type="checkbox"]');
+    CreateChbxListener(chbx);
+};

@@ -69,7 +69,7 @@ connection.on("CreateBrandType", (_response) => {
         AlertaJS(_response); // Mostrar alerta al usuario apropiado
     }
 });
-
+ 
 // Nueva fila de una marca de motores
 function NewBrandFile(Records, Prototype) {
     let tbody = document.getElementById(Prototype.Row);
@@ -102,12 +102,4 @@ function NewBrandFile(Records, Prototype) {
 
     tbody.appendChild(tr);
     NewEventListenerChbx(tbody);
-};
-
-function NewEventListenerChbx(tbody) {
-    let rows = Array.from(tbody.children).filter(child => child.tagName.toLowerCase() === 'tr');
-    let LastRow = rows[rows.length - 1];
-
-    let chbx = LastRow.querySelector('input[type="checkbox"]');
-    CreateChbxListener(chbx);
 };

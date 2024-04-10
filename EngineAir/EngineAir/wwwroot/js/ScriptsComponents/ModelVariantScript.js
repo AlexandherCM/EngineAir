@@ -66,7 +66,7 @@ function CreateModelVariantListener(Prototype) {
 // Observadores del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 connection.on("CreateModelVariant", (_response) => {
     if (_response.Estado) {
-        NewBrandFile(JSON.parse(_response.Body), ConceptModelVariant);
+        NewModelFile(JSON.parse(_response.Body), ConceptModelVariant);
         RefreshModelInRealTime()
     }
 
@@ -77,7 +77,7 @@ connection.on("CreateModelVariant", (_response) => {
 });
 
 // Nueva fila de un modelos o variente
-function NewBrandFile(Records, Prototype) {
+function NewModelFile(Records, Prototype) {
     let tbody = document.getElementById(Prototype.Row);
 
     let id = Records[Records.length - 1].ID;
@@ -120,12 +120,4 @@ function NewBrandFile(Records, Prototype) {
 
     tbody.appendChild(tr);
     NewEventListenerChbx(tbody);
-};
-
-function NewEventListenerChbx(tbody) {
-    let rows = Array.from(tbody.children).filter(child => child.tagName.toLowerCase() === 'tr');
-    let LastRow = rows[rows.length - 1];
-
-    let chbx = LastRow.querySelector('input[type="checkbox"]');
-    CreateChbxListener(chbx);
 };

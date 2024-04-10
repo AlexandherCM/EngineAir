@@ -169,7 +169,11 @@ function PaginatedModel() {
         linkPaginated.forEach(function (link) {
             link.classList.remove('active');
         });
-        linkPaginated[pageNumber - 1].classList.add('active');
+
+        // Verifica si el enlace existe antes de intentar acceder a su classList
+        if (linkPaginated.length > 0 && linkPaginated[pageNumber - 1]) {
+            linkPaginated[pageNumber - 1].classList.add('active');
+        }
 
         localStorage.setItem('currentPageModel', pageNumber); // Almacenar la página actual en el localStorage
     }
