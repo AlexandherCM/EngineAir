@@ -67,19 +67,15 @@ namespace EngineAir.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        [HttpPost]
         public async Task<IActionResult> CrearCuenta(SesionViewModel sesion)
         {
             string Plantilla = Path.Combine(_webHostEnvironment.WebRootPath, "Plantillas", "confirmar.html");
 
             var Registro = await _service.RegistrarUsuario(Plantilla, sesion, HttpContext);
 
-            if (Registro == "ok")
-            {
-              
-            }
-
             TempData["Registro"] = Registro;
-            return RedirectToAction(nameof(Login));
+           return RedirectToAction(nameof(Login));
         }
 
         //[Authorize(Roles = "ADM, GRL")]

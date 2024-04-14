@@ -62,6 +62,15 @@ namespace MVC.Services.Services
                     string asunto = "Confirmacion de cuenta";
                      
                     var Correo = LoginService.CrearPlantilla(httpContext, NuevoUsuario, plantilla, asunto, Ruta);
+                    bool Enviado = LoginService.EnviarCorreo(Correo);
+
+                    if (Enviado)
+                    {
+                        _context.Usuario.Add(NuevoUsuario);
+                        await _context.SaveChangesAsync();
+                        return Mensaje = "Su cuenta esta en espera de aceptacion, favor de esperar el correo de validacion.";
+                    }
+                    return Mensaje = "¡No se pudo completar el registro, intentelo de nuevo!";
                 }
                 return Mensaje = "Ya existe un usuario asociado a esa cuenta";
             }

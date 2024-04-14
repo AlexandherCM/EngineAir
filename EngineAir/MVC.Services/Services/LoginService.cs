@@ -10,12 +10,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using MVC.Models.DTO;
+using Microsoft.Extensions.Hosting;
+
+using MailKit.Security;
+using MimeKit.Text;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 
 namespace MVC.Services.Services
 {
     internal class LoginService
     {
+        private string _host = "smtp.gmail.com";
+        private int _puerto = 587;
+
+        private string _nombre = "Reforma27";
+        private string _remitente = "contacto.reforma27@gmail.com";
+        private string _clave = "lhsvnvtcdpikdzvp";
+
         public string EncriptarPassword(string password)
         {
             string hash = string.Empty;
@@ -70,6 +83,34 @@ namespace MVC.Services.Services
             };
 
             return correoDTO;
+        }
+
+        public bool EnviarCorreo(CorreoDTO correo)
+        {
+            try
+            {
+                var email = new MimeMessage();
+
+                email.From.Add(new MailboxAddress(_nombre, _remitente));
+                email.To.Add(MailboxAddress.Parse(correo.Para));
+                email.Subject = correo.Asunto;
+                email.Body = new TextPart(TextFormat.Html)
+                {
+                    Text = correo.Contenido
+                };
+
+                var smtp = new SmtpClient();
+                smtp.Connect(_host, _puerto, SecureSocketOptions.StartTls);
+
+                smtp.Authenticate(_remitente, _clave);
+                smtp.Send(email);
+                smtp.Disconnect(true);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
