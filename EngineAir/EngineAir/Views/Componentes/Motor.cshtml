@@ -524,56 +524,41 @@
     <h2>Nuevo Motor</h2>
 
     <form>
-
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
-
             <h5><b>Número de série</b></h5>
             <input asp-for="MotorViewModel.NumSerie" class="input-Form" type="text" />
-
         </aside>
-        
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
-
             <h5><b>Tiempo Total</b></h5>
-            @*- - - - - - - - - - - TiempoRemplazoHrs - - - - - - - - - - -*@
+           
             <input asp-for="MotorViewModel.TiempoTotal" class="input-Form" type="number" step="1" />
-            @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
-
         </aside>
-        
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
-
             <h5><b>TURM</b></h5>
-            @*- - - - - - - - - - - TiempoRemplazoHrs - - - - - - - - - - -*@
             <input asp-for="MotorViewModel.TURM" class="input-Form" type="number" step="1" />
-            @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
-
         </aside>
-
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
-
-            <h5><b>Hélice</b></h5>
-
-            <select asp-for="MotorViewModel.HeliceID" class="input-Form" >
-                <option value="" disabled selected>Selecciona un hélice</option>
-            </select>
-
-        </aside>
-        
-        <aside class="row w mb-2">
-
             <h5><b>Modelo</b></h5>
-
             <select asp-for="MotorViewModel.ModeloVarianteID" class="input-Form" asp-items="@(new SelectList(Model.ModelosVariantes, "ID", "Nombre"))">
                 <option value="" disabled selected>Selecciona un modelo</option>
             </select>
-
         </aside>
-
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
+        <aside class="row w mb-2">
+            <h5><b>Hélice</b></h5>
+            <select asp-for="MotorViewModel.HeliceID" asp-items="@(new SelectList(Model.Helices, "ID", "Nombre"))" class="input-Form">
+                <option value="" disabled selected>Selecciona un hélice</option>
+            </select>
+        </aside>
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w my-3">
             <input type="submit" class="submit " value="Agregar" />
         </aside>
-
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
     </form>
 
 </section>

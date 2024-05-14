@@ -13,6 +13,7 @@ namespace MVC.Models.ViewModels
     {
         public List<marcaTipo> MarcasTipos { get; set; } = new();
         public List<modeloVariante> ModelosVariantes { get; set; } = new();
+        public List<HeliceDTO> Helices { get; set; } = new(); 
 
         public MarcaTipoViewModel MarcaTipo { get; set; } = new();
         public ModeloVarianteViewModel ModeloVariante { get; set; } = new();
@@ -88,9 +89,14 @@ namespace MVC.Models.ViewModels
     //{
 
     //}
-
     public class OtroComponenteViewModel : ComponenteViewModel
     {
         public int? Aeronave { get; set; }
+    }
+
+    public class HeliceDTO
+    {
+        public int ID { get; set; }
+        public string Nombre { get; set; } = string.Empty;
     }
 }

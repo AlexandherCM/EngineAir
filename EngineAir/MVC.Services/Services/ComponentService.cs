@@ -4,6 +4,7 @@ using MVC.Models.Entities;
 using MVC.Models.ViewModels;
 using MVC.Services.DesignPatterns;
 using Newtonsoft.Json;
+using static MVC.Services.DesignPatterns.Repositories.HeliceRepository;
 
 namespace MVC.Services.Services
 {
@@ -37,7 +38,11 @@ namespace MVC.Services.Services
             => await _unitOfWork.ModeloHelice.GetList(_unitOfWork._context.ModeloHelice, x => x.Marca);
          
         public async Task<List<Variante>> GetVariantesComponente()
-            => await _unitOfWork.Variante.GetList(_unitOfWork._context.Variante, x => x.Tipo); 
+            => await _unitOfWork.Variante.GetList(_unitOfWork._context.Variante, x => x.Tipo);
+
+        // Listas de hélices DTO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+        public async Task<List<HeliceDTO>> GetHelicesDisponibles()
+            => await _unitOfWork.Helice.GetHelicesDisp(); 
 
         // Agregar una nueva marca y/o tipo  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         public async Task<ResponseJS> CreateBrand(MarcaTipoViewModel marca)

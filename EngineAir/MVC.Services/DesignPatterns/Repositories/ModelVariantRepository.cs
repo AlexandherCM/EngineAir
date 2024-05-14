@@ -35,7 +35,7 @@ namespace MVC.Services.DesignPatterns.Repositories
             {
                 var BrandTipe = await table.FindAsync(ID);
                 BrandTipe.Estado = !BrandTipe.Estado;
-                return (true, BrandTipe.Estado);
+                return (true, BrandTipe.Estado);    
             }
             catch
             {
@@ -78,5 +78,6 @@ namespace MVC.Services.DesignPatterns.Repositories
                 return _alertaEstado;
             }
         }
+
     }
 }

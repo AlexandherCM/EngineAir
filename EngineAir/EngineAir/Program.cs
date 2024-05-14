@@ -36,6 +36,8 @@ builder.Services.AddScoped<ModelVariantRepository<ModeloMotor>>();
 builder.Services.AddScoped<ModelVariantRepository<ModeloHelice>>();
 builder.Services.AddScoped<ModelVariantRepository<Variante>>();
 
+builder.Services.AddScoped<HeliceRepository>();
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // Add services to the container - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -14,6 +14,7 @@ namespace MVC.Services.DesignPatterns
         public ModelVariantRepository<ModeloMotor> ModeloMotor { get; }
         public ModelVariantRepository<ModeloHelice> ModeloHelice { get; }
         public ModelVariantRepository<Variante> Variante { get; }
+        public HeliceRepository Helice { get; } 
         public Task Save();
     }
 }

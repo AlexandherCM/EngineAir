@@ -28,6 +28,7 @@ namespace EngineAir.Controllers
             {
                 MarcasTipos = await _service.GetMarcasMotores(),
                 ModelosVariantes = await _service.GetModelosMotores(),
+                Helices = await _service.GetHelicesDisponibles(),
             };
 
             return View(MotorViewModel);
