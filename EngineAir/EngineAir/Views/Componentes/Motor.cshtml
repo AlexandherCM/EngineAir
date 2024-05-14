@@ -199,7 +199,7 @@
                     <th> Marca</th>
                     <th> Nombre</th>
                     <th class="border"> Horas</th>
-                    <th class="border"> Años</th>
+                    <th class="border"> Meses</th>
                     <th> Estado</th>
                     <th> Editar</th>
                 </tr>
@@ -347,10 +347,8 @@
     <aside class="contable  bg-gray shadow">
 
         <table id="table" class=" table  motors">
-
             <thead>
                 <tr>
-
                     <th></th>
                     <th></th>
                     <th></th>
@@ -358,27 +356,26 @@
                     <th></th>
                     <th></th>
                     <th></th>
-
+                    <th></th>
+                    <th></th>
                 </tr>
                 <tr>
-
                     <th>N° serie</th>
                     <th>Hélice</th>
                     <th>Planeador</th>
                     <th class="border">Años</th>
                     <th class="border">Horas</th>
+                    <th> Tiempo total</th>
+                    <th> TURM</th>
                     <th>Estado</th>
-                    <th>Detalles</th>
                     <th>Editar</th>
-
+                    <th>Detalles</th>
                 </tr>
-
             </thead>
-
             <tbody>
-
                 <tr>
-
+                    <td>Lorem</td>
+                    <td>Lorem</td>
                     <td>Lorem</td>
                     <td>Lorem</td>
                     <td>Lorem</td>
@@ -393,21 +390,16 @@
                         </label>
                     </td>
 
-                    <td><img src="~/images/svg/circle-info-solid.svg" class="table-icon" /></td>
-
                     <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-
+                    <td><img src="~/images/svg/circle-info-solid.svg" class="table-icon" /></td>
                 </tr>
-
             </tbody>
 
         </table>
-
     </aside>
 
     @******************   PAGINADO   ***********************@
     <aside class="justify-content-center d-flex align-items-center m-0 paginated" id="paginatedTable"></aside>
-
 </section>
 
 
@@ -535,18 +527,27 @@
 
         <aside class="row w mb-2">
 
-            <h5><b>Nombre</b></h5>
+            <h5><b>Número de série</b></h5>
             <input class="input-Form" type="text" />
 
         </aside>
 
         <aside class="row w mb-2">
 
+            <h5><b>Hélice</b></h5>
+
+            <select class="input-Form" >
+                <option value="" disabled selected>Selecciona un hélice</option>
+            </select>
+
+        </aside>
+        
+        <aside class="row w mb-2">
+
             <h5><b>Modelo</b></h5>
 
-            <select class="input-Form">
-                <option value="Modelo" selected></option>
-                <option value="Modelo">Modelo</option>
+            <select class="input-Form" asp-items="@(new SelectList(Model.ModelosVariantes, "ID", "Nombre"))">
+                <option value="" disabled selected>Selecciona un modelo</option>
             </select>
 
         </aside>
