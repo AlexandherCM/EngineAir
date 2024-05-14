@@ -473,7 +473,7 @@
 
             <div class="col">
                 @*- - - - - - - - - - - TiempoRemplazoHrs - - - - - - - - - - -*@
-                <input name="TiempoRemplazoHrs" class="input-Twin text-center possibleNull" type="number" />
+                <input name="TiempoRemplazoHrs" class="input-Twin text-center possibleNull" type="number" step="1" />
                 @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
 
                 <h5><b>Horas</b></h5>
@@ -497,7 +497,7 @@
             :
             <div class="col">
                 @*- - - - - - - - - - - Cantidad - - - - - - - - - - -*@
-                <input name="Cantidad" id="txtCantidad" class="input-Twin text-center possibleNull" type="number" />
+                <input name="Cantidad" id="txtCantidad" class="input-Twin text-center possibleNull" type="number" step="1" />
                 @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
                 <h5><b>Cantidad</b></h5>
             </div>
@@ -528,7 +528,25 @@
         <aside class="row w mb-2">
 
             <h5><b>Número de série</b></h5>
-            <input class="input-Form" type="text" />
+            <input asp-for="MotorViewModel.NumSerie" class="input-Form" type="text" />
+
+        </aside>
+        
+        <aside class="row w mb-2">
+
+            <h5><b>Tiempo Total</b></h5>
+            @*- - - - - - - - - - - TiempoRemplazoHrs - - - - - - - - - - -*@
+            <input asp-for="MotorViewModel.TiempoTotal" class="input-Form" type="number" step="1" />
+            @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
+
+        </aside>
+        
+        <aside class="row w mb-2">
+
+            <h5><b>TURM</b></h5>
+            @*- - - - - - - - - - - TiempoRemplazoHrs - - - - - - - - - - -*@
+            <input asp-for="MotorViewModel.TURM" class="input-Form" type="number" step="1" />
+            @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
 
         </aside>
 
@@ -536,7 +554,7 @@
 
             <h5><b>Hélice</b></h5>
 
-            <select class="input-Form" >
+            <select asp-for="MotorViewModel.HeliceID" class="input-Form" >
                 <option value="" disabled selected>Selecciona un hélice</option>
             </select>
 
@@ -546,7 +564,7 @@
 
             <h5><b>Modelo</b></h5>
 
-            <select class="input-Form" asp-items="@(new SelectList(Model.ModelosVariantes, "ID", "Nombre"))">
+            <select asp-for="MotorViewModel.ModeloVarianteID" class="input-Form" asp-items="@(new SelectList(Model.ModelosVariantes, "ID", "Nombre"))">
                 <option value="" disabled selected>Selecciona un modelo</option>
             </select>
 

@@ -18,8 +18,11 @@ namespace MVC.Models.ViewModels
         public ModeloVarianteViewModel ModeloVariante { get; set; } = new();
          
         public MotorViewModel? MotorViewModel { get; set; } = new();
-        public HeliceViewModel? HeliceViewModel { get; set; } = new();
-        public OtroComponenteViewModel? OtroComponenteViewModel { get; set; } = new();
+
+        //public HeliceViewModel? HeliceViewModel { get; set; } = new();
+
+        //public HeliceViewModel? HeliceViewModel { get; set; } = new();
+        //public OtroComponenteViewModel? OtroComponenteViewModel { get; set; } = new();
     } 
 
     public class UpdateStatusDTO
@@ -64,26 +67,27 @@ namespace MVC.Models.ViewModels
     }
 
     // Generalidades de los componentes - - - - - - - - - - - - -
-    public abstract class ComponenteViewModel
+    public class ComponenteViewModel
     {
-        protected int ModeloVarianteID { get; set; }
-        protected bool Estado { get; set; } = true;
-        protected string NumSerie { get; set; } = string.Empty;
-        protected string Entidad { get; set; } = string.Empty;
+        public int ModeloVarianteID { get; set; }
+        public bool Estado { get; set; } = true;
+        public string NumSerie { get; set; } = string.Empty;
+        public string Entidad { get; set; } = string.Empty;
+
+        public Decimal TiempoTotal { get; set; }
+        public Decimal TURM { get; set; }
     }
 
     public class MotorViewModel : ComponenteViewModel
     {
         public int? Aeronave { get; set; }
-        public Decimal TiempoTotal { get; set; }
-        public Decimal TURM { get; set; }
+        public int? HeliceID { get; set; }
     }
 
-    public class HeliceViewModel : ComponenteViewModel
-    {
-        public Decimal TiempoTotal { get; set; }
-        public Decimal TURM { get; set; }
-    }
+    //public class HeliceViewModel : ComponenteViewModel
+    //{
+
+    //}
 
     public class OtroComponenteViewModel : ComponenteViewModel
     {

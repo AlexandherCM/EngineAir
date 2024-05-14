@@ -53,13 +53,16 @@ namespace EngineAir.Controllers.Api
                     switch (MarcaTipo.Entidad)
                     {
                         case "MarcaMotor":
-                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetMarcasMotores());
+                            this._observerResponse.Body = 
+                                JsonConvert.SerializeObject(await _service.GetMarcasMotores());
                             break;
                         case "MarcaHelice":
-                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetMarcasHelices());
+                            this._observerResponse.Body = 
+                                JsonConvert.SerializeObject(await _service.GetMarcasHelices());
                             break;
                         case "Tipo":
-                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetTiposComponente());
+                            this._observerResponse.Body = 
+                                JsonConvert.SerializeObject(await _service.GetTiposComponente());
                             break;
                         default:
                             return _observerResponse;
@@ -109,13 +112,16 @@ namespace EngineAir.Controllers.Api
                     switch (ModeloVariante.Entidad)
                     {
                         case "ModeloMotor":
-                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetModelosMotores());
+                            this._observerResponse.Body = 
+                                JsonConvert.SerializeObject(await _service.GetModelosMotores());
                             break;
                         case "ModeloHelice":
-                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetModelosHelices());
+                            this._observerResponse.Body = 
+                                JsonConvert.SerializeObject(await _service.GetModelosHelices());
                             break;
                         case "Variante":
-                            this._observerResponse.Body = JsonConvert.SerializeObject(await _service.GetVariantesComponente());
+                            this._observerResponse.Body = 
+                                JsonConvert.SerializeObject(await _service.GetVariantesComponente());
                             break;
                         default:
                             return _observerResponse;
