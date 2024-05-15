@@ -2,6 +2,7 @@
 using MVC.Models.Classes;
 using MVC.Models.Entities;
 using MVC.Models.Entities.GeneralFields;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace MVC.Models.ViewModels
@@ -70,18 +71,27 @@ namespace MVC.Models.ViewModels
     // Generalidades de los componentes - - - - - - - - - - - - -
     public class ComponenteViewModel
     {
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public int ModeloVarianteID { get; set; }
-        public bool Estado { get; set; } = true;
-        public string NumSerie { get; set; } = string.Empty;
-        public string Entidad { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        public string NumSerie { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public Decimal TiempoTotal { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public Decimal TURM { get; set; }
+        
+        public bool Estado { get; set; } = true;
+        public string Entidad { get; set; } = string.Empty;
     }
 
     public class MotorViewModel : ComponenteViewModel
     {
         public int? Aeronave { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public int? HeliceID { get; set; }
     }
 

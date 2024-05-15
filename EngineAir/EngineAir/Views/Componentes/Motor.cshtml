@@ -434,9 +434,7 @@
 <section class="form container p" id="formModel">
 
     <aside class="row justify-content-end p-2">
-
         <img src="~/images/svg/circle-xmark-regular.svg" class="close mx-2" id="closeModel" />
-
     </aside>
 
     <h2>Nuevo modelo</h2>
@@ -509,7 +507,6 @@
         </aside>
     </form>
 
-
 </section>
 
 @* Component *@
@@ -523,22 +520,31 @@
 
     <h2>Nuevo Motor</h2>
 
-    <form>
+    <form id="NewComponent">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @*- - - - - - - - - - - Entidad - - - - - - - - - - -*@
+        <input asp-for="MotorViewModel.Entidad" value="@_configService["Concept:Engine:Component"]" type="hidden" />
+        @*- - - - - - - - - - - - - - - - - - - - - - - - - -*@
+
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
             <h5><b>Número de série</b></h5>
             <input asp-for="MotorViewModel.NumSerie" class="input-Form" type="text" />
+            <span asp-validation-for="MotorViewModel.NumSerie" class="text-white"></span>
         </aside>
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
             <h5><b>Tiempo Total</b></h5>
            
             <input asp-for="MotorViewModel.TiempoTotal" class="input-Form" type="number" step="1" />
+            <span asp-validation-for="MotorViewModel.TiempoTotal" class="text-white"></span>
+
         </aside>
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
             <h5><b>TURM</b></h5>
             <input asp-for="MotorViewModel.TURM" class="input-Form" type="number" step="1" />
+            <span asp-validation-for="MotorViewModel.TURM" class="text-white"></span>
         </aside>
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
@@ -546,6 +552,8 @@
             <select asp-for="MotorViewModel.ModeloVarianteID" class="input-Form" asp-items="@(new SelectList(Model.ModelosVariantes, "ID", "Nombre"))">
                 <option value="" disabled selected>Selecciona un modelo</option>
             </select>
+            <span asp-validation-for="MotorViewModel.ModeloVarianteID" class="text-white"></span>
+
         </aside>
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
@@ -553,6 +561,7 @@
             <select asp-for="MotorViewModel.HeliceID" asp-items="@(new SelectList(Model.Helices, "ID", "Nombre"))" class="input-Form">
                 <option value="" disabled selected>Selecciona un hélice</option>
             </select>
+            <span asp-validation-for="MotorViewModel.HeliceID" class="text-white"></span>
         </aside>
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w my-3">
@@ -573,11 +582,13 @@
         <script>
             var BrandEntity = '@_configService["Concept:Engine:Brand"]';
             var ModelEntity = '@_configService["Concept:Engine:Model"]';
+            var ComponentEntity = '@_configService["Concept:Engine:Component"]';
         </script> 
         <script src="~/js/ScriptsComponents/Validaciones.js"></script>
         <script src="~/js/ScriptsComponents/Prototypes.js"></script>
         <script src="~/js/ScriptsComponents/GeneralActions.js"></script>
         <script src="~/js/ScriptsComponents/BrandTypeScript.js"></script>
         <script src="~/js/ScriptsComponents/ModelVariantScript.js"></script>
+        <script src="~/js/ScriptsComponents/ComponentScript.js"></script>
     }
 }

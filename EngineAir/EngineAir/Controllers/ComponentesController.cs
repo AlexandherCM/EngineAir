@@ -30,9 +30,9 @@ namespace EngineAir.Controllers
                 ModelosVariantes = await _service.GetModelosMotores(),
                 Helices = await _service.GetHelicesDisponibles(),
             };
-
             return View(MotorViewModel);
         }
+
         // End-Points de la interfaz de las hélices- - - - - - - - - - - - -
 
         [Authorize(Roles = "ADM, GRL")]
@@ -60,5 +60,6 @@ namespace EngineAir.Controllers
 
             return View(TipoComponenteViewModel);
         }
+
     }
 }

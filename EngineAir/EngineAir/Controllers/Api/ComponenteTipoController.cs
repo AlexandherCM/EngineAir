@@ -30,7 +30,7 @@ namespace EngineAir.Controllers.Api
         private ResponseJS _code500 = new()  
         {
             Leyenda = "Ocurrió un error interno en el servidor.", 
-            Estado = true
+            Estado = false
         }; 
 
         public ComponenteTipoController(ComponentService service, IHubContext<ChatHub> hubContext)
@@ -138,6 +138,13 @@ namespace EngineAir.Controllers.Api
             {
                 return _code500;
             }
+        }
+
+        [HttpPost("AddComponent")]
+        [Authorize(Roles = "ADM, GRL")]
+        public async Task<ResponseJS> AddComponent([FromBody] ComponenteViewModel componenteViewModel)
+        {
+            return _code500;
         }
 
     }
