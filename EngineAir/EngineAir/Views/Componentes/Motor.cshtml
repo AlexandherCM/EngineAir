@@ -558,7 +558,7 @@
         @*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
         <aside class="row w mb-2">
             <h5><b>Hélice</b></h5>
-            <select asp-for="MotorViewModel.HeliceID" asp-items="@(new SelectList(Model.Helices, "ID", "Nombre"))" class="input-Form">
+            <select asp-for="MotorViewModel.HeliceID" asp-items="@(new SelectList(Model.Helices, "ID", "Nombre"))" class="input-Form possibleNull">
                 <option value="" disabled selected>Selecciona un hélice</option>
             </select>
             <span asp-validation-for="MotorViewModel.HeliceID" class="text-white"></span>

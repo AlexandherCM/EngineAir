@@ -142,5 +142,12 @@ namespace MVC.Services.Services
             return (OpEstado, status);
         }
 
+        public async Task<ResponseJS> InsertEngine(MotorViewModel model)
+        {
+             _response = _unitOfWork.Motor.Insert(model);
+            await _unitOfWork.Save();
+            return _response;
+        }
+
     }
 }

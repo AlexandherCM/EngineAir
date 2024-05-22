@@ -142,9 +142,19 @@ namespace EngineAir.Controllers.Api
 
         [HttpPost("AddComponent")]
         [Authorize(Roles = "ADM, GRL")]
-        public async Task<ResponseJS> AddComponent([FromBody] ComponenteViewModel componenteViewModel)
+        public async Task<ResponseJS> AddComponent([FromBody] MotorViewModel componenteViewModel)
         {
-            return _code500;
+            try
+            {
+                _observerResponse = await _service.InsertEngine(componenteViewModel);
+
+                await _hubContext.Clients.All.SendAsync("CreateEngine", _observerResponse);
+                return _code200;
+            }
+            catch
+            {
+                return _code500;
+            }
         }
 
     }

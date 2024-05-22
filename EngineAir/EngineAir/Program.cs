@@ -37,6 +37,7 @@ builder.Services.AddScoped<ModelVariantRepository<ModeloHelice>>();
 builder.Services.AddScoped<ModelVariantRepository<Variante>>();
 
 builder.Services.AddScoped<HeliceRepository>();
+builder.Services.AddScoped<MotorRepository>();
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

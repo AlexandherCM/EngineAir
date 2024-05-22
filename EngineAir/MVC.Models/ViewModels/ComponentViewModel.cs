@@ -89,16 +89,9 @@ namespace MVC.Models.ViewModels
 
     public class MotorViewModel : ComponenteViewModel
     {
-        public int? Aeronave { get; set; }
-
-        [Required(ErrorMessage = "El campo es obligatorio")]
+        public int? AeronaveID { get; set; }
         public int? HeliceID { get; set; }
     }
-
-    //public class HeliceViewModel : ComponenteViewModel
-    //{
-
-    //}
     public class OtroComponenteViewModel : ComponenteViewModel
     {
         public int? Aeronave { get; set; }
