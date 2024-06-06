@@ -8,12 +8,14 @@ using System.Text.Json.Serialization;
 namespace MVC.Models.ViewModels
 {
     // Generalidades de los ViewModels - - - - - - - - - - - - -
-    public class ComponentViewModel<marcaTipo, modeloVariante>
+    public class ComponentViewModel<marcaTipo, modeloVariante, Componente>
     where marcaTipo : BrandFields
     where modeloVariante : ModelFields
     {
         public List<marcaTipo> MarcasTipos { get; set; } = new();
         public List<modeloVariante> ModelosVariantes { get; set; } = new();
+        public List<Componente> TipoComponente { get; set; } = new(); 
+         
         public List<HeliceDTO> Helices { get; set; } = new(); 
 
         public MarcaTipoViewModel MarcaTipo { get; set; } = new();
@@ -69,7 +71,7 @@ namespace MVC.Models.ViewModels
     }
 
     // Generalidades de los componentes - - - - - - - - - - - - -
-    public class ComponenteViewModel
+    public class HeliceViewModel 
     {
         [Required(ErrorMessage = "El campo es obligatorio")]
         public int ModeloVarianteID { get; set; }
@@ -85,14 +87,16 @@ namespace MVC.Models.ViewModels
         
         public bool Estado { get; set; } = true;
         public string Entidad { get; set; } = string.Empty;
+
+        public string? ClientID { get; set; } = string.Empty;
     }
 
-    public class MotorViewModel : ComponenteViewModel
+    public class MotorViewModel : HeliceViewModel
     {
         public int? AeronaveID { get; set; }
         public int? HeliceID { get; set; }
     }
-    public class OtroComponenteViewModel : ComponenteViewModel
+    public class OtroComponenteViewModel : HeliceViewModel
     {
         public int? Aeronave { get; set; }
     }

@@ -21,24 +21,26 @@ namespace EngineAir.Controllers
 
         // End-Points de la interfaz de los motores - - - - - - - - - - - -
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Motor()
         {
-            ComponentViewModel<MarcaMotor, ModeloMotor> MotorViewModel = new()
+            ComponentViewModel<MarcaMotor, ModeloMotor, HistorialMotorHelice> MotorViewModel = new()
             {
                 MarcasTipos = await _service.GetMarcasMotores(),
                 ModelosVariantes = await _service.GetModelosMotores(),
+                TipoComponente = await _service.GetMotores(),
                 Helices = await _service.GetHelicesDisponibles(),
             };
+
             return View(MotorViewModel);
         }
 
         // End-Points de la interfaz de las hélices- - - - - - - - - - - - -
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Helice()
         {
-            ComponentViewModel<MarcaHelice, ModeloHelice> HeliceViewModel = new()
+            ComponentViewModel<MarcaHelice, ModeloHelice, Helice> HeliceViewModel = new()
             {
                 MarcasTipos = await _service.GetMarcasHelices(),
                 ModelosVariantes = await _service.GetModelosHelices()
@@ -49,10 +51,10 @@ namespace EngineAir.Controllers
 
         // End-Points de la interfaz de otros componentes - - - - - - - - - -
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public async Task<IActionResult> Variante()
         { 
-            ComponentViewModel<TipoComponente, Variante> TipoComponenteViewModel = new()
+            ComponentViewModel<TipoComponente, Variante, Componente> TipoComponenteViewModel = new()
             {
                 MarcasTipos = await _service.GetTiposComponente(),
                 ModelosVariantes = await _service.GetVariantesComponente()

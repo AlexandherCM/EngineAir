@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using MVC.Models.Classes;
 using MVC.Models.ViewModels;
+using MVC.Services.DesignPatterns.Interfaces;
 using MVC.Services.Services;
 using Newtonsoft.Json;
 using System.Security.Claims;
@@ -42,7 +43,7 @@ namespace EngineAir.Controllers.Api
         }
 
         [HttpPost("CreateBrand")]
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public async Task<ResponseJS> CreateBrand([FromBody] MarcaTipoViewModel MarcaTipo)
         {
             try
@@ -81,9 +82,9 @@ namespace EngineAir.Controllers.Api
             }
         }
 
-        [HttpPost("UpdateBrandStatus")]
-        [Authorize(Roles = "ADM, GRL")] 
-        public async Task<ResponseJS> UpdateBrandStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
+        [HttpPost("UpdateStatus")]
+        //[Authorize(Roles = "ADM, GRL")]  
+        public async Task<ResponseJS> UpdateStatus([FromBody] UpdateStatusDTO UpdateStatusDTO)
         {
             (bool OpEstado, bool status) = await _service.UpdateStatus(UpdateStatusDTO);
 
@@ -101,7 +102,7 @@ namespace EngineAir.Controllers.Api
         }
 
         [HttpPost("CreateModelVariant")]
-        [Authorize(Roles = "ADM, GRL")] 
+        //[Authorize(Roles = "ADM, GRL")] 
         public async Task<ResponseJS> CreateModelVariant([FromBody] ModeloVarianteViewModel ModeloVariante)
         {
             try
@@ -141,12 +142,15 @@ namespace EngineAir.Controllers.Api
         }
 
         [HttpPost("AddComponent")]
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public async Task<ResponseJS> AddComponent([FromBody] MotorViewModel componenteViewModel)
         {
             try
             {
                 _observerResponse = await _service.InsertEngine(componenteViewModel);
+
+                if (componenteViewModel.ClientID != null)
+                    _observerResponse.ClientID = componenteViewModel.ClientID;
 
                 await _hubContext.Clients.All.SendAsync("CreateEngine", _observerResponse);
                 return _code200;

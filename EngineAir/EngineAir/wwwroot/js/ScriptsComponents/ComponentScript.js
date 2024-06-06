@@ -3,7 +3,7 @@ CreateModelVariantListener(ConceptComponent);
 
 //Obtener el formulario y aplicar el evento observador 
 function CreateModelVariantListener(Prototype) {
-    var formulario = document.getElementById(Prototype.Model);
+    var formulario = document.getElementById(Prototype.Component);
     if (!formulario)
         return;
 
@@ -27,7 +27,8 @@ function CreateModelVariantListener(Prototype) {
             TURM: Objects.TURM,
             Estado: true,
             Entidad: Objects.Entidad,
-            HeliceID: Objects.HeliceID
+            HeliceID: Objects.HeliceID,
+            ClientID: uniqueId
         };
         // - - - - - - - - - - - - - - - - - - - - -
 
@@ -47,16 +48,49 @@ function CreateModelVariantListener(Prototype) {
 
 // Observadores del Servidor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 connection.on("CreateEngine", (_response) => {
-    //if (_response.Estado) {
-    //    NewBrandFile(JSON.parse(_response.Body), ConceptBrandType);
-    //    RefreshBrandInRealTime()
-    //}
+    if (_response.Estado) { 
+        NewComponentFile(JSON.parse(_response.Body), ConceptComponent);
+        RefreshBrandInRealTime()
+    } 
 
     // Validar la sesión actual para mostrar la alerta solo al cliente que realizó la petición al servidor
-    //if (_response.ClientID != null && _response.ClientID == uniqueId) {
+    if (_response.ClientID != null && _response.ClientID == uniqueId) {
         AlertaJS(_response); // Mostrar alerta al usuario apropiado
-    //}
+    }
 });
+
+function NewComponentFile(Records, Prototype) {
+    let tbody = document.getElementById(Prototype.Row);
+
+    let id = Records[Records.length - 1].ID;
+    let status = Records[Records.length - 1].Estado;
+    let name = Records[Records.length - 1].Nombre;
+    let entity = BrandEntity; // "BrandEntity" esta definida en la vista, en los scripts
+
+    let tr = document.createElement('tr');
+    tr.innerHTML = `
+        <tr>
+            <td>${name}</td>
+            <td>
+                <label class="toggle-switch my-2">
+
+                    <input data-id="${id}" data-entity="${entity}"
+                           class="chbTable chbUpdateStatus" type="checkbox" checked="${status}">
+
+                    <div class="toggle-switch-background">
+                        <div class="toggle-switch-handle"></div>
+                    </div>
+                </label>
+            </td>
+            <td>
+                <img src="../../images/svg/pen-to-square-regular.svg" class="table-icon"/>
+            </td>
+        </tr>
+    `;
+
+    tbody.appendChild(tr);
+    NewEventListenerChbx(tbody);
+};
 
 // - - - - - - - - - Funciones para obtener campos del formulario - - - - - - - - -
 function GetFormsDataTwo(event) {

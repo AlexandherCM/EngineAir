@@ -23,11 +23,10 @@ namespace MVC.Services.DesignPatterns.Repositories
                                                                                  .Where(c => c.Funcional == true)
                                                                                  .ToListAsync();
 
-            var helicesSinHistorial = await _context.Helice
-                                                                                .Include(c => c.Modelo)
-                                                                                .Include(c => c.Modelo.Marca)
-                                                                                .Where(c => _context.HistorialMotorHelice.All(h => h.HeliceID != c.ID))
-                                                                                .ToListAsync();
+            var helicesSinHistorial = await _context.Helice.Include(c => c.Modelo)
+                                                                                 .Include(c => c.Modelo.Marca)
+                                                                                 .Where(c => _context.HistorialMotorHelice.All(h => h.HeliceID != c.ID))
+                                                                                 .ToListAsync();
 
             var helices =  helicesFuncionales.Intersect(helicesSinHistorial).ToList();
 

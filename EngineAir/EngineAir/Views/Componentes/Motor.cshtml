@@ -1,6 +1,6 @@
 ﻿@using MVC.Models.ViewModels
 @using MVC.Models.Entities
-@model ComponentViewModel<MarcaMotor, ModeloMotor>
+@model ComponentViewModel<MarcaMotor, ModeloMotor, HistorialMotorHelice>
 
 @{
     ViewData["Title"] = "Componente Motor";
@@ -349,22 +349,9 @@
         <table id="table" class=" table  motors">
             <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th colspan="2" class="border">Tiempo de remplazo</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
                     <th>N° serie</th>
                     <th>Hélice</th>
                     <th>Planeador</th>
-                    <th class="border">Años</th>
-                    <th class="border">Horas</th>
                     <th> Tiempo total</th>
                     <th> TURM</th>
                     <th>Estado</th>
@@ -372,27 +359,31 @@
                     <th>Detalles</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td>Lorem</td>
-                    <td class="my-2">
-                        <label class="toggle-switch">
-                            <input class="chbTable" type="checkbox">
-                            <div class="toggle-switch-background">
-                                <div class="toggle-switch-handle"></div>
-                            </div>
-                        </label>
-                    </td>
+            <tbody id="RowComponent">
 
-                    <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
-                    <td><img src="~/images/svg/circle-info-solid.svg" class="table-icon" /></td>
-                </tr>
+                @foreach (var item in Model.TipoComponente)
+                {
+                    <tr>
+                        <td>@item.Motor.NumSerie</td>
+                        <td>@item.Helice.NumSerie</td>
+                        <td>@item.AeronaveID</td> 
+                        <td>@item.Motor.TiempoTotal</td>
+                        <td>@item.Motor.TURM</td>
+                        <td class="my-2">
+                            <label class="toggle-switch">
+                                @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
+                                <input data-id="@item.Motor.ID" data-entity="@_configService["Concept:Engine:Component"]"
+                                       class="chbTable chbUpdateStatus" type="checkbox" checked="@item.Estado">
+                                @* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*@
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </td>
+                        <td><img src="~/images/svg/pen-to-square-regular.svg" class="table-icon" /></td>
+                        <td><img src="~/images/svg/circle-info-solid.svg" class="table-icon" /></td>
+                    </tr>
+                }
             </tbody>
 
         </table>

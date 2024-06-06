@@ -15,32 +15,32 @@ namespace EngineAir.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "ADM")]
+        //[Authorize(Roles = "ADM")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public IActionResult Motores()
         {
             return RedirectToAction("Motor", "Componentes");
         }
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public IActionResult Helices()
         {
             return RedirectToAction("Helice", "Componentes");
         }
 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public IActionResult Componentes()
         {
             return RedirectToAction("Variante", "Componentes");
         }
 
         // Operaciones del servicio de autenticación de usuario - - - - - - - - - - - - - - - - - - - - - - - - 
-        [Authorize(Roles = "ADM, GRL")]
+        //[Authorize(Roles = "ADM, GRL")]
         public IActionResult Privacy()
         {
             return View();

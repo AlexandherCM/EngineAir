@@ -1,4 +1,5 @@
 ﻿using EngineAir.Models;
+using Microsoft.EntityFrameworkCore;
 using MVC.Models.Classes;
 using MVC.Models.Entities;
 using MVC.Models.ViewModels;
@@ -16,6 +17,26 @@ namespace MVC.Services.DesignPatterns.Repositories
         private ResponseJS _alertaEstado = new();
         public MotorRepository(Context context) { _context = context; }
 
+        public async Task<List<HistorialMotorHelice>> GetList()
+            => await _context.HistorialMotorHelice.Include(c=>c.Motor)
+                                                                      .Include(c => c.Helice)
+                                                                      .Where(c => c.Estado).ToListAsync();
+
+        // AGREGAR CAMPO DE ESTADO - - - - - - - - - - - - - - - - - 
+        //public async Task<(bool, bool)> UpdateStatus(int ID)
+        //{
+        //    try
+        //    {
+        //        var BrandTipe = await _context.Motor.FindAsync(ID);
+        //        BrandTipe.Estado = !BrandTipe.Estado;
+        //        return (true, BrandTipe.Estado);
+        //    }
+        //    catch
+        //    {
+        //        return (false, false);
+        //    }
+        //}
+
         public ResponseJS Insert(MotorViewModel model)
         {
             try
@@ -31,6 +52,19 @@ namespace MVC.Services.DesignPatterns.Repositories
 
                 if (model.HeliceID != null)
                 {
+                    // BUSCAR SI LA HÉLICE ESTA ASIGNADA CON OTRO MOTOR
+                    var propellerFound = 
+                        _context.HistorialMotorHelice.FirstOrDefault(c => c.HeliceID == model.HeliceID);
+
+                    if (propellerFound != null && propellerFound.Estado == true)
+                    {
+                        _alertaEstado.Leyenda = "¡La helice seleccionada ya esta asignada con otro motor!";
+                        _alertaEstado.Estado = false;
+
+                        return _alertaEstado;
+                    }
+                    // BUSCAR SI LA HÉLICE ESTA ASIGNADA CON OTRO MOTOR
+
                     HistorialMotorHelice motorHelice = new()
                     {
                         Motor = motor,
@@ -43,6 +77,7 @@ namespace MVC.Services.DesignPatterns.Repositories
 
                     _context.Add(motorHelice);
                 }
+
                 _context.Add(motor);
 
                 _alertaEstado.Leyenda = "Datos registrados correctamente";
@@ -56,6 +91,6 @@ namespace MVC.Services.DesignPatterns.Repositories
 
             return _alertaEstado;
         }
-
+       
     }
 }

@@ -20,6 +20,9 @@ namespace MVC.Services.Services
             _unitOfWork = uniOfWork;
         }
 
+        public async Task<List<HistorialMotorHelice>> GetMotores()
+            => await _unitOfWork.Motor.GetList();
+
         // Lista de las marcas y/o tipos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         public async Task<List<MarcaMotor>> GetMarcasMotores()
             => await _unitOfWork.MarcaMotor.GetList(_unitOfWork._context.MarcaMotor);
@@ -29,20 +32,20 @@ namespace MVC.Services.Services
 
         public async Task<List<TipoComponente>> GetTiposComponente()
             => await _unitOfWork.TipoComponente.GetList(_unitOfWork._context.TipoComponente);
-        
+
         // Lista de las Modelos y/o Variantes - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         public async Task<List<ModeloMotor>> GetModelosMotores()
             => await _unitOfWork.ModeloMotor.GetList(_unitOfWork._context.ModeloMotor, x => x.Marca);
 
         public async Task<List<ModeloHelice>> GetModelosHelices()
             => await _unitOfWork.ModeloHelice.GetList(_unitOfWork._context.ModeloHelice, x => x.Marca);
-         
+
         public async Task<List<Variante>> GetVariantesComponente()
             => await _unitOfWork.Variante.GetList(_unitOfWork._context.Variante, x => x.Tipo);
 
         // Listas de hélices DTO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         public async Task<List<HeliceDTO>> GetHelicesDisponibles()
-            => await _unitOfWork.Helice.GetHelicesDisp(); 
+            => await _unitOfWork.Helice.GetHelicesDisp();
 
         // Agregar una nueva marca y/o tipo  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         public async Task<ResponseJS> CreateBrand(MarcaTipoViewModel marca)
@@ -71,7 +74,7 @@ namespace MVC.Services.Services
             return _response;
         }
 
-        public async Task<ResponseJS> CreateModel(ModeloVarianteViewModel ModeloVariante) 
+        public async Task<ResponseJS> CreateModel(ModeloVarianteViewModel ModeloVariante)
         {
             ModeloVariante.Nombre = ModeloVariante.Nombre.Trim();
 
@@ -133,6 +136,12 @@ namespace MVC.Services.Services
                     (OpEstado, status) =
                         await _unitOfWork.Variante.UpdateStatus(obj.ID, _unitOfWork._context.Variante);
                     break;
+                // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                // AGREGAR CAMPO DE ESTADO - - - - - - - - - - - - - - - - - 
+                //case "Motor":
+                //    (OpEstado, status) =
+                //        await _unitOfWork.Motor.UpdateStatus(obj.ID);
+                //    break;
                 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
                 default:
                     return (OpEstado, status);
@@ -144,8 +153,11 @@ namespace MVC.Services.Services
 
         public async Task<ResponseJS> InsertEngine(MotorViewModel model)
         {
-             _response = _unitOfWork.Motor.Insert(model);
-            await _unitOfWork.Save();
+            _response = _unitOfWork.Motor.Insert(model);
+
+            if (_response.Estado)
+                await _unitOfWork.Save();
+
             return _response;
         }
 

@@ -31,7 +31,7 @@ function CreateChbxListener(chbx) {
         };
 
         //Petición con la api
-        api.SendPost(`api/ComponenteTipo/UpdateBrandStatus`, UpdateStatusDTO)
+        api.SendPost(`api/ComponenteTipo/UpdateStatus`, UpdateStatusDTO)
             .then(_response => {
                 if (_response.Estado === false)
                     AlertaJS(_response);

@@ -10,7 +10,7 @@ const ConceptModelVariant = {
 }
 
 const ConceptComponent = {
-    Model: "NewComponent",
+    Component: "NewComponent",
     Row: "RowComponent"
 } 
 
